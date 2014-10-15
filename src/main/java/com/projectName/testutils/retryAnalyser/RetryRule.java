@@ -1,13 +1,7 @@
 package com.projectName.testutils.retryAnalyser;
 
-import org.apache.log4j.Logger;
-import org.junit.rules.MethodRule;
-import org.junit.runners.model.FrameworkMethod;
-import org.junit.runners.model.Statement;
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
-
-import com.thoughtworks.selenium.Wait.WaitTimedOutException;
 
 /**
  * Retry rule for testclasses which are failed because of wait timed out No of retries can be specified in the TestBaseClass @Rule

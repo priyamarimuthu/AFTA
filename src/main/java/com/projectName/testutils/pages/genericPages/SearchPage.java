@@ -1,11 +1,8 @@
 package com.projectName.testutils.pages.genericPages;
 
-import java.io.IOException;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import com.projectName.testutils.genericutility.ExceptionHandler;
 import com.projectName.testutils.seleniumutils.SeleniumWebDriver;
 
 public class SearchPage extends SeleniumWebDriver{
@@ -24,26 +21,20 @@ public class SearchPage extends SeleniumWebDriver{
 		super(driver);
 	}
 	
-	public boolean searchPage()throws ExceptionHandler, IOException{
-		
-		try{
-			if(isElementPresent(lnkHome)){
-				return true;
-			}
-			if(isElementPresent(lnkAnnouncement)){
-				return true;
-			}
-			if(isElementPresent(lnkCelebrations)){
-				return true;
-			}
-			if(isElementPresent(lnkClassifields)){
-				return true;
-			}
-			return false;
-		}catch(Exception e){
-			throw new ExceptionHandler(e);
+	public boolean searchPage(){
+		if(isElementPresent(lnkHome)){
+			return true;
 		}
-		
+		if(isElementPresent(lnkAnnouncement)){
+			return true;
+		}
+		if(isElementPresent(lnkCelebrations)){
+			return true;
+		}
+		if(isElementPresent(lnkClassifields)){
+			return true;
+		}
+		return false;
 	}
 	
 }

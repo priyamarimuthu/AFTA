@@ -45,10 +45,9 @@ public class TestBaseClass extends Assert {
 	 * For Core Selenium2 functionality
 	 */
 	protected WebDriver driver = null;
-	protected WebDriver driver1 = null;
 	protected WebDriverWait wait;
 	private final String deliminator = "####";
-	protected String url = "http://systems.aspiresys.com/";
+
 	/**
 	 * Standard log4j logger.
 	 */
@@ -62,21 +61,20 @@ public class TestBaseClass extends Assert {
 	/**
 	 * Getting the base path of screen shot
 	 */
-	String screenshotBasePath;
-	String logBasePath;
-	String logFile;
-	/**
-	 * Global retry count for the tests failed because of TimedOut Exceptions
-	 */
+	private String screenshotBasePath;
+	private String logBasePath;
+	private String logFile;
+
 	/**
 	 * Instantiating the driver path
 	 */
 	private final String IE_FILE_PATH = "/src/test/resources/extensions/IEDriverServer.exe";
 	private final String CHROME_FILE_PATH = "/src/test/resources/extensions/chromedriver.exe";
+	
 	/**
 	 * For DB connection
 	 */
-	public static DataAccessClient dataAccess = null;
+	private static DataAccessClient dataAccess = null;
 
 	public enum BrowserType {
 		FIREFOX("firefox"), IE("iexplore"), SAFARI("SAFARI"), CHROME("CHROME");
@@ -90,13 +88,6 @@ public class TestBaseClass extends Assert {
 			return label;
 		}
 	}
-
-	/***
-	 * Declaring the Users
-	 */
-	protected String TLADMIN = "TLADMIN";
-	protected String LHALL = "LHALL";
-	protected String KWINTERS = "KWINTERS";
 
 	/**
 	 * Displaying the environment details
@@ -141,17 +132,14 @@ public class TestBaseClass extends Assert {
 	 * @throws AWTException
 	 * @throws InterruptedException
 	 */
-	protected HomePage loginUser1() throws Exception {
+	protected HomePage loginUser1(){
 		// Intializing the objects
 		LoginPage LoginPage = PageFactory.initElements(driver, LoginPage.class);
 		homePage = PageFactory.initElements(driver, HomePage.class);
 
 		// Get the user name from home page
 		String user = environmentPropertiesReader.getAccMgrUsername();
-		//String user = (String) loginData.get("UserName");
-		//String password = (String) loginData.get("Password");
-		// Invoke login after log out
-		//LoginPage.logOut();
+
 		homePage = LoginPage.login(user,
 				environmentPropertiesReader.getPassword());
 		log.info("Logged into the application as - "
@@ -222,7 +210,6 @@ public class TestBaseClass extends Assert {
 		// Reading the URL and Browser type
 		String url = "http://systems.aspiresys.com/";
 		String browser = "FIREFOX";
-//		String browser = environmentPropertiesReader.getBrowser();
 
 		// Instantiating the browser
 		driver = getWebDriver(browser);
@@ -309,11 +296,11 @@ public class TestBaseClass extends Assert {
 					+ e.getMessage());
 		} finally {
 
-			String fileName = logBasePath + File.separator + result.getName()
-					+ " " + dateTimeStamp + " " + status + ".log";
+			//String fileName = logBasePath + File.separator + result.getName()
+				//	+ " " + dateTimeStamp + " " + status + ".log";
 
 			// Create log file with method name
-			FileUtility.copyFile(new File(logFile), new File(fileName));
+			//FileUtility.copyFile(new File(logFile), new File(fileName));
 
 			// Logging the test result
 			log.info("The test result for " + result.getName() + " is "
@@ -325,7 +312,6 @@ public class TestBaseClass extends Assert {
 	}
 	
 	//Report Part
-		//private final String deliminator = "####";
 		protected final String empty = "";
 		
 		protected final String dot = ".";	
@@ -380,10 +366,9 @@ public class TestBaseClass extends Assert {
 		
 		//End of code for reporting
 			
-		protected boolean logMessage(String message1,String message2){
+		protected boolean logTitleMessage(String message1){
 			
-			logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue(message1,message2, empty, empty, empty, getCallingMethodAndLineNumber()));
-			log.info(message2);
+			logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue(message1,empty, empty, "title", empty, getCallingMethodAndLineNumber()));
 			return true;
 		}
 }

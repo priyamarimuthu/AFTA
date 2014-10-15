@@ -8,7 +8,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
@@ -32,9 +31,12 @@ public class SeleniumWebDriver {
 	 */
 	protected static WebDriver driver;
 	WebDriverWait wait;
-	Boolean result = true;
-	public String returnString="";
-
+	private String returnString="";
+	private Boolean result = true;
+	
+	//used for weather click, type etc.. (low level log) need to be in report or not  
+	private Boolean requireToWrite = true; 
+	
 	public SeleniumWebDriver(WebDriver driver) {
 		SeleniumWebDriver.driver = driver;
 	}
@@ -47,25 +49,17 @@ public class SeleniumWebDriver {
 	 * @return true/false
 	 * @throws IOException 
 	 */
-	public boolean isTextPresent(String text) throws IOException {
+	public boolean isTextPresent(String text){
 		try {
-		status = "done";
-		result= driver.getPageSource().contains(text);
-		}
-		
-		catch (Exception e) {
+			result= driver.getPageSource().contains(text);
+			status = "Pass";
+		}catch (Exception e) {
 			status = "Fail";
-			File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-			
-			String workingdirectory = System.getProperty("user.dir");
-			
-			File scrFile1 = new File(workingdirectory +"/custom-test-report/Failure_Screenshot/"+getCallingMethodAndLineNumber()+".jpg");
-			
-			FileUtils.copyFile(scrFile, scrFile1);
-			result = false;
+			new ExceptionHandler(e, driver, getCustomAttributeValue("Is Text Present", text.toString(), empty, status, empty, getCallingMethodAndLineNumber()) );
 		}
+		if(requireToWrite)
+			logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue("Is Text Present", text.toString(), empty, status, empty, getCallingMethodAndLineNumber()));
 		
-		logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue("isTextPresent", text.toString(), empty, status, empty, getCallingMethodAndLineNumber()));
 		return result;
 	}
 
@@ -77,24 +71,19 @@ public class SeleniumWebDriver {
 	 * @return true/false
 	 * @throws IOException 
 	 */
-	public boolean isElementPresent(By element) throws IOException {
+	public boolean isElementPresent(By element){
 		boolean exists = true;
 		try {
 			exists = driver.findElement(element).isDisplayed();
-			status = "done";
+			status = "Pass";
 		} catch (Exception e) {
 			status = "Fail";
-			File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-			
-			String workingdirectory = System.getProperty("user.dir");
-			
-			File scrFile1 = new File(workingdirectory +"/custom-test-report/Failure_Screenshot/"+getCallingMethodAndLineNumber()+".jpg");
-			
-			FileUtils.copyFile(scrFile, scrFile1);
-			exists = false;
+			new ExceptionHandler(e, driver, getCustomAttributeValue("isElement Present", element.toString(), empty, status, empty, getCallingMethodAndLineNumber()) );
 		}
 		
-		logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue("isElementPresent", element.toString(), empty, status, empty, getCallingMethodAndLineNumber()));
+		if(requireToWrite)
+			logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue("isElementPresent", element.toString(), empty, status, empty, getCallingMethodAndLineNumber()));
+		
 		return exists;
 	}
 
@@ -139,26 +128,27 @@ public class SeleniumWebDriver {
 		return ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 	}
 
-	public boolean waitForElement(final By ajaxElementName, int timeOutValue)
-			throws ExceptionHandler {
+	public boolean waitForElement(final By ajaxElementName, int timeOutValue){
 		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 		wait = new WebDriverWait(driver, timeOutValue);
 		try {
 			ExpectedCondition<Boolean> e = new ExpectedCondition<Boolean>() {
 				public Boolean apply(WebDriver driver) {
 					return driver.findElement(ajaxElementName).isDisplayed();
-
 				}
 			};
 			wait.until(e);
-			return true;
+			status = "Pass";
 		} catch (Exception e) {
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			throw new ExceptionHandler("The Element '" + ajaxElementName
-					+ "' did not appear  within " + timeOutValue + " ms."
-					+ timeOutValue * 1000);
-
+			status = "Fail";
+			result = false;
+			new ExceptionHandler(e, driver, getCustomAttributeValue("WaitForElement", ajaxElementName.toString(), empty, status, empty, getCallingMethodAndLineNumber()) );
 		}
+		
+		if(requireToWrite)
+			logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue("WaitForElement", ajaxElementName.toString(), empty, status, empty, getCallingMethodAndLineNumber()));
+		
+		return result;
 
 	}
 
@@ -177,64 +167,41 @@ public class SeleniumWebDriver {
 		}
 	}
 
-	public boolean sendKeys(By elementLocator, String value) throws IOException {
-		boolean flag;
+	public boolean sendKeys(By elementLocator, String value) {
 		try {
 			driver.manage().timeouts().implicitlyWait(45, TimeUnit.SECONDS);
 			driver.findElement(elementLocator).clear();
 			driver.findElement(elementLocator).sendKeys(value);
-			status = "done";
-			flag = true;
+			status = "Pass";
 		} catch (Exception e) {
 			status = "Fail";
-			File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-			
-			String workingdirectory = System.getProperty("user.dir");
-			
-			File scrFile1 = new File(workingdirectory +"/custom-test-report/Failure_Screenshot/"+getCallingMethodAndLineNumber()+".jpg");
-			
-			FileUtils.copyFile(scrFile, scrFile1);
-			flag = false;
+			result = false;
+			new ExceptionHandler(e, driver, getCustomAttributeValue("SendKeys", elementLocator.toString(), empty, status, empty, getCallingMethodAndLineNumber()) );
 		}
 		
-		logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue("Send Keys", elementLocator.toString(), value, status, empty, getCallingMethodAndLineNumber()));
+		if(requireToWrite)
+			logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue("SendKeys", elementLocator.toString(), empty, status, empty, getCallingMethodAndLineNumber()));
 		
-		return flag;
+		return result;
 	}
 
-	public boolean click(final By ajaxElementName) throws IOException {
+	public boolean click(final By ajaxElementName){
 		try {
 			waitForElement(ajaxElementName, Constants.AVG_WAIT_TIME_FOR_ELEMENT);
 			if (driver.findElement(ajaxElementName).isDisplayed()
 					&& driver.findElement(ajaxElementName).isEnabled()) {
 				driver.findElement(ajaxElementName).click();
-				
-				status = "done";
-				
-				
-				
-			} else {
-				
-				
-				result = false;
-			}
+				status = "Pass";
+			} 
 			
-		} catch (ExceptionHandler e) {
-			e.printStackTrace();
+		} catch (Exception e) {
 			status = "Fail";
-			
-			File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-			
-			String workingdirectory = System.getProperty("user.dir");
-			
-			File scrFile1 = new File(workingdirectory +"/custom-test-report/Failure_Screenshot/"+getCallingMethodAndLineNumber()+".jpg");
-			
-			FileUtils.copyFile(scrFile, scrFile1);
-			
 			result = false;
+			new ExceptionHandler(e, driver, getCustomAttributeValue("Click", ajaxElementName.toString(), empty, status, empty, getCallingMethodAndLineNumber()) );
 		}
 		
-		logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue("Click", ajaxElementName.toString(), empty, status, empty, getCallingMethodAndLineNumber()));
+		if(requireToWrite)
+			logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue("Click", ajaxElementName.toString(), empty, status, empty, getCallingMethodAndLineNumber()));
 		
 		return result;
 	}
@@ -250,49 +217,39 @@ public class SeleniumWebDriver {
 	 * 
 	 * @since March 04, 2013
 	 */
-	public boolean isChecked(final By ajaxCheckboxName) throws ExceptionHandler, IOException {
+	public boolean isChecked(final By ajaxCheckboxName){
 		try{
-		if (waitForElement(ajaxCheckboxName,
-				Constants.AVG_WAIT_TIME_FOR_ELEMENT)) {
-			driver.findElement(ajaxCheckboxName).isSelected();
-			boolean checkBoxStatus = driver.findElement(ajaxCheckboxName)
-					.isSelected();
-			if (checkBoxStatus) {
-				status = "done";
-				return true;
+			if (waitForElement(ajaxCheckboxName,
+					Constants.AVG_WAIT_TIME_FOR_ELEMENT)) {
+				driver.findElement(ajaxCheckboxName).isSelected();
+				boolean checkBoxStatus = driver.findElement(ajaxCheckboxName)
+						.isSelected();
+				if (checkBoxStatus) {
+					status = "Pass";
+					result = true;
+				} else {
+					status = "Fail";
+					result = false;
+				}
 			} else {
 				status = "Fail";
 				result = false;
-				return false;
 			}
-		} else {
-			status = "Fail";
-			result = false;
-			return false;
-		}
 		}
 		catch (Exception e) {
-
-			e.printStackTrace();
-			status = "Fail";
-			
-			File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-			
-			String workingdirectory = System.getProperty("user.dir");
-			
-			File scrFile1 = new File(workingdirectory +"/custom-test-report/Failure_Screenshot/"+getCallingMethodAndLineNumber()+".jpg");
-			
-			FileUtils.copyFile(scrFile, scrFile1);
-			
+			status = "fail";
 			result = false;
+			new ExceptionHandler(e, driver, getCustomAttributeValue("Is Checked", ajaxCheckboxName.toString(), empty, status, empty, getCallingMethodAndLineNumber()) );
 		}
-
-		logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue("Check", ajaxCheckboxName.toString(), empty, status, empty, getCallingMethodAndLineNumber()));
+		
+		if(requireToWrite)
+			logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue("Is Checked", ajaxCheckboxName.toString(), empty, status, empty, getCallingMethodAndLineNumber()));
+		
 		return result;
 	}
 
 
-	public void waitForPageToLoad() throws IOException {
+	public void waitForPageToLoad() {
 		String element="";
 		try {
 			int counter = 0;
@@ -309,57 +266,36 @@ public class SeleniumWebDriver {
 				Thread.sleep(100);
 				counter++;
 			}
-			status = "done";
-		} catch (Exception e) {
-
-			e.printStackTrace();
+			status = "Pass";
+		}catch (Exception e) {
 			status = "Fail";
-			
-			File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-			
-			String workingdirectory = System.getProperty("user.dir");
-			
-			File scrFile1 = new File(workingdirectory +"/custom-test-report/Failure_Screenshot/"+getCallingMethodAndLineNumber()+".jpg");
-			
-			FileUtils.copyFile(scrFile, scrFile1);
-			
-			result = false;
+			new ExceptionHandler(e, driver, getCustomAttributeValue("Wait for page to load", element.toString(), empty, status, empty, getCallingMethodAndLineNumber()) );
 		}
-
-		logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue("Wait for page to load", element.toString(), empty, status, empty, getCallingMethodAndLineNumber()));		
+		if(requireToWrite)
+			logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue("Wait for page to load", element.toString(), empty, status, empty, getCallingMethodAndLineNumber()));		
 	}
 	
 
 	// Mouse over Method
-	public void mouseOver(WebElement element) throws IOException {
+	public void mouseOver(WebElement element){
 		try {
-		String code = "var fireOnThis = arguments[0];"
-				+ "var evObj = document.createEvent('MouseEvents');"
-				+ "evObj.initEvent( 'mouseover', true, true );"
-				+ "fireOnThis.dispatchEvent(evObj);";
-		((JavascriptExecutor) driver).executeScript(code, element);
-		status = "done";
-		}
-		catch (RuntimeException e) {
-			e.printStackTrace();
+			String code = "var fireOnThis = arguments[0];"
+					+ "var evObj = document.createEvent('MouseEvents');"
+					+ "evObj.initEvent( 'mouseover', true, true );"
+					+ "fireOnThis.dispatchEvent(evObj);";
+			((JavascriptExecutor) driver).executeScript(code, element);
+			status = "Pass";
+		}catch (Exception e) {
 			status = "Fail";
-			
-			File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-			
-			String workingdirectory = System.getProperty("user.dir");
-			
-			File scrFile1 = new File(workingdirectory +"/custom-test-report/Failure_Screenshot/"+getCallingMethodAndLineNumber()+".jpg");
-			
-			FileUtils.copyFile(scrFile, scrFile1);
-			
-			result = false;
+			new ExceptionHandler(e, driver, getCustomAttributeValue("Mouse Over", element.toString(), empty, status, empty, getCallingMethodAndLineNumber()) );
 		}
 		
-		logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue("Mouse over", element.toString(), empty, status, empty, getCallingMethodAndLineNumber()));
-
+		if(requireToWrite)
+			logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue("Mouse Over", element.toString(), empty, status, empty, getCallingMethodAndLineNumber()));
+		
 	}
 
-	public boolean select(By listName, String valueForSelection) throws IOException {
+	public boolean select(By listName, String valueForSelection){
 		valueForSelection = valueForSelection != null ? valueForSelection
 				.trim() : "";
 		try {
@@ -367,31 +303,19 @@ public class SeleniumWebDriver {
 			if (driver.findElement(listName).isDisplayed()) {
 				Select elSelect = new Select(driver.findElement(listName));
 				elSelect.selectByVisibleText(valueForSelection);
-				status = "done";
+				status = "Pass";
 				return true;
 			} else {
 				return false;
 			}
-		} catch (RuntimeException e) {
-			e.printStackTrace();
-			
-			return false;
-		} catch (ExceptionHandler e) {
-			e.printStackTrace();
+		} catch (Exception e) {
 			status = "Fail";
-			
-			File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-			
-			String workingdirectory = System.getProperty("user.dir");
-			
-			File scrFile1 = new File(workingdirectory +"/custom-test-report/Failure_Screenshot/"+getCallingMethodAndLineNumber()+".jpg");
-			
-			FileUtils.copyFile(scrFile, scrFile1);
-			
 			result = false;
+			new ExceptionHandler(e, driver, getCustomAttributeValue("Selct", listName.toString(), valueForSelection, status, empty, getCallingMethodAndLineNumber()) );
 		}
-
-		logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue("Select", listName.toString(), valueForSelection, status, empty, getCallingMethodAndLineNumber()));
+		
+		if(requireToWrite)
+			logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue("Select", listName.toString(), valueForSelection, status, empty, getCallingMethodAndLineNumber()));
 		
 		return result;
 	}
@@ -401,57 +325,39 @@ public class SeleniumWebDriver {
 		try {
 			if (waitForElement(elementName, wait)) {
 				returnString=driver.findElement(elementName).getText();
-				status = "done";
+				status = "Pass";
 			}
-		} catch (ExceptionHandler e) {
-			e.printStackTrace();
+		}  catch (Exception e) {
 			status = "Fail";
-			
-			File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-			
-			String workingdirectory = System.getProperty("user.dir");
-			
-			File scrFile1 = new File(workingdirectory +"/custom-test-report/Failure_Screenshot/"+getCallingMethodAndLineNumber()+".jpg");
-			
-			FileUtils.copyFile(scrFile, scrFile1);
-			
-			result = false;
+			new ExceptionHandler(e, driver, getCustomAttributeValue("Get Text", elementName.toString(), empty, status, empty, getCallingMethodAndLineNumber()) );
 		}
 		
-		logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue("Store Text", elementName.toString(), empty, status, empty, getCallingMethodAndLineNumber()));
+		if(requireToWrite)
+			logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue("Get Text", elementName.toString(), empty, status, empty, getCallingMethodAndLineNumber()));
 		
 		return returnString;
 	}
 
-	public String getValue(By elementName) throws ExceptionHandler, IOException {
+	public String getValue(By elementName){
 
 		try {
 			if (waitForElement(elementName, Constants.AVG_WAIT_TIME_FOR_ELEMENT)) {
 				returnString=driver.findElement(elementName).getAttribute("value");
-				status = "done";
-			} else {
-				return "";
-			}
-		} catch (ExceptionHandler e) {
-			e.printStackTrace();
+				status = "Pass";
+			} 
+		} catch (Exception e) {
 			status = "Fail";
-			
-			File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-			
-			String workingdirectory = System.getProperty("user.dir");
-			
-			File scrFile1 = new File(workingdirectory +"/custom-test-report/Failure_Screenshot/"+getCallingMethodAndLineNumber()+".jpg");
-			
-			FileUtils.copyFile(scrFile, scrFile1);
-			
-			result = false;
+			new ExceptionHandler(e, driver, getCustomAttributeValue("Get Value", elementName.toString(), empty, status, empty, getCallingMethodAndLineNumber()) );
 		}
 		
-		logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue("Store Value", elementName.toString(), empty, status, empty, getCallingMethodAndLineNumber()));
+		if(requireToWrite)
+			logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue("Get Value", elementName.toString(), empty, status, empty, getCallingMethodAndLineNumber()));
 		
 		return returnString;
 	}
 
+	
+	
 	//Report Part
 	private final String deliminator = "####";
 	private final String empty = "";

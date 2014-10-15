@@ -2,19 +2,13 @@ package com.projectName.testutils.pages.projectNamePages;
 
 import java.awt.AWTException;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Hashtable;
-
-import org.apache.commons.collections.map.HashedMap;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 import com.projectName.testutils.genericutility.ExceptionHandler;
-import com.projectName.testutils.pages.genericPages.HomePage;
 import com.projectName.testutils.pages.projectNamePages.HomeScreen;
 import com.projectName.testutils.seleniumutils.SeleniumWebDriver;
-import org.openqa.selenium.Keys;
 public class HomeScreen extends SeleniumWebDriver{
 	
 	protected By lnkIDM = By.linkText("123");
@@ -44,34 +38,23 @@ public class HomeScreen extends SeleniumWebDriver{
 	 * @throws AWTException
 	 * @throws InterruptedException
 	 */
-	public boolean searchbyanyname(String UserName)throws ExceptionHandler, IOException {
-		try{
-			
-			Assert.assertTrue(sendKeys(txtSearchtextbox,UserName),"Could not enter user name");
-			Assert.assertTrue(sendKeys(txtSearchtextbox,"\\13"),"could not press the enter button");
-			
-		}catch(Exception e){
-			throw new ExceptionHandler(e);
-		}
+	public boolean searchbyanyname(String UserName){
+		Assert.assertTrue(sendKeys(txtSearchtextbox,UserName),"Could not enter user name");
+		Assert.assertTrue(sendKeys(txtSearchtextbox,"\\13"),"could not press the enter button");
 		return true;
 	}
 	
-	public boolean verifyelement()throws ExceptionHandler, IOException{
+	public boolean verifyelement(){
 		boolean returnValue=true;
-		try{
-			if(!isElementPresent(lnkIDM)){
-				returnValue=false;
-			}
-			if(!isElementPresent(lnkLMS)){
-				returnValue=false;
-			}
-			if(!isElementPresent(lnkSeventhSense)){
-				returnValue=false;
-			}
-			return returnValue;
-		}catch(Exception e){
-			throw new ExceptionHandler(e);
+		if(!isElementPresent(lnkIDM)){
+			returnValue=false;
 		}
-		
+		if(!isElementPresent(lnkLMS)){
+			returnValue=false;
+		}
+		if(!isElementPresent(lnkSeventhSense)){
+			returnValue=false;
+		}
+		return returnValue;
 	}
 }

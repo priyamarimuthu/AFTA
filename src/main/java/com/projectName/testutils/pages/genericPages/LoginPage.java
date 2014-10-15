@@ -2,16 +2,11 @@ package com.projectName.testutils.pages.genericPages;
 
 import java.awt.AWTException;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Hashtable;
-
-import org.apache.commons.collections.map.HashedMap;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 import com.projectName.testutils.genericutility.ExceptionHandler;
-import com.projectName.testutils.pages.projectNamePages.HomeScreen;
 import com.projectName.testutils.seleniumutils.SeleniumWebDriver;
 
 public class LoginPage extends SeleniumWebDriver {
@@ -42,38 +37,40 @@ public class LoginPage extends SeleniumWebDriver {
 	 * @throws InterruptedException
 	 */
 	//public Screen1 login(HashedMap testData, WebDriver driver)
-	public HomePage login(String UserName, String Password)
-			throws ExceptionHandler, IOException {
-		try{
+	public HomePage login(String UserName, String Password){
 			Assert.assertTrue(click(loginButton), "Could not click on login  button");
-			Thread.sleep(5000);
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e1) {
+				e1.printStackTrace();
+			}
 			Assert.assertTrue(sendKeys(txtUserName,UserName ),
 					"Could not enter user name");
 			Assert.assertTrue(sendKeys(txtPassword, Password),
 					"Could not enter password");
 	
 			Assert.assertTrue(click(submitButton), "Could not click on submit button");
-			Thread.sleep(5000);
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			//return new Screen1(driver);
 			Assert.assertTrue(!isTextPresent("Log in"),"Could not Login to the application" );
-			Thread.sleep(5000);
-		}catch(Exception e){
-			new ExceptionHandler(e);
-			
-		}
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		return new HomePage(driver);
 	}
 	
-	public void logOut() throws Exception{
-		try {
-			Assert.assertTrue(click(lnkUserName), "Could not click on user name  button");
+	public void logOut(){
+		Assert.assertTrue(click(lnkUserName), "Could not click on user name  button");
+		waitForPageToLoad();
+		if (waitForElement(logoutButton, 5)) {
+			click(logoutButton);
 			waitForPageToLoad();
-			if (waitForElement(logoutButton, 5)) {
-				click(logoutButton);
-				waitForPageToLoad();
-			}
-		} catch (Exception e) {
-			new ExceptionHandler(e);
 		}
 	}
 

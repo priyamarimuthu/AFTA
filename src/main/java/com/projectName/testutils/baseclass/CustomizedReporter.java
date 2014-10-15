@@ -13,9 +13,9 @@ import org.testng.ITestResult;
 
 public class CustomizedReporter implements ITestListener{
 	
-	private static PrintWriter  f_out;
-	private static File screenshotDir; 
-	private static final String OUT_FOLDER  = "custom-test-report";
+	private PrintWriter  f_out;
+	private File screenshotDir; 
+	private final String OUT_FOLDER  = "custom-test-report";
 	private String className;
 	
 	/**
@@ -23,30 +23,13 @@ public class CustomizedReporter implements ITestListener{
 	 */
 	public void onStart(ITestContext context) {
 		try {
-
 			//used to get the test class name
-		 className = context.getCurrentXmlTest().getClasses().get(0).getName();
-
+			className = context.getCurrentXmlTest().getClasses().get(0).getName();
 			//used for creating required directories
 			createRequiredDirectory(OUT_FOLDER, className);
-			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-	}
-	
-	/**
-	 * This function will execute after test execution
-	 */
-	public void onFinish(ITestContext context) {
-		//used for create end html tags
-		endHtmlPage(f_out);
-
-		//used for write every thing in html file
-		f_out.flush();
-		f_out.close();
-		
 	}
 	
 	/**
@@ -57,7 +40,6 @@ public class CustomizedReporter implements ITestListener{
 			//used to write result details in html
 			generateTestExecution(result);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -71,7 +53,6 @@ public class CustomizedReporter implements ITestListener{
 			//used to write result details in html
 			generateTestExecution(result);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -85,19 +66,23 @@ public class CustomizedReporter implements ITestListener{
 			//used to write result details in html
 			generateTestExecution(result);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 	}
 	
-	
-	public void onTestStart(ITestResult result) {
+	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void onFinish(ITestContext context) {
 		// TODO Auto-generated method stub
 		
 	}
 	
-	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+	
+	public void onTestStart(ITestResult result) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -108,7 +93,7 @@ public class CustomizedReporter implements ITestListener{
 		//for get the current directory
 		String workingdirectory = System.getProperty("user.dir");
 		
-		//used to creste directory
+		//used to create directory
 		screenshotDir = new File(workingdirectory +"/custom-test-report");
 		screenshotDir.mkdir();
 		
@@ -117,11 +102,9 @@ public class CustomizedReporter implements ITestListener{
 		
 		screenshotDir = new File(workingdirectory + "/custom-test-report" + "/" + className);
 		screenshotDir.mkdir();
-		
-		
 	}
 	
-	private static PrintWriter createRequiredFile(String testName) throws IOException
+	private PrintWriter createRequiredFile(String testName) throws IOException
 	{
 		return new PrintWriter(new BufferedWriter(new FileWriter(new File(screenshotDir, testName+".html"))));
 	}
@@ -157,6 +140,7 @@ public class CustomizedReporter implements ITestListener{
 		
 		out.println(".title {");
 		out.println("font-style: italic;");
+		out.println("background-color: #B2ACAC;");
 		out.println("}");
 		
 		out.println(".selected {");
@@ -204,6 +188,19 @@ public class CustomizedReporter implements ITestListener{
 	}
 	
 	/**
+	 * This function will execute after test execution
+	 */
+	private void onFinish() {
+		//used for create end html tags
+		endHtmlPage(f_out);
+
+		//used for write every thing in html file
+		f_out.flush();
+		f_out.close();
+		
+	}
+	
+	/**
 	 * Finishes HTML Stream
 	 * @param out
 	 */
@@ -221,42 +218,67 @@ public class CustomizedReporter implements ITestListener{
 	 * @throws IOException
 	 */
 	private void generateTestExecution(ITestResult result) throws IOException{
+		//create the html file with current running class and test name
 		f_out = createRequiredFile(result.getName());
 		
+		//Write initial html codes neccessary for report
 		startHtmlPage(f_out,result);
 		
+		//get all the attributes set during the test execution
 		Object[] array = result.getAttributeNames().toArray();
+		
+		//Above got values are not in sort. So, Sorting that based on time
 		Arrays.sort(array);
 		
+		//Iterating the array value to generate report
     	for(Object name : array){
-    		
+    			
+    			//Each and every array value contains, All the info about the particular action
+    			//And Values combined using deliminator. So, split using deliminator
 	    		String temp[] = result.getAttribute((String) name).toString().split("####");
+	    		
+	    		//After split up, If the third array value contains 'Fail' means that step failed 
 	    		if(temp[3].toLowerCase().contains("fail")){
+	    			//If Fail create '<tr>' tag with 'status_failed' class(Which is used for create 'red' background color for failed cases)
 	    			f_out.println("<tr class=\"status_failed\" title=\"\" alt=\"\">");
 	    			
+	    			//create the screenshot path
 	    			String pathToScreenshot = "../Failure_Screenshot/"+temp[5]+".jpg";
 	    			
+	    			//creating mapping for failed step(Link to screen shot and embed the screenshot in that step)
 	    			temp[4] = "<a href=\'" + pathToScreenshot + "\'> <img src=\'" + pathToScreenshot + "\' height=\"100\" width=\"100\"> </a>";
-	    			
-	    			System.out.println(temp[4]);
-	    			
-	    		}else{
+
+	    		}
+	    		
+	    		//After split up, If the third array value contains 'title' means that is title
+	    		else if(temp[3].toLowerCase().contains("title")){
+	    			//So, If it is a title then create '<tr>' tag with class name 'title'
+	    			f_out.println("<tr class=\"title\" title=\"\" alt=\"\">");
+	    			f_out.println("<td colspan=\"6\">"+ temp[0] + "</td>");
+	    			f_out.println("</tr>");
+	    			continue;
+	    		}
+	    		
+	    		//Else status is passed
+	    		else{
 	    			f_out.println("<tr class=\"status_passed\" title=\"\" alt=\"\">");
 	    		}
 	    		
-	    		
+	    		//this will create separate '<td>' for messages inside the action
 	    		for(String temp1 : temp){
 	    				f_out.println("<td>"+ temp1 + "</td>");
 
 	    		}
-	    		
+	    	//end up '<tr>' tag	
 	    	f_out.println("</tr>");
     	}
     	
-    	
-    	
+    	//this used for write some end up html tags
+    	onFinish();
     	
 	}
+	
+	
 
 
 }
