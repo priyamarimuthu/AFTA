@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="EBS-1">
+<suite name="Selenium Automation Framework">
   
-    <test name="EBS">
+    <test name="Selenium Automation Framework">
     <packages>
       <package name="com.projectName.test.functional.moduleName1.*"/>
     </packages>
