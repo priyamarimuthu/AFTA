@@ -3,7 +3,7 @@
   
     <test name="EBS">
     <packages>
-      <package name="com.ebs.test.functional.Ebs"/>
+      <package name="com.projectName.test.functional.moduleName1.*"/>
     </packages>
 	</test>
     

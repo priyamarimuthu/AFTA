@@ -48,7 +48,7 @@
               <ul>
                 <li>
                   <a href="#" class="navigator-link " panel-name="test-xml-Default_suite">
-                    <span>C:\Users\priya.marimuthu\AppData\Local\Temp\testng-eclipse--1599868072\testng-customsuite.xml</span>
+                    <span>C:\Users\priya.marimuthu\AppData\Local\Temp\testng-eclipse-265173587\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -127,11 +127,20 @@
                   <a name="homePageTest">
                   </a> <!-- homePageTest -->
                   <span class="method-name">homePageTest</span>
-                  <div class="stack-trace">java.lang.AssertionError: Verification failed expected [true] but found [false]
-	at org.testng.Assert.fail(Assert.java:94)
-	at org.testng.Assert.failNotEquals(Assert.java:494)
-	at org.testng.Assert.assertTrue(Assert.java:42)
-	at com.projectName.test.functional.moduleName1.HomePageTest.homePageTest(HomePageTest.java:44)
+                  <div class="stack-trace">java.lang.AssertionError: Unable to locate element: {&quot;method&quot;:&quot;link text&quot;,&quot;selector&quot;:&quot;123&quot;}
+Command duration or timeout: 3.60 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.33.0&apos;, revision: &apos;4ecaf82108b2a6cc6f006aae81961236eba93358&apos;, time: &apos;2013-05-22 12:00:17&apos;
+System info: os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_13&apos;
+Session ID: ee22e9e2-276a-4d24-9375-0ca5f86cb16e
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=XP, databaseEnabled=true, cssSelectorsEnabled=true, javascriptEnabled=true, acceptSslCerts=true, handlesAlerts=true, browserName=firefox, browserConnectionEnabled=true, nativeEvents=true, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=17.0}]
+	at org.junit.Assert.fail(Assert.java:93)
+	at com.projectName.testutils.genericutility.ExceptionHandler.takeScreenshot(ExceptionHandler.java:66)
+	at com.projectName.testutils.genericutility.ExceptionHandler.&lt;init&gt;(ExceptionHandler.java:47)
+	at com.projectName.testutils.seleniumutils.SeleniumWebDriver.isElementPresent(SeleniumWebDriver.java:81)
+	at com.projectName.testutils.pages.projectNamePages.HomeScreen.verifyelement(HomeScreen.java:49)
+	at com.projectName.test.functional.moduleName1.HomePageTest.homePageTest(HomePageTest.java:49)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -165,7 +174,7 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\priya.marimuthu\AppData\Local\Temp\testng-eclipse--1599868072\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\priya.marimuthu\AppData\Local\Temp\testng-eclipse-265173587\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -222,12 +231,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'homePageTest')
 data.setCell(0, 2, 'com.projectName.test.functional.moduleName1.HomePageTest')
-data.setCell(0, 3, 36614);
+data.setCell(0, 3, 35217);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 36 seconds</span>
+              <span class="suite-total-time">Total running time: 35 seconds</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -262,11 +271,11 @@ return data;
                 <img src="failed.png">
                 </img>
                 <span class="method-name">homePageTest</span>
-                <span class="method-start">13014 ms</span>
+                <span class="method-start">9248 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown([TestResult name=homePageTest status=FAILURE method=HomePageTest.homePageTest()[pri:0, instance:com....)</span>
-                <span class="method-start">49631 ms</span>
+                <span class="method-start">44469 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

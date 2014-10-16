@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Mon Oct 13 12:10:21 IST 2014</td>
+<td>Started on:</td><td>Thu Oct 16 10:54:29 IST 2014</td>
 </tr>
-<tr><td>Total time:</td><td>50 seconds (50166 ms)</td>
+<tr><td>Total time:</td><td>44 seconds (44999 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -76,11 +76,20 @@ function toggleAllBoxes() {
 </tr>
 <tr>
 <td title='com.projectName.test.functional.moduleName1.HomePageTest.homePageTest()'><b>homePageTest</b><br>Test class: com.projectName.test.functional.moduleName1.HomePageTest</td>
-<td><div><pre>java.lang.AssertionError: Verification failed expected [true] but found [false]
-	at org.testng.Assert.fail(Assert.java:94)
-	at org.testng.Assert.failNotEquals(Assert.java:494)
-	at org.testng.Assert.assertTrue(Assert.java:42)
-	at com.projectName.test.functional.moduleName1.HomePageTest.homePageTest(HomePageTest.java:44)
+<td><div><pre>java.lang.AssertionError: Unable to locate element: {&quot;method&quot;:&quot;link text&quot;,&quot;selector&quot;:&quot;123&quot;}
+Command duration or timeout: 3.60 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.33.0&apos;, revision: &apos;4ecaf82108b2a6cc6f006aae81961236eba93358&apos;, time: &apos;2013-05-22 12:00:17&apos;
+System info: os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_13&apos;
+Session ID: ee22e9e2-276a-4d24-9375-0ca5f86cb16e
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=XP, databaseEnabled=true, cssSelectorsEnabled=true, javascriptEnabled=true, acceptSslCerts=true, handlesAlerts=true, browserName=firefox, browserConnectionEnabled=true, nativeEvents=true, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=17.0}]
+	at org.junit.Assert.fail(Assert.java:93)
+	at com.projectName.testutils.genericutility.ExceptionHandler.takeScreenshot(ExceptionHandler.java:66)
+	at com.projectName.testutils.genericutility.ExceptionHandler.&lt;init&gt;(ExceptionHandler.java:47)
+	at com.projectName.testutils.seleniumutils.SeleniumWebDriver.isElementPresent(SeleniumWebDriver.java:81)
+	at com.projectName.testutils.pages.projectNamePages.HomeScreen.verifyelement(HomeScreen.java:49)
+	at com.projectName.test.functional.moduleName1.HomePageTest.homePageTest(HomePageTest.java:49)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -105,12 +114,21 @@ function toggleAllBoxes() {
 	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
-</pre></div><a href='#' onClick='toggleBox("stack-trace23303854", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace23303854'><pre>java.lang.AssertionError: Verification failed expected [true] but found [false]
-	at org.testng.Assert.fail(Assert.java:94)
-	at org.testng.Assert.failNotEquals(Assert.java:494)
-	at org.testng.Assert.assertTrue(Assert.java:42)
-	at com.projectName.test.functional.moduleName1.HomePageTest.homePageTest(HomePageTest.java:44)
+</pre></div><a href='#' onClick='toggleBox("stack-trace10492548", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace10492548'><pre>java.lang.AssertionError: Unable to locate element: {&quot;method&quot;:&quot;link text&quot;,&quot;selector&quot;:&quot;123&quot;}
+Command duration or timeout: 3.60 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.33.0&apos;, revision: &apos;4ecaf82108b2a6cc6f006aae81961236eba93358&apos;, time: &apos;2013-05-22 12:00:17&apos;
+System info: os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_13&apos;
+Session ID: ee22e9e2-276a-4d24-9375-0ca5f86cb16e
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=XP, databaseEnabled=true, cssSelectorsEnabled=true, javascriptEnabled=true, acceptSslCerts=true, handlesAlerts=true, browserName=firefox, browserConnectionEnabled=true, nativeEvents=true, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=17.0}]
+	at org.junit.Assert.fail(Assert.java:93)
+	at com.projectName.testutils.genericutility.ExceptionHandler.takeScreenshot(ExceptionHandler.java:66)
+	at com.projectName.testutils.genericutility.ExceptionHandler.&lt;init&gt;(ExceptionHandler.java:47)
+	at com.projectName.testutils.seleniumutils.SeleniumWebDriver.isElementPresent(SeleniumWebDriver.java:81)
+	at com.projectName.testutils.pages.projectNamePages.HomeScreen.verifyelement(HomeScreen.java:49)
+	at com.projectName.test.functional.moduleName1.HomePageTest.homePageTest(HomePageTest.java:49)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -136,8 +154,8 @@ function toggleAllBoxes() {
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
 </pre></div></td>
-<td>36</td>
-<td>com.projectName.test.functional.moduleName1.HomePageTest@1480d96</td></tr>
+<td>35</td>
+<td>com.projectName.test.functional.moduleName1.HomePageTest@8843f5</td></tr>
 </table><p>
 </body>
 </html>

@@ -2,26 +2,42 @@
 <testng-results skipped="0" failed="1" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="50166" started-at="2014-10-13T06:40:21Z" finished-at="2014-10-13T06:41:11Z">
+  <suite name="Default suite" duration-ms="44999" started-at="2014-10-16T05:24:29Z" finished-at="2014-10-16T05:25:14Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="50166" started-at="2014-10-13T06:40:21Z" finished-at="2014-10-13T06:41:11Z">
+    <test name="Default test" duration-ms="44999" started-at="2014-10-16T05:24:29Z" finished-at="2014-10-16T05:25:14Z">
       <class name="com.projectName.test.functional.moduleName1.HomePageTest">
-        <test-method status="PASS" signature="genericSetUp()[pri:0, instance:com.projectName.test.functional.moduleName1.HomePageTest@1480d96]" name="genericSetUp" is-config="true" duration-ms="13014" started-at="2014-10-13T12:10:21Z" finished-at="2014-10-13T12:10:34Z">
+        <test-method status="PASS" signature="genericSetUp()[pri:0, instance:com.projectName.test.functional.moduleName1.HomePageTest@8843f5]" name="genericSetUp" is-config="true" duration-ms="9247" started-at="2014-10-16T10:54:29Z" finished-at="2014-10-16T10:54:38Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- genericSetUp -->
-        <test-method status="FAIL" signature="homePageTest()[pri:0, instance:com.projectName.test.functional.moduleName1.HomePageTest@1480d96]" name="homePageTest" duration-ms="36614" started-at="2014-10-13T12:10:34Z" finished-at="2014-10-13T12:11:11Z">
+        <test-method status="FAIL" signature="homePageTest()[pri:0, instance:com.projectName.test.functional.moduleName1.HomePageTest@8843f5]" name="homePageTest" duration-ms="35217" started-at="2014-10-16T10:54:38Z" finished-at="2014-10-16T10:55:14Z">
           <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[Verification failed expected [true] but found [false]]]>
+              <![CDATA[Unable to locate element: {"method":"link text","selector":"123"}
+Command duration or timeout: 3.60 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.33.0', revision: '4ecaf82108b2a6cc6f006aae81961236eba93358', time: '2013-05-22 12:00:17'
+System info: os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_13'
+Session ID: ee22e9e2-276a-4d24-9375-0ca5f86cb16e
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=XP, databaseEnabled=true, cssSelectorsEnabled=true, javascriptEnabled=true, acceptSslCerts=true, handlesAlerts=true, browserName=firefox, browserConnectionEnabled=true, nativeEvents=true, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=17.0}]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: Verification failed expected [true] but found [false]
-	at org.testng.Assert.fail(Assert.java:94)
-	at org.testng.Assert.failNotEquals(Assert.java:494)
-	at org.testng.Assert.assertTrue(Assert.java:42)
-	at com.projectName.test.functional.moduleName1.HomePageTest.homePageTest(HomePageTest.java:44)
+              <![CDATA[java.lang.AssertionError: Unable to locate element: {"method":"link text","selector":"123"}
+Command duration or timeout: 3.60 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.33.0', revision: '4ecaf82108b2a6cc6f006aae81961236eba93358', time: '2013-05-22 12:00:17'
+System info: os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_13'
+Session ID: ee22e9e2-276a-4d24-9375-0ca5f86cb16e
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=XP, databaseEnabled=true, cssSelectorsEnabled=true, javascriptEnabled=true, acceptSslCerts=true, handlesAlerts=true, browserName=firefox, browserConnectionEnabled=true, nativeEvents=true, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=17.0}]
+	at org.junit.Assert.fail(Assert.java:93)
+	at com.projectName.testutils.genericutility.ExceptionHandler.takeScreenshot(ExceptionHandler.java:66)
+	at com.projectName.testutils.genericutility.ExceptionHandler.<init>(ExceptionHandler.java:47)
+	at com.projectName.testutils.seleniumutils.SeleniumWebDriver.isElementPresent(SeleniumWebDriver.java:81)
+	at com.projectName.testutils.pages.projectNamePages.HomeScreen.verifyelement(HomeScreen.java:49)
+	at com.projectName.test.functional.moduleName1.HomePageTest.homePageTest(HomePageTest.java:49)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -52,11 +68,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- homePageTest -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.projectName.test.functional.moduleName1.HomePageTest@1480d96]" name="tearDown" is-config="true" duration-ms="525" started-at="2014-10-13T12:11:11Z" finished-at="2014-10-13T12:11:11Z">
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.projectName.test.functional.moduleName1.HomePageTest@8843f5]" name="tearDown" is-config="true" duration-ms="520" started-at="2014-10-16T10:55:14Z" finished-at="2014-10-16T10:55:14Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=homePageTest status=FAILURE method=HomePageTest.homePageTest()[pri:0, instance:com.projectName.test.functional.moduleName1.HomePageTest@1480d96] output={null}]]]>
+                <![CDATA[[TestResult name=homePageTest status=FAILURE method=HomePageTest.homePageTest()[pri:0, instance:com.projectName.test.functional.moduleName1.HomePageTest@8843f5] output={null}]]]>
               </value>
             </param>
           </params>

@@ -19,19 +19,20 @@ public class HomePageTest  extends TestBaseClass{
 		// ------------------------------------------------------------------//
 		// Step-1: Log in to the application //
 		// ------------------------------------------------------------------//
-		logTitleMessage("STEP 1:");
+		logTitleMessage("Login to application");
 		homePage = loginUser1();
+		
 		try {
 			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		logTitleMessage("RESULT: Sucessfully navigated to Home screen");
+		logTitleMessage("Login Successful");
 		
 		// ------------------------------------------------------------------//
 		// Step-2:Load Home Page Variable //
 		// ------------------------------------------------------------------//
-		logTitleMessage("STEP 2: Load home page elements");
+		logTitleMessage("Load home page elements");
 		homePage = PageFactory.initElements(driver, HomePage.class);	
 		HomeScreen homeobject = homePage.navigateToHomePage();
 		try {
@@ -39,15 +40,15 @@ public class HomePageTest  extends TestBaseClass{
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		logTitleMessage("RESULT: Successfully loaded Home Page elements");
+		logTitleMessage("Successfully loaded Home Page elements");
 		
 		
 		// ------------------------------------------------------------------//
 		// Step-3:Verify Home page element //
 		// ------------------------------------------------------------------//
-		logTitleMessage("STEP 3: Verify presense of home page elements");
+		logTitleMessage("Verify presense of home page elements");
 		Assert.assertTrue(homeobject.verifyelement(),"Verification failed");
-		logTitleMessage("RESULT: Verified home page elements");
+		logTitleMessage("Verified home page elements");
 
 	}
 	
