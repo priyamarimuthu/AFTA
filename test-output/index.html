@@ -48,7 +48,7 @@
               <ul>
                 <li>
                   <a href="#" class="navigator-link " panel-name="test-xml-Default_suite">
-                    <span>C:\Users\priya.marimuthu\AppData\Local\Temp\testng-eclipse-265173587\testng-customsuite.xml</span>
+                    <span>C:\Users\priya.marimuthu\AppData\Local\Temp\testng-eclipse--1031760670\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -101,7 +101,7 @@
                     <div class="method-list-content failed suite-Default_suite">
                       <span>
                         <img width="3%" src="failed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.projectName.test.functional.moduleName1.HomePageTest" hash-for-method="homePageTest">homePageTest</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.projectname.test.functional.modulename.HomePageTest" hash-for-method="homePageTest">homePageTest</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Default_suite -->
@@ -119,7 +119,7 @@
           <div class="suite-Default_suite-class-failed">
             <div class="main-panel-header rounded-window-top">
               <img src="failed.png"/>
-              <span class="class-name">com.projectName.test.functional.moduleName1.HomePageTest</span>
+              <span class="class-name">com.projectname.test.functional.modulename.HomePageTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
@@ -128,19 +128,19 @@
                   </a> <!-- homePageTest -->
                   <span class="method-name">homePageTest</span>
                   <div class="stack-trace">java.lang.AssertionError: Unable to locate element: {&quot;method&quot;:&quot;link text&quot;,&quot;selector&quot;:&quot;123&quot;}
-Command duration or timeout: 3.60 seconds
+Command duration or timeout: 3.43 seconds
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: &apos;2.33.0&apos;, revision: &apos;4ecaf82108b2a6cc6f006aae81961236eba93358&apos;, time: &apos;2013-05-22 12:00:17&apos;
 System info: os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_13&apos;
-Session ID: ee22e9e2-276a-4d24-9375-0ca5f86cb16e
+Session ID: 50509902-98e2-47cc-a708-77eb04942c3e
 Driver info: org.openqa.selenium.firefox.FirefoxDriver
 Capabilities [{platform=XP, databaseEnabled=true, cssSelectorsEnabled=true, javascriptEnabled=true, acceptSslCerts=true, handlesAlerts=true, browserName=firefox, browserConnectionEnabled=true, nativeEvents=true, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=17.0}]
 	at org.junit.Assert.fail(Assert.java:93)
-	at com.projectName.testutils.genericutility.ExceptionHandler.takeScreenshot(ExceptionHandler.java:66)
-	at com.projectName.testutils.genericutility.ExceptionHandler.&lt;init&gt;(ExceptionHandler.java:47)
-	at com.projectName.testutils.seleniumutils.SeleniumWebDriver.isElementPresent(SeleniumWebDriver.java:81)
-	at com.projectName.testutils.pages.projectNamePages.HomeScreen.verifyelement(HomeScreen.java:49)
-	at com.projectName.test.functional.moduleName1.HomePageTest.homePageTest(HomePageTest.java:49)
+	at com.projectname.testutils.genericutility.ExceptionHandler.takeScreenshot(ExceptionHandler.java:69)
+	at com.projectname.testutils.genericutility.ExceptionHandler.&lt;init&gt;(ExceptionHandler.java:50)
+	at com.projectname.testutils.seleniumutils.SeleniumWebDriver.isElementPresent(SeleniumWebDriver.java:84)
+	at com.projectname.testutils.pages.projectnamepages.HomeScreen.verifyelement(HomeScreen.java:51)
+	at com.projectname.test.functional.modulename.HomePageTest.homePageTest(HomePageTest.java:39)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -174,7 +174,7 @@ Capabilities [{platform=XP, databaseEnabled=true, cssSelectorsEnabled=true, java
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\priya.marimuthu\AppData\Local\Temp\testng-eclipse-265173587\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\priya.marimuthu\AppData\Local\Temp\testng-eclipse--1031760670\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -183,11 +183,7 @@ Capabilities [{platform=XP, databaseEnabled=true, cssSelectorsEnabled=true, java
 &lt;suite name=&quot;Default suite&quot;&gt;
   &lt;test verbose=&quot;2&quot; name=&quot;Default test&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;com.projectName.test.functional.moduleName1.HomePageTest&quot;&gt;
-        &lt;methods&gt;
-          &lt;include name=&quot;homePageTest&quot;/&gt;
-        &lt;/methods&gt;
-      &lt;/class&gt; &lt;!-- com.projectName.test.functional.moduleName1.HomePageTest --&gt;
+      &lt;class name=&quot;com.projectname.test.functional.modulename.HomePageTest&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Default test --&gt;
 &lt;/suite&gt; &lt;!-- Default suite --&gt;
@@ -230,13 +226,13 @@ data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'homePageTest')
-data.setCell(0, 2, 'com.projectName.test.functional.moduleName1.HomePageTest')
-data.setCell(0, 3, 35217);
+data.setCell(0, 2, 'com.projectname.test.functional.modulename.HomePageTest')
+data.setCell(0, 3, 25904);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 35 seconds</span>
+              <span class="suite-total-time">Total running time: 25 seconds</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -262,7 +258,7 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">com.projectName.test.functional.moduleName1.HomePageTest</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">com.projectname.test.functional.modulename.HomePageTest</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
                 <span class="method-name">genericSetUp</span>
                 <span class="method-start">0 ms</span>
@@ -271,11 +267,11 @@ return data;
                 <img src="failed.png">
                 </img>
                 <span class="method-name">homePageTest</span>
-                <span class="method-start">9248 ms</span>
+                <span class="method-start">10724 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown([TestResult name=homePageTest status=FAILURE method=HomePageTest.homePageTest()[pri:0, instance:com....)</span>
-                <span class="method-start">44469 ms</span>
+                <span class="method-start">36648 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
