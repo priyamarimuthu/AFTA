@@ -3,7 +3,7 @@
   
     <test name="Selenium Automation Framework">
     <packages>
-      <package name="com.projectName.test.functional.moduleName.*"/>
+      <package name="com.projectname.test.functional.modulename."/>
     </packages>
 	</test>
     
