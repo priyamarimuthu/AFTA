@@ -1,11 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Selenium Automation Framework">
-  
-   <listeners>
-      <listener class-name="org.uncommons.reportng.HTMLReporter"/>
-      <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
-  </listeners>
-  
+    
     <test name="Selenium Automation Framework">
     <packages>
       <package name="com.projectname.test.functional.*"/>
