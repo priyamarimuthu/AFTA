@@ -119,9 +119,8 @@
 			<artifactId>saxon</artifactId>
 			<version>8.7</version>
 		</dependency>
-	</dependencies>
-	
-	  <dependency>
+		
+		 <dependency>
     	<groupId>commons-net</groupId>
     	<artifactId>commons-net</artifactId>
     	<optional>true</optional>
@@ -145,6 +144,8 @@
      	<artifactId>velocity</artifactId>
      	<version>1.6.2</version>
      </dependency>
+     
+	</dependencies> 
      
 	<profiles>
     <profile>
