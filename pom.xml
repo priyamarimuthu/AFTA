@@ -158,7 +158,7 @@
             <version>2.8.1</version>
             <configuration>
               <suiteXmlFiles>
-                <suiteXmlFile>testxml/testng-Prod.xml</suiteXmlFile>
+                <suiteXmlFile>testxml/testng-tafb.xml</suiteXmlFile>
               </suiteXmlFiles>
             </configuration>
           </plugin>

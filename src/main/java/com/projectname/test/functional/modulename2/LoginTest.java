@@ -1,4 +1,4 @@
-package com.projectname.test.functional.modulename;
+package com.projectname.test.functional.modulename2;
 
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;

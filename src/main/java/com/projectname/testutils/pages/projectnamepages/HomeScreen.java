@@ -41,8 +41,8 @@ public class HomeScreen extends SeleniumWebDriver{
 	 * @throws InterruptedException
 	 */
 	public boolean searchbyanyname(HashedMap dashboardLibObj){
-		Assert.assertTrue(sendKeys(txtSearchtextbox,dashboardLibObj.get("UserName").toString()),"Could not enter user name");
-		Assert.assertTrue(click(btnSearch),"could not press the enter button");
+		assertTrue(sendKeys(txtSearchtextbox,dashboardLibObj.get("UserName").toString()),"Could not enter user name",driver);
+		assertTrue(click(btnSearch),"could not press the enter button",driver);
 		return true;
 	}
 	

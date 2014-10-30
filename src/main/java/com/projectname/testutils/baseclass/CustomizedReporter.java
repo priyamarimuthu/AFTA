@@ -6,12 +6,16 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
+import java.util.List;
 
+import org.testng.IReporter;
+import org.testng.ISuite;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import org.testng.xml.XmlSuite;
 
-public class CustomizedReporter implements ITestListener{
+public class CustomizedReporter implements ITestListener, IReporter{
 	
 	private PrintWriter  fout;
 	private File screenshotDir; 
@@ -102,6 +106,7 @@ public class CustomizedReporter implements ITestListener{
 		
 		screenshotDir = new File(workingdirectory + "/custom-test-report" + "/" + className);
 		screenshotDir.mkdir();
+		
 	}
 	
 	private PrintWriter createRequiredFile(String testName) throws IOException
@@ -277,8 +282,55 @@ public class CustomizedReporter implements ITestListener{
     	onFinish();
     	
 	}
-	
-	
+	public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites,
+			String outputDirectory) {
+		
+		//for get the current directory
+		String workingdirectory = System.getProperty("user.dir");
 
+		File file = new File(workingdirectory +"/custom-test-report");
+		String[] names = file.list();
+
+		
+		//create the html file with current running class and test name
+		try {
+			fout = new PrintWriter(new BufferedWriter(new FileWriter(new File(new File(workingdirectory +"/custom-test-report"), "index.html"))));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		//Write initial html codes neccessary for report
+		fout.println("<html>");
+		fout.println("<head>");
+		fout.println("<title>Test results</title>");
+		fout.println("</head>");
+		fout.println("<body>");
+		fout.println("<h1>Test results </h1>");
+		fout.println("<table border=\"1\">");
+	    fout.println("<tbody>");
+	    
+		for(String name : names)
+		{
+			if(!(name.equalsIgnoreCase("Failure_Screenshot"))){
+			    if (new File(workingdirectory +"/custom-test-report/" + name).isDirectory())
+			    {
+			    	String temp = "<a href=file:///" + workingdirectory +"/custom-test-report/" + name +">" + name  +"</a>";
+			    	fout.println("<tr>");
+	    			fout.println("<td>"+ temp + "</td>");
+	    			fout.println("</tr>");
+			    }
+			}
+		}
+	
+		//used for create end html tags
+		endHtmlPage(fout);
+
+		//used for write every thing in html file
+		fout.flush();
+		fout.close();
+
+		
+	}
+	
 
 }

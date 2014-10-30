@@ -1,6 +1,10 @@
 package com.projectname.testutils.seleniumutils;
 
 
+import static org.testng.internal.EclipseInterface.ASSERT_LEFT;
+import static org.testng.internal.EclipseInterface.ASSERT_MIDDLE;
+import static org.testng.internal.EclipseInterface.ASSERT_RIGHT;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -8,6 +12,7 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.bcel.verifier.exc.LoadingException;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
@@ -19,6 +24,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.Reporter;
+import org.testng.Assert;
 
 import com.projectname.testutils.genericutility.Constants;
 import com.projectname.testutils.genericutility.ExceptionHandler;
@@ -366,7 +372,81 @@ public class SeleniumWebDriver {
 		return returnString;
 	}
 
+	// Customized Assert block starts
 	
+			 /**
+			   * Asserts that a condition is true. If it isn't,
+			   * an AssertionError, with the given message, is thrown.
+			   * @param condition the condition to evaluate
+			   * @param message the assertion error message
+			   */
+			  public void assertTrue(boolean condition, String message, WebDriver driver) {
+			    if(!condition) {
+			    	
+			    	File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+					
+					String workingdirectory = System.getProperty("user.dir");
+					
+					File scrFile1 = new File(workingdirectory +"/custom-test-report/Failure_Screenshot/AssertFailure.jpg");
+					
+					try {
+						FileUtils.copyFile(scrFile, scrFile1);
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+					
+					//log.info("Customized Assert true block executed...Temprory function, Need to enhance if You wish scrrenshot in report. Failure screenshot in 'custom-test-report/Failure_Screenshot/AssertFailure.jpg");
+					
+					failNotEquals( Boolean.valueOf(condition), Boolean.TRUE, message);
+			    }
+			  }
+			  
+			  
+			  static private void failNotEquals(Object actual , Object expected, String message ) {
+				  Assert.fail(format(actual, expected, message));
+			  }
+
+			  static String format(Object actual, Object expected, String message) {
+				    String formatted = "";
+				    if (null != message) {
+				      formatted = message + " ";
+				    }
+
+				    return formatted + ASSERT_LEFT + expected + ASSERT_MIDDLE + actual + ASSERT_RIGHT;
+			  }
+			  
+			  // Customized Assert block Ends
+			  
+			  
+			  // Customized Verify block starts
+			
+			  /**
+			   * Asserts that a condition is true. If it isn't,
+			   * an AssertionError, with the given message, is thrown.
+			   * @param condition the condition to evaluate
+			   * @param message the assertion error message
+			   */
+			  public void verifyTrue(boolean condition, String message, WebDriver driver) {
+			    if(!condition) {
+			    	
+			    	File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+					
+					String workingdirectory = System.getProperty("user.dir");
+					
+					File scrFile1 = new File(workingdirectory +"/custom-test-report/Failure_Screenshot/AssertFailure.jpg");
+					
+					try {
+						FileUtils.copyFile(scrFile, scrFile1);
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+					
+					//log.info("Customized Verify True block executed...Temprory function, Need to enhance if You wish scrrenshot in report. Failure screenshot in 'custom-test-report/Failure_Screenshot/AssertFailure.jpg");
+					
+			    }
+			 }
+			  
+	// Customized Verify block Ends
 	
 	//Report Part
 	private final String deliminator = "####";

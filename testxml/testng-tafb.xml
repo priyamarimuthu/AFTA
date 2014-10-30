@@ -6,15 +6,15 @@
       <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
   </listeners>       
   
-    <test name="Module1">
+    <test name="com.projectname.test.functional.modulename">
     <packages>
-      <package name="com.projectname.test.functional.modulename.*"/>
+      <package name="com.projectname.test.functional.modulename1.*"/>
     </packages>
 	</test>
 	
-	 <test name="Module2">
+	 <test name="com.projectname.test.functional.modulename1">
     <packages>
-      <package name="com.projectname.test.functional.modulename1.*"/>
+      <package name="com.projectname.test.functional.modulename2.*"/>
     </packages>
 	</test>
 	

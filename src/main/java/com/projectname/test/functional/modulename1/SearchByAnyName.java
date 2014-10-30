@@ -36,7 +36,7 @@ public class SearchByAnyName extends TestBaseClass{
 		log.info(testData.get("TC_ID").toString() + " - ");
 		
 		// ------------------------------------------------------------------//
-		// Step-2: Load the application //
+		// Step-2: Load Home page elements //
 		// ------------------------------------------------------------------//
 		homePage = PageFactory.initElements(driver, HomePage.class);	
 		HomeScreen homeobject = homePage.navigateToHomePage();

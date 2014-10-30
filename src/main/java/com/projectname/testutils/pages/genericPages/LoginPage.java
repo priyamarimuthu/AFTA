@@ -30,33 +30,32 @@ public class LoginPage extends SeleniumWebDriver {
 
 	/***
 	 * Login to the application
-	 * 
 	 * @throws ExceptionHandler
 	 * @throws IOException 
 	 * @throws AWTException
 	 * @throws InterruptedException
 	 */
-	//public Screen1 login(HashedMap testData, WebDriver driver)
+	
 	public HomePage login(String UserName, String Password){
-			Assert.assertTrue(click(loginButton), "Could not click on login  button");
+			assertTrue(click(loginButton), "Could not click on login  button",driver);
 			try {
 				Thread.sleep(5000);
 			} catch (InterruptedException e1) {
 				e1.printStackTrace();
 			}
-			Assert.assertTrue(sendKeys(txtUserName,UserName ),
-					"Could not enter user name");
-			Assert.assertTrue(sendKeys(txtPassword, Password),
-					"Could not enter password");
+			assertTrue(sendKeys(txtUserName,UserName),
+					"Could not enter user name",driver);
+			assertTrue(sendKeys(txtPassword, Password),
+					"Could not enter password",driver);
 	
-			Assert.assertTrue(click(submitButton), "Could not click on submit button");
+			assertTrue(click(submitButton), "Could not click on submit button",driver);
 			try {
 				Thread.sleep(5000);
 			} catch (InterruptedException e) {
 				e.getMessage();
 			}
-			//return new Screen1(driver);
-			Assert.assertTrue(!isTextPresent("Log in"),"Could not Login to the application" );
+			
+			assertTrue(isTextPresent("LMS"),"Could not Login to the application",driver);
 			try {
 				Thread.sleep(5000);
 			} catch (InterruptedException e) {
@@ -66,7 +65,7 @@ public class LoginPage extends SeleniumWebDriver {
 	}
 	
 	public void logOut(){
-		Assert.assertTrue(click(lnkUserName), "Could not click on user name  button");
+		assertTrue(click(lnkUserName), "Could not click on user name  button",driver);
 		waitForPageToLoad();
 		if (waitForElement(logoutButton, 5)) {
 			click(logoutButton);
