@@ -6,9 +6,16 @@
       <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
   </listeners>       
   
-    <test name="Selenium Automation Framework">
+    <test name="Module1">
     <packages>
-      <package name="com.projectname.test.functional.*"/>
+      <package name="com.projectname.test.functional.modulename.*"/>
     </packages>
 	</test>
+	
+	 <test name="Module2">
+    <packages>
+      <package name="com.projectname.test.functional.modulename1.*"/>
+    </packages>
+	</test>
+	
 </suite> <!-- [EBS Selenium Automated QA Test]] -->
