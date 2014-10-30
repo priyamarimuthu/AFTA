@@ -99,7 +99,6 @@ public class TestBaseClass extends Assert {
 
 	/**
 	 * Displaying the environment details
-	 * 
 	 * @throws IOException
 	 */
 	public TestBaseClass() {
@@ -128,12 +127,9 @@ public class TestBaseClass extends Assert {
 		}
 	}
 
-	
-
 	/**
 	 * Log in to the application using the user name and password
 	 * properties file
-	 * 
 	 * @return homePage
 	 * @throws ClassNotFoundException
 	 * @throws ExceptionHandler

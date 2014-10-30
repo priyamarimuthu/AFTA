@@ -6,7 +6,6 @@ import java.io.IOException;
 import org.apache.commons.collections.map.HashedMap;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 
 import com.projectname.testutils.genericutility.ExceptionHandler;
 import com.projectname.testutils.pages.projectnamepages.HomeScreen;

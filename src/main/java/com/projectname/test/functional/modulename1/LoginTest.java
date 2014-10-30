@@ -9,16 +9,22 @@ import com.projectname.testutils.retryAnalyser.RetryRule;
 @Listeners(com.projectname.testutils.baseclass.CustomizedReporter.class)
 
 public class LoginTest extends TestBaseClass {
-	/**
-	 * Test to verify login
-	 * @throws IOException 
-	 */
- @Test(retryAnalyzer = RetryRule.class)
- public void loginTest(){
+	
+	/*************************************************************************************************** 
+	 * @purpose To verify login
+ 	 * @action Enter the credentials and click on submit button
+   	 * @author AspireQA
+   	 * @since October 30, 2014
+   	 ***************************************************************************************************/
+	
+	@Test(retryAnalyzer = RetryRule.class)
+	public void loginTest(){
+	
 	// ------------------------------------------------------------------//
-	// Step-2: Load the application //
+	// Step-1: Login to the application
 	// ------------------------------------------------------------------//
-	homePage = loginUser1();
-	log.info("Successfully navigated to Preferences Page.");
+		logTitleMessage("Login to application");
+		homePage = loginUser1();
+		logTitleMessage("Login Successful");
 	}
 }

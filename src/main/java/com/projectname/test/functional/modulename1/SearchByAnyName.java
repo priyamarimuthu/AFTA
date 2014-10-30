@@ -18,6 +18,13 @@ import com.projectname.testutils.testdatareader.ExcelReader;
 
 public class SearchByAnyName extends TestBaseClass{
 
+	/*************************************************************************************************** 
+	 * @purpose To verify search function
+ 	 * @action Search an aspirian by name
+   	 * @author AspireQA
+   	 * @since October 30, 2014
+   	 ***************************************************************************************************/
+	
 	@Test(retryAnalyzer = RetryRule.class)
 	public void searchbyname(){
 

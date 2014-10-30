@@ -7,7 +7,7 @@ import org.testng.ITestResult;
  * Retry rule for testclasses which are failed because of wait timed out No of retries can be specified in the TestBaseClass @Rule
  * annotated place
  * 
- * @author yc30s1k
+ * @author AspireQA
  * 
  */
 public class RetryRule implements IRetryAnalyzer {

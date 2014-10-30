@@ -48,7 +48,7 @@
               <ul>
                 <li>
                   <a href="#" class="navigator-link " panel-name="test-xml-Default_suite">
-                    <span>C:\Users\priya.marimuthu\AppData\Local\Temp\testng-eclipse--1031760670\testng-customsuite.xml</span>
+                    <span>C:\Users\priya.marimuthu\AppData\Local\Temp\testng-eclipse--2007583302\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -127,20 +127,13 @@
                   <a name="homePageTest">
                   </a> <!-- homePageTest -->
                   <span class="method-name">homePageTest</span>
-                  <div class="stack-trace">java.lang.AssertionError: Unable to locate element: {&quot;method&quot;:&quot;link text&quot;,&quot;selector&quot;:&quot;123&quot;}
-Command duration or timeout: 3.43 seconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;2.33.0&apos;, revision: &apos;4ecaf82108b2a6cc6f006aae81961236eba93358&apos;, time: &apos;2013-05-22 12:00:17&apos;
-System info: os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_13&apos;
-Session ID: 50509902-98e2-47cc-a708-77eb04942c3e
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities [{platform=XP, databaseEnabled=true, cssSelectorsEnabled=true, javascriptEnabled=true, acceptSslCerts=true, handlesAlerts=true, browserName=firefox, browserConnectionEnabled=true, nativeEvents=true, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=17.0}]
-	at org.junit.Assert.fail(Assert.java:93)
-	at com.projectname.testutils.genericutility.ExceptionHandler.takeScreenshot(ExceptionHandler.java:69)
-	at com.projectname.testutils.genericutility.ExceptionHandler.&lt;init&gt;(ExceptionHandler.java:50)
-	at com.projectname.testutils.seleniumutils.SeleniumWebDriver.isElementPresent(SeleniumWebDriver.java:84)
-	at com.projectname.testutils.pages.projectnamepages.HomeScreen.verifyelement(HomeScreen.java:51)
-	at com.projectname.test.functional.modulename.HomePageTest.homePageTest(HomePageTest.java:39)
+                  <div class="stack-trace">java.lang.AssertionError: Could not Login to the application expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:494)
+	at org.testng.Assert.assertTrue(Assert.java:42)
+	at com.projectname.testutils.pages.genericPages.LoginPage.login(LoginPage.java:59)
+	at com.projectname.testutils.baseclass.TestBaseClass.loginUser1(TestBaseClass.java:151)
+	at com.projectname.test.functional.modulename.HomePageTest.homePageTest(HomePageTest.java:23)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -174,7 +167,7 @@ Capabilities [{platform=XP, databaseEnabled=true, cssSelectorsEnabled=true, java
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\priya.marimuthu\AppData\Local\Temp\testng-eclipse--1031760670\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\priya.marimuthu\AppData\Local\Temp\testng-eclipse--2007583302\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -183,7 +176,11 @@ Capabilities [{platform=XP, databaseEnabled=true, cssSelectorsEnabled=true, java
 &lt;suite name=&quot;Default suite&quot;&gt;
   &lt;test verbose=&quot;2&quot; name=&quot;Default test&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;com.projectname.test.functional.modulename.HomePageTest&quot;/&gt;
+      &lt;class name=&quot;com.projectname.test.functional.modulename.HomePageTest&quot;&gt;
+        &lt;methods&gt;
+          &lt;include name=&quot;homePageTest&quot;/&gt;
+        &lt;/methods&gt;
+      &lt;/class&gt; &lt;!-- com.projectname.test.functional.modulename.HomePageTest --&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Default test --&gt;
 &lt;/suite&gt; &lt;!-- Default suite --&gt;
@@ -227,12 +224,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'homePageTest')
 data.setCell(0, 2, 'com.projectname.test.functional.modulename.HomePageTest')
-data.setCell(0, 3, 25904);
+data.setCell(0, 3, 13317);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 25 seconds</span>
+              <span class="suite-total-time">Total running time: 13 seconds</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -267,11 +264,11 @@ return data;
                 <img src="failed.png">
                 </img>
                 <span class="method-name">homePageTest</span>
-                <span class="method-start">10724 ms</span>
+                <span class="method-start">17806 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown([TestResult name=homePageTest status=FAILURE method=HomePageTest.homePageTest()[pri:0, instance:com....)</span>
-                <span class="method-start">36648 ms</span>
+                <span class="method-start">31125 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

@@ -1,13 +1,8 @@
-17-Oct-2014 16:49:17:024 INFO  HomePageTest:194 - =====================================================================================================
-17-Oct-2014 16:49:17:028 INFO  HomePageTest:203 - App URL    : http://systems.aspiresys.com/
-17-Oct-2014 16:49:17:029 INFO  HomePageTest:204 - Browser    : FIREFOX
-17-Oct-2014 16:49:17:029 INFO  HomePageTest:205 - =====================================================================================================
-17-Oct-2014 16:49:17:034 INFO  HomePageTest:378 - Login to application
-17-Oct-2014 16:49:38:929 INFO  HomePageTest:153 - Logged into the application as - nandhini.bala
-17-Oct-2014 16:49:38:930 INFO  HomePageTest:378 - Login Successful
-17-Oct-2014 16:49:38:930 INFO  HomePageTest:378 - Load home page elements
-17-Oct-2014 16:49:38:933 INFO  HomePageTest:378 - Successfully loaded Home Page elements
-17-Oct-2014 16:49:38:934 INFO  HomePageTest:378 - Verify presense of home page elements
-17-Oct-2014 16:49:42:956 INFO  HomePageTest:297 - Captured Screenshot : C:\Users\priya.marimuthu\git\Selenium_Framework\test-output\screenshots\homePageTest 17-Oct-2014 16-49-42.png
-17-Oct-2014 16:49:43:308 ERROR HomePageTest:303 - The following error has occured while capturing a screen shot : C:\Users\priya.marimuthu\git\Selenium_Framework\test-output\screenshots\homePageTest 17-Oct-2014 16-49-42.png (The system cannot find the path specified)
-17-Oct-2014 16:49:43:309 INFO  HomePageTest:314 - The test result for homePageTest is FAIL
+29-Oct-2014 15:01:39:963 INFO  HomePageTest:194 - =====================================================================================================
+29-Oct-2014 15:01:39:979 INFO  HomePageTest:203 - App URL    : http://systems.aspiresys.com/
+29-Oct-2014 15:01:39:979 INFO  HomePageTest:204 - Browser    : FIREFOX
+29-Oct-2014 15:01:39:980 INFO  HomePageTest:205 - =====================================================================================================
+29-Oct-2014 15:01:39:987 INFO  HomePageTest:378 - Login to application
+29-Oct-2014 15:01:53:314 INFO  HomePageTest:297 - Captured Screenshot : C:\Users\priya.marimuthu\git\Selenium_Framework\test-output\screenshots\homePageTest 29-Oct-2014 15-01-53.png
+29-Oct-2014 15:01:53:585 ERROR HomePageTest:303 - The following error has occured while capturing a screen shot : C:\Users\priya.marimuthu\git\Selenium_Framework\test-output\screenshots\homePageTest 29-Oct-2014 15-01-53.png (The system cannot find the path specified)
+29-Oct-2014 15:01:53:585 INFO  HomePageTest:314 - The test result for homePageTest is FAIL

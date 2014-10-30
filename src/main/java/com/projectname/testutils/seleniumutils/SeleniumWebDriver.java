@@ -34,16 +34,16 @@ public class SeleniumWebDriver {
 
 	/**
 	 * Creating the web driver object to be used
-	 */
+	*/
 	protected static WebDriver driver;
 	WebDriverWait wait;
 	private String returnString="";
 	private Boolean result = true;
 	
-	//used for weather click, type etc.. (low level log) need to be in report or not  
+	//Flag for to On/Off detailed log  
 	private Boolean requireToWrite = true; 
 	
-	//seconds to wait for page to load
+	//Time to wait for page to load
 	private int secondsToWait = 20;
 	
 	public SeleniumWebDriver(WebDriver driver) {
@@ -51,8 +51,7 @@ public class SeleniumWebDriver {
 	}
 
 	/**
-	 * Veriy the presence of a text in the page.
-	 * 
+	 * Verify the presence of a text in the page.
 	 * @param driver
 	 * @param text
 	 * @return true/false
@@ -73,8 +72,7 @@ public class SeleniumWebDriver {
 	}
 
 	/**
-	 * Veriy the presence of a element in the page.
-	 * 
+	 * Verify the presence of a element in the page. 
 	 * @param By
 	 * @param text
 	 * @return true/false
@@ -130,8 +128,7 @@ public class SeleniumWebDriver {
 	}
 
 	/**
-	 * The screen shot is captured
-	 * 
+	 * To Capture Screenshot
 	 * @param driver
 	 * @return
 	 */
@@ -162,8 +159,13 @@ public class SeleniumWebDriver {
 		return result;
 
 	}
-
-	// Wait for Element to Load
+	
+	/**
+	 * To wait for element to load
+	 * @param driver
+	 * @return
+	 */
+	
 	public void waitForElementToLoad(Selenium selenium, String elementId)
 			throws InterruptedException {
 		int i = 0;
@@ -177,6 +179,12 @@ public class SeleniumWebDriver {
 			}
 		}
 	}
+	
+	/**
+	 * To type text on the field
+	 * @param driver
+	 * @return
+	 */
 
 	public boolean sendKeys(By elementLocator, String value) {
 		try {
@@ -196,6 +204,12 @@ public class SeleniumWebDriver {
 		return result;
 	}
 
+	/**
+	 * To click an element on the screen
+	 * @param driver
+	 * @return
+	 */
+	
 	public boolean click(final By ajaxElementName){
 		try {
 			waitForElement(ajaxElementName, Constants.AVG_WAIT_TIME_FOR_ELEMENT);
@@ -219,15 +233,13 @@ public class SeleniumWebDriver {
 
 	/**
 	 * isChecked function to verify if the AJAX based Checkbox is checked
-	 * 
 	 * @param selenium
-	 * @param ajaxCheckboxName
-	 *            (Name of the ajax Checkbox)
+	 * @param ajaxCheckboxName (Name of the ajax Checkbox)
 	 * @throws IOException 
 	 * @throws MyException
-	 * 
 	 * @since March 04, 2013
 	 */
+	
 	public boolean isChecked(final By ajaxCheckboxName){
 		try{
 			if (waitForElement(ajaxCheckboxName,
@@ -260,6 +272,12 @@ public class SeleniumWebDriver {
 	}
 
 
+	/**
+	 * To wait for page to load
+	 * @param driver
+	 * @return
+	 */
+	
 	public void waitForPageToLoad() {
 		try {
 			int counter = 0;
@@ -293,7 +311,12 @@ public class SeleniumWebDriver {
 
 	
 
-	// Mouse over Method
+	/**
+	 * To mouse over on an element
+	 * @param driver
+	 * @return
+	 */
+	
 	public void mouseOver(WebElement element){
 		try {
 			String code = "var fireOnThis = arguments[0];"
@@ -312,6 +335,11 @@ public class SeleniumWebDriver {
 		}
 	}
 
+	/**
+	 * To select an option from the list
+	 * @param driver
+	 * @return
+	 */
 	public boolean select(By listName, String valueForSelection){
 		valueForSelection = valueForSelection != null ? valueForSelection
 				.trim() : "";
@@ -337,6 +365,12 @@ public class SeleniumWebDriver {
 		return result;
 	}
 
+	/**
+	 * To get the text of a field
+	 * @param driver
+	 * @return
+	 */
+	
 	public String getText(By elementName, int wait) throws ExceptionHandler, IOException {
 
 		try {
@@ -355,6 +389,11 @@ public class SeleniumWebDriver {
 		return returnString;
 	}
 
+	/**
+	 * To get the value of a field
+	 * @param driver
+	 * @return
+	 */
 	public String getValue(By elementName){
 
 		try {
@@ -374,77 +413,71 @@ public class SeleniumWebDriver {
 
 	// Customized Assert block starts
 	
-			 /**
-			   * Asserts that a condition is true. If it isn't,
-			   * an AssertionError, with the given message, is thrown.
-			   * @param condition the condition to evaluate
-			   * @param message the assertion error message
-			   */
-			  public void assertTrue(boolean condition, String message, WebDriver driver) {
-			    if(!condition) {
-			    	
-			    	File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+	/**
+	 * Asserts that a condition is true. If it isn't,
+	 * an AssertionError, with the given message, is thrown.
+	 * @param condition the condition to evaluate
+	 * @param message the assertion error message
+	 */
+		 public void assertTrue(boolean condition, String message, WebDriver driver) {
+		    if(!condition) {
+  	
+			    File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+				String workingdirectory = System.getProperty("user.dir");
+				File scrFile1 = new File(workingdirectory +"/custom-test-report/Failure_Screenshot/AssertFailure.jpg");
 					
-					String workingdirectory = System.getProperty("user.dir");
+				try {
+					FileUtils.copyFile(scrFile, scrFile1);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
 					
-					File scrFile1 = new File(workingdirectory +"/custom-test-report/Failure_Screenshot/AssertFailure.jpg");
+				//log.info("Customized Assert true block executed...Temprory function, Need to enhance if You wish scrrenshot in report. Failure screenshot in 'custom-test-report/Failure_Screenshot/AssertFailure.jpg");
 					
-					try {
-						FileUtils.copyFile(scrFile, scrFile1);
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
-					
-					//log.info("Customized Assert true block executed...Temprory function, Need to enhance if You wish scrrenshot in report. Failure screenshot in 'custom-test-report/Failure_Screenshot/AssertFailure.jpg");
-					
-					failNotEquals( Boolean.valueOf(condition), Boolean.TRUE, message);
+				failNotEquals( Boolean.valueOf(condition), Boolean.TRUE, message);
 			    }
-			  }
+		}
 			  
 			  
-			  static private void failNotEquals(Object actual , Object expected, String message ) {
-				  Assert.fail(format(actual, expected, message));
-			  }
+		 static private void failNotEquals(Object actual , Object expected, String message ) {
+			  Assert.fail(format(actual, expected, message));
+		  }
 
-			  static String format(Object actual, Object expected, String message) {
-				    String formatted = "";
-				    if (null != message) {
-				      formatted = message + " ";
-				    }
-
-				    return formatted + ASSERT_LEFT + expected + ASSERT_MIDDLE + actual + ASSERT_RIGHT;
+		 static String format(Object actual, Object expected, String message) {
+		    String formatted = "";
+			    if (null != message) {
+			      formatted = message + " ";
+			    }
+			    return formatted + ASSERT_LEFT + expected + ASSERT_MIDDLE + actual + ASSERT_RIGHT;
 			  }
 			  
-			  // Customized Assert block Ends
+	// Customized Assert block Ends
 			  
 			  
-			  // Customized Verify block starts
+	// Customized Verify block starts
 			
-			  /**
-			   * Asserts that a condition is true. If it isn't,
-			   * an AssertionError, with the given message, is thrown.
-			   * @param condition the condition to evaluate
-			   * @param message the assertion error message
-			   */
-			  public void verifyTrue(boolean condition, String message, WebDriver driver) {
-			    if(!condition) {
+	  /**
+	   * Asserts that a condition is true. If it isn't,
+	   * an AssertionError, with the given message, is thrown.
+	   * @param condition the condition to evaluate
+	   * @param message the assertion error message
+	   */
+		 public void verifyTrue(boolean condition, String message, WebDriver driver) {
+		    if(!condition) {
 			    	
-			    	File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		    	File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+				String workingdirectory = System.getProperty("user.dir");
+				File scrFile1 = new File(workingdirectory +"/custom-test-report/Failure_Screenshot/AssertFailure.jpg");
+			try {
+				FileUtils.copyFile(scrFile, scrFile1);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 					
-					String workingdirectory = System.getProperty("user.dir");
+			//log.info("Customized Verify True block executed...Temprory function, Need to enhance if You wish scrrenshot in report. Failure screenshot in 'custom-test-report/Failure_Screenshot/AssertFailure.jpg");
 					
-					File scrFile1 = new File(workingdirectory +"/custom-test-report/Failure_Screenshot/AssertFailure.jpg");
-					
-					try {
-						FileUtils.copyFile(scrFile, scrFile1);
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
-					
-					//log.info("Customized Verify True block executed...Temprory function, Need to enhance if You wish scrrenshot in report. Failure screenshot in 'custom-test-report/Failure_Screenshot/AssertFailure.jpg");
-					
-			    }
 			 }
+		 }
 			  
 	// Customized Verify block Ends
 	
@@ -516,6 +549,5 @@ public class SeleniumWebDriver {
 		
 		return currentMethodName;
 	}
-
 		
 }

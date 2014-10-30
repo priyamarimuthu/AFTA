@@ -2,42 +2,28 @@
 <testng-results skipped="0" failed="1" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="37185" started-at="2014-10-17T11:19:06Z" finished-at="2014-10-17T11:19:43Z">
+  <suite name="Default suite" duration-ms="31608" started-at="2014-10-29T09:31:22Z" finished-at="2014-10-29T09:31:53Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="37185" started-at="2014-10-17T11:19:06Z" finished-at="2014-10-17T11:19:43Z">
+    <test name="Default test" duration-ms="31608" started-at="2014-10-29T09:31:22Z" finished-at="2014-10-29T09:31:53Z">
       <class name="com.projectname.test.functional.modulename.HomePageTest">
-        <test-method status="PASS" signature="genericSetUp()[pri:0, instance:com.projectname.test.functional.modulename.HomePageTest@b57646]" name="genericSetUp" is-config="true" duration-ms="10723" started-at="2014-10-17T16:49:06Z" finished-at="2014-10-17T16:49:17Z">
+        <test-method status="PASS" signature="genericSetUp()[pri:0, instance:com.projectname.test.functional.modulename.HomePageTest@25997c]" name="genericSetUp" is-config="true" duration-ms="17806" started-at="2014-10-29T15:01:22Z" finished-at="2014-10-29T15:01:39Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- genericSetUp -->
-        <test-method status="FAIL" signature="homePageTest()[pri:0, instance:com.projectname.test.functional.modulename.HomePageTest@b57646]" name="homePageTest" duration-ms="25904" started-at="2014-10-17T16:49:17Z" finished-at="2014-10-17T16:49:42Z">
+        <test-method status="FAIL" signature="homePageTest()[pri:0, instance:com.projectname.test.functional.modulename.HomePageTest@25997c]" name="homePageTest" duration-ms="13317" started-at="2014-10-29T15:01:39Z" finished-at="2014-10-29T15:01:53Z">
           <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[Unable to locate element: {"method":"link text","selector":"123"}
-Command duration or timeout: 3.43 seconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '2.33.0', revision: '4ecaf82108b2a6cc6f006aae81961236eba93358', time: '2013-05-22 12:00:17'
-System info: os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_13'
-Session ID: 50509902-98e2-47cc-a708-77eb04942c3e
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities [{platform=XP, databaseEnabled=true, cssSelectorsEnabled=true, javascriptEnabled=true, acceptSslCerts=true, handlesAlerts=true, browserName=firefox, browserConnectionEnabled=true, nativeEvents=true, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=17.0}]]]>
+              <![CDATA[Could not Login to the application expected [true] but found [false]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: Unable to locate element: {"method":"link text","selector":"123"}
-Command duration or timeout: 3.43 seconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '2.33.0', revision: '4ecaf82108b2a6cc6f006aae81961236eba93358', time: '2013-05-22 12:00:17'
-System info: os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_13'
-Session ID: 50509902-98e2-47cc-a708-77eb04942c3e
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities [{platform=XP, databaseEnabled=true, cssSelectorsEnabled=true, javascriptEnabled=true, acceptSslCerts=true, handlesAlerts=true, browserName=firefox, browserConnectionEnabled=true, nativeEvents=true, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=17.0}]
-	at org.junit.Assert.fail(Assert.java:93)
-	at com.projectname.testutils.genericutility.ExceptionHandler.takeScreenshot(ExceptionHandler.java:69)
-	at com.projectname.testutils.genericutility.ExceptionHandler.<init>(ExceptionHandler.java:50)
-	at com.projectname.testutils.seleniumutils.SeleniumWebDriver.isElementPresent(SeleniumWebDriver.java:84)
-	at com.projectname.testutils.pages.projectnamepages.HomeScreen.verifyelement(HomeScreen.java:51)
-	at com.projectname.test.functional.modulename.HomePageTest.homePageTest(HomePageTest.java:39)
+              <![CDATA[java.lang.AssertionError: Could not Login to the application expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:494)
+	at org.testng.Assert.assertTrue(Assert.java:42)
+	at com.projectname.testutils.pages.genericPages.LoginPage.login(LoginPage.java:59)
+	at com.projectname.testutils.baseclass.TestBaseClass.loginUser1(TestBaseClass.java:151)
+	at com.projectname.test.functional.modulename.HomePageTest.homePageTest(HomePageTest.java:23)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -68,11 +54,11 @@ Capabilities [{platform=XP, databaseEnabled=true, cssSelectorsEnabled=true, java
           <reporter-output>
           </reporter-output>
         </test-method> <!-- homePageTest -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.projectname.test.functional.modulename.HomePageTest@b57646]" name="tearDown" is-config="true" duration-ms="525" started-at="2014-10-17T16:49:42Z" finished-at="2014-10-17T16:49:43Z">
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.projectname.test.functional.modulename.HomePageTest@25997c]" name="tearDown" is-config="true" duration-ms="472" started-at="2014-10-29T15:01:53Z" finished-at="2014-10-29T15:01:53Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=homePageTest status=FAILURE method=HomePageTest.homePageTest()[pri:0, instance:com.projectname.test.functional.modulename.HomePageTest@b57646] output={null}]]]>
+                <![CDATA[[TestResult name=homePageTest status=FAILURE method=HomePageTest.homePageTest()[pri:0, instance:com.projectname.test.functional.modulename.HomePageTest@25997c] output={null}]]]>
               </value>
             </param>
           </params>

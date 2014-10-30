@@ -1,7 +1,6 @@
 package com.projectname.test.functional.modulename2;
 
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -13,6 +12,13 @@ import com.projectname.testutils.retryAnalyser.RetryRule;
 @Listeners(com.projectname.testutils.baseclass.CustomizedReporter.class)
 
 public class HomePageTest  extends TestBaseClass{
+	
+	/*************************************************************************************************** 
+	 * @purpose To verify home page elements
+ 	 * @action Verify the links present on the home page
+   	 * @author AspireQA
+   	 * @since October 30, 2014
+   	 ***************************************************************************************************/
 
 	@Test(retryAnalyzer = RetryRule.class)
 	public void homePageTest(){
@@ -36,7 +42,7 @@ public class HomePageTest  extends TestBaseClass{
 		// Step-3:Verify Home page element //
 		// ------------------------------------------------------------------//
 		logTitleMessage("Verify presense of home page elements");
-		Assert.assertTrue(homeobject.verifyelement(),"Verification failed");
+		assertTrue(homeobject.verifyelement(),"Verification failed",driver);
 		logTitleMessage("Verified home page elements");
 	}
 }

@@ -63,7 +63,7 @@ public class CustomizedReporter implements ITestListener, IReporter{
 	}
 
 	/**
-	 * This function will execute once the current test execution skiped
+	 * This function will execute once the current test execution skipped
 	 */
 	public void onTestSkipped(ITestResult result) {
 		try {
@@ -328,9 +328,5 @@ public class CustomizedReporter implements ITestListener, IReporter{
 		//used for write every thing in html file
 		fout.flush();
 		fout.close();
-
-		
 	}
-	
-
 }
