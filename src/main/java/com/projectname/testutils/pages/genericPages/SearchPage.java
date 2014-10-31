@@ -34,6 +34,6 @@ public class SearchPage extends SeleniumWebDriver{
 		if(!isElementPresent(lnkClassifields)){
 			return false;
 		}
-		return false;
+		return true;
 	}
 }
