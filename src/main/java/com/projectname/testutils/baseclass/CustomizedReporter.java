@@ -368,6 +368,7 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 	    fout.println("<tbody>");
 
 	    //Passed cases
+	    flag = true;
 	    
 		for(String fullClassName : names)
 		{
@@ -392,7 +393,7 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 			    	
 			    	File file1 = new File(workingdirectory +"/custom-test-report/" + fullClassName);
 					String[] names1 = file1.list();
-					flag = true;
+					
 					
 					for(String testName : names1){
 						if(testName.endsWith(passed+".html")){
@@ -416,10 +417,10 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 							fout.println("<tr>");
 			    			fout.println("<td>"+ fullPackage + "</td>");
 							
-							String temp = "<a href=file:///" + workingdirectory +"\\custom-test-report\\" + fullClassName +"\\"+ testName +">" + splitClassName[length-1] +"."+ temptestName  +"</a>";
+							String temp = "<a href=\"file:///" + workingdirectory +"\\custom-test-report\\" + fullClassName +"\\"+ testName +"\">" + splitClassName[length-1] +"."+ temptestName  +"</a>";
 			    			fout.println("<td>"+ temp + "</td>");
 			    			
-			    			fout.println("<td><img src='"+ workingdirectory +"/src/main/resources/images/Tick_Mark.png' height=\"20\" width=\"20\">" + "</td>");
+			    			fout.println("<td><img src='"+ workingdirectory +"\\src\\main\\resources\\images\\Tick_Mark.png' height=\"20\" width=\"20\">" + "</td>");
 			    			
 			    			fout.println("</tr>");
 						}
@@ -438,7 +439,7 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 		fout.println("<table border=\"1\">");
 	    fout.println("<tbody>");
 
-		
+	    flag = true;
 		for(String fullClassName : names)
 		{
 
@@ -463,9 +464,6 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 			    	File file1 = new File(workingdirectory +"/custom-test-report/" + fullClassName);
 					String[] names1 = file1.list();
 			    	
-					flag = true;
-					
-					
 					for(String testName : names1){
 						if(testName.endsWith(failed+".html")){
 
@@ -487,10 +485,10 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 							fout.println("<tr>");
 			    			fout.println("<td>"+ fullPackage + "</td>");
 							
-			    			String temp = "<a href=file:///" + workingdirectory +"\\custom-test-report\\" + fullClassName +"\\"+ testName +">" + splitClassName[length-1] +"."+ temptestName  +"</a>";
+			    			String temp = "<a href=\"file:///" + workingdirectory +"\\custom-test-report\\" + fullClassName +"\\"+ testName +"\">" + splitClassName[length-1] +"."+ temptestName  +"</a>";
 			    			fout.println("<td>"+ temp + "</td>");
 			    			
-			    			fout.println("<td><img src='"+ workingdirectory +"/src/main/resources/images/Fail_Mark.jpg' height=\"20\" width=\"20\">" + "</td>");
+			    			fout.println("<td><img src='"+ workingdirectory +"\\src\\main\\resources\\images\\Fail_Mark.jpg' height=\"20\" width=\"20\">" + "</td>");
 			    			
 			    			fout.println("</tr>");
 						}
@@ -507,6 +505,8 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 		fout.println("<table border=\"1\">");
 	    fout.println("<tbody>");
 
+	    flag = true;
+	    
 		for(String fullClassName : names)
 		{
 
@@ -530,8 +530,6 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 			    	File file1 = new File(workingdirectory +"/custom-test-report/" + fullClassName);
 					String[] names1 = file1.list();
 			    	
-					flag = true;
-					
 					for(String testName : names1){
 						
 						if(testName.endsWith(skipped)){
@@ -554,7 +552,7 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 							fout.println("<tr>");
 			    			fout.println("<td>"+ fullPackage + "</td>");
 							
-							String temp = "<a href=file:///" + workingdirectory +"/custom-test-report/" + fullClassName +"/"+ testName +">" + splitClassName[length-1]+"." + temptestName  +"</a>";
+							String temp = "<a href=\"file:///" + workingdirectory +"/custom-test-report/" + fullClassName +"/"+ testName +"\">" + splitClassName[length-1]+"." + temptestName  +"</a>";
 			    			fout.println("<td>"+ temp + "</td>");
 			    			
 			    			fout.println("<td>"+ skipped + "</td>");
