@@ -23,8 +23,8 @@ public class LoginTest extends TestBaseClass {
 	// ------------------------------------------------------------------//
 	// Step-1: Login to the application
 	// ------------------------------------------------------------------//
-		logTitleMessage("Login to application");
+		/*logTitleMessage("Login to application");
 		homePage = loginUser1();
-		logTitleMessage("Login Successful");
+		logTitleMessage("Login Successful");*/
 	}
 }

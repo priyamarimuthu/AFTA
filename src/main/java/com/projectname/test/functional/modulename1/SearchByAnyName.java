@@ -32,7 +32,7 @@ public class SearchByAnyName extends TestBaseClass{
 		// Step-1: Load the application //
 		// ------------------------------------------------------------------//
 	
-		homePage = loginUser1();
+		/*homePage = loginUser1();
 		log.info("Successfully navigated to Preferences Page.");
 		
 		// ------------------------------------------------------------------//
@@ -59,7 +59,7 @@ public class SearchByAnyName extends TestBaseClass{
 		// ------------------------------------------------------------------//
 		// Step-4:Verify Search Screen page //
 		// ------------------------------------------------------------------//
-		Assert.assertTrue(searchobject.searchPage());
+		Assert.assertTrue(searchobject.searchPage());*/
 			
 	}
 }

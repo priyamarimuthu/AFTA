@@ -392,11 +392,12 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 			    	
 			    	File file1 = new File(workingdirectory +"/custom-test-report/" + fullClassName);
 					String[] names1 = file1.list();
+					flag = true;
 					
 					for(String testName : names1){
 						if(testName.endsWith(passed+".html")){
 							
-							flag = true;
+							
 							if(flag){
 								//Passed
 							    fout.println("<tr style='background-color: #ccffcc;'");
@@ -415,7 +416,7 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 							fout.println("<tr>");
 			    			fout.println("<td>"+ fullPackage + "</td>");
 							
-							String temp = "<a href=file:///" + workingdirectory +"/custom-test-report/" + fullClassName +"/"+ testName +">" + splitClassName[length-1] +"."+ temptestName  +"</a>";
+							String temp = "<a href=file:///" + workingdirectory +"\\custom-test-report\\" + fullClassName +"\\"+ testName +">" + splitClassName[length-1] +"."+ temptestName  +"</a>";
 			    			fout.println("<td>"+ temp + "</td>");
 			    			
 			    			fout.println("<td><img src='"+ workingdirectory +"/src/main/resources/images/Tick_Mark.png' height=\"20\" width=\"20\">" + "</td>");
@@ -462,10 +463,12 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 			    	File file1 = new File(workingdirectory +"/custom-test-report/" + fullClassName);
 					String[] names1 = file1.list();
 			    	
+					flag = true;
+					
+					
 					for(String testName : names1){
 						if(testName.endsWith(failed+".html")){
 
-							flag = true;
 							if(flag){
 								//Failed
 								fout.println("<tr style='background-color: #ffcccc;'");
@@ -484,7 +487,7 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 							fout.println("<tr>");
 			    			fout.println("<td>"+ fullPackage + "</td>");
 							
-							String temp = "<a href=file:///" + workingdirectory +"/custom-test-report/" + fullClassName +"/"+ testName +">" + splitClassName[length-1] +"."+ temptestName  +"</a>";
+			    			String temp = "<a href=file:///" + workingdirectory +"\\custom-test-report\\" + fullClassName +"\\"+ testName +">" + splitClassName[length-1] +"."+ temptestName  +"</a>";
 			    			fout.println("<td>"+ temp + "</td>");
 			    			
 			    			fout.println("<td><img src='"+ workingdirectory +"/src/main/resources/images/Fail_Mark.jpg' height=\"20\" width=\"20\">" + "</td>");
@@ -527,11 +530,12 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 			    	File file1 = new File(workingdirectory +"/custom-test-report/" + fullClassName);
 					String[] names1 = file1.list();
 			    	
+					flag = true;
+					
 					for(String testName : names1){
 						
 						if(testName.endsWith(skipped)){
 						
-							flag = true;
 							if(flag){
 								//Skipped
 								fout.println("<tr style='background-color: #B2ACAC;'");
