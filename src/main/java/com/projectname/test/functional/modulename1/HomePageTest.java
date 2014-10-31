@@ -24,7 +24,7 @@ public class HomePageTest  extends TestBaseClass{
 	public void homePageTest(){
 		// ------------------------------------------------------------------//
 		// Step-1: Log in to the application //
-		/*// ------------------------------------------------------------------//
+		// ------------------------------------------------------------------//
 		logTitleMessage("Login to application");
 		homePage = loginUser1();
 		logTitleMessage("Login Successful");
@@ -43,6 +43,6 @@ public class HomePageTest  extends TestBaseClass{
 		// ------------------------------------------------------------------//
 		logTitleMessage("Verify presense of home page elements");
 		assertTrue(homeobject.verifyelement(),"Verification failed",driver);
-		logTitleMessage("Verified home page elements");*/
+		logTitleMessage("Verified home page elements");
 	}
 }
