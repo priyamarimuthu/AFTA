@@ -368,8 +368,9 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 	    fout.println("<tbody>");
 
 	    //Passed cases
+	    flag = true;
 	    
-		for(String fullClassName : names)
+	    for(String fullClassName : names)
 		{
 
 			String splitClassName[] = fullClassName.split("\\.");
@@ -418,7 +419,8 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 							String temp = "<a href='"+ fullClassName +"/"+ testName +"'>" + splitClassName[length-1] +"."+ temptestName  +"</a>";
 			    			fout.println("<td>"+ temp + "</td>");
 			    			
-			    			fout.println("<td><img src='../src/main/resources/images/Tick_Mark.png' height=\"20\" width=\"20\">" + "</td>");
+			    			//fout.println("<td><img src='../src/main/resources/images/Tick_Mark.png' height=\"20\" width=\"20\">" + "</td>");
+			    			fout.println("<td> Pass </td>");
 			    			
 			    			fout.println("</tr>");
 						}
@@ -437,8 +439,8 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 		fout.println("<table border=\"1\">");
 	    fout.println("<tbody>");
 
-		
-		for(String fullClassName : names)
+	    flag = true;
+	    for(String fullClassName : names)
 		{
 
 			String splitClassName[] = fullClassName.split("\\.");
@@ -487,7 +489,8 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 							String temp = "<a href='" + fullClassName +"/"+ testName +"'>" + splitClassName[length-1] +"."+ temptestName  +"</a>";
 			    			fout.println("<td>"+ temp + "</td>");
 			    			
-			    			fout.println("<td><img src='../src/main/resources/images/Fail_Mark.jpg' height=\"20\" width=\"20\">" + "</td>");
+			    			//fout.println("<td><img src='../src/main/resources/images/Fail_Mark.jpg' height=\"20\" width=\"20\">" + "</td>");
+			    			fout.println("<td> Fail </td>");
 			    			
 			    			fout.println("</tr>");
 						}
@@ -504,7 +507,9 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 		fout.println("<table border=\"1\">");
 	    fout.println("<tbody>");
 
-		for(String fullClassName : names)
+	    flag = true;
+	    
+	    for(String fullClassName : names)
 		{
 
 			String splitClassName[] = fullClassName.split("\\.");
