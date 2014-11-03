@@ -9,6 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import com.projectname.functional.annotations.MapToTestLink;
 import com.projectname.testutils.baseclass.TestBaseClass;
 import com.projectname.testutils.pages.genericPages.HomePage;
 import com.projectname.testutils.pages.genericPages.SearchPage;
@@ -28,6 +29,7 @@ public class SearchByAnyName extends TestBaseClass{
    	 ***************************************************************************************************/
 	
 	@Test(retryAnalyzer = RetryRule.class)
+	@MapToTestLink(testCaseID = "TestCase_3")
 	public void searchbyname(){
 
 		// ------------------------------------------------------------------//
