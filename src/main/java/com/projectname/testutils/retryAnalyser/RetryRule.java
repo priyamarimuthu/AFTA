@@ -15,7 +15,7 @@ public class RetryRule implements IRetryAnalyzer {
 	private int maxRetry;
 
 	public RetryRule() {
-		this.retryCount = 1;
+		this.retryCount = 0;
 		this.maxRetry=1;
 	}
 	

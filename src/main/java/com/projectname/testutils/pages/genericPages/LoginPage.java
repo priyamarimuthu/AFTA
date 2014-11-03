@@ -53,7 +53,7 @@ public class LoginPage extends SeleniumWebDriver {
 			} catch (InterruptedException e) {
 				e.getMessage();
 			}
-			
+			waitForPageToLoad();
 			assertTrue(isTextPresent("LMS"),"Could not Login to the application",driver);
 			try {
 				Thread.sleep(5000);

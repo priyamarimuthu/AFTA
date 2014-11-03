@@ -32,6 +32,7 @@ import static org.testng.internal.EclipseInterface.ASSERT_LEFT;
 import static org.testng.internal.EclipseInterface.ASSERT_MIDDLE;
 import static org.testng.internal.EclipseInterface.ASSERT_RIGHT;
 
+import com.projectname.functional.annotations.MapToTestLink;
 import com.projectname.testutils.genericutility.DateTimeUtility;
 import com.projectname.testutils.genericutility.ExceptionHandler;
 import com.projectname.testutils.genericutility.FileUtility;
@@ -40,6 +41,9 @@ import com.projectname.testutils.pages.genericPages.LoginPage;
 import com.projectname.testutils.seleniumutils.SeleniumWebDriver;
 import com.projectname.testutils.testdatareader.DataAccessClient;
 import com.projectname.testutils.testdatareader.EnvironmentPropertiesReader;
+import com.projectname.testutils.testlink.xmlrpcclient.TestLinkAPIClient;
+import com.projectname.testutils.testlink.xmlrpcclient.TestLinkAPIException;
+import com.projectname.testutils.testlink.xmlrpcclient.TestLinkAPIResults;
 
 public class TestBaseClass extends Assert {
 
@@ -64,6 +68,10 @@ public class TestBaseClass extends Assert {
 	 * To Read the environment details
 	 */
 	EnvironmentPropertiesReader environmentPropertiesReader;
+	String notes=null;
+	String testLinkResult=null;
+	TestLinkAPIClient api=null;
+
 
 	/**
 	 * Getting the base path of screen shot
@@ -277,14 +285,29 @@ public class TestBaseClass extends Assert {
 	 * 
 	 * @param result
 	 * @throws IOException
+	 * @throws TestLinkAPIException 
 	 */
 	@AfterMethod(alwaysRun = true)
-	public final void tearDown(ITestResult result) throws IOException {
+	public final void tearDown(ITestResult result) throws IOException, TestLinkAPIException {
 
 		String dateTimeStamp = DateTimeUtility
 				.getCurrentDateAndTimeInLoggerFormat();
 		String status = "PASS";
-
+		MapToTestLink mapToTestLink=result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(MapToTestLink.class);
+		String testCase=mapToTestLink.testCaseID();
+		if (result.isSuccess()) {
+			testLinkResult= TestLinkAPIResults.TEST_PASSED;
+			notes="Executed successfully";
+			api=new TestLinkAPIClient(environmentPropertiesReader.getTestLinkDevKey(), environmentPropertiesReader.getTestlinkURL());
+			api.reportTestCaseResult(environmentPropertiesReader.getTestProject(), environmentPropertiesReader.getTestPlan(), environmentPropertiesReader.getTestSuiteID(), testCase, notes, testLinkResult,environmentPropertiesReader.getTestBuildId());
+		}
+		else
+		{
+			testLinkResult= TestLinkAPIResults.TEST_FAILED;
+			notes="Execution Failed";
+			api=new TestLinkAPIClient(environmentPropertiesReader.getTestLinkDevKey(), environmentPropertiesReader.getTestlinkURL());
+			api.reportTestCaseResult(environmentPropertiesReader.getTestProject(), environmentPropertiesReader.getTestPlan(), environmentPropertiesReader.getTestSuiteID(), testCase, notes, testLinkResult,environmentPropertiesReader.getTestBuildId());
+		}
 		// Capture screen shot in case test has failed.
 		try {
 			if (!result.isSuccess()) {

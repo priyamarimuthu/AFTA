@@ -114,13 +114,14 @@ public class ExcelReader {
 	 * @param testClassName
 	 * @return
 	 */
-	public static HashedMap getTestDataByTestCaseId(String testCaseId, String testClassName) {
+	public static ArrayList<HashedMap> getTestDataByTestCaseId(String testCaseId, String testClassName) {
 		String filePath = "";
 		String sheetName = "";
 		String fileName = "";
 		HSSFRow row = null;
 		HSSFCell cell = null;
-		HashedMap data = new HashedMap();
+		//HashedMap data = new HashedMap();
+		ArrayList<HashedMap> data = new ArrayList<HashedMap>();
 		Hashtable<String, Integer> excelHeaders = new Hashtable<String, Integer>();
 
 		try {
@@ -139,7 +140,7 @@ public class ExcelReader {
 
 			
 			// Get test data set
-			for (int r = 1; r <= excelrRowColumnCount.get("RowCount"); r++) {
+			for (int r = 1; r < excelrRowColumnCount.get("RowCount"); r++) {
 				row = sheet.getRow(r);
 				if (row != null) {
 					HSSFCell tempCell = sheet.getRow(r).getCell(0);
@@ -148,14 +149,12 @@ public class ExcelReader {
 						
 						if (testClass.equalsIgnoreCase(testClassName)) {
 							cell = sheet.getRow(r).getCell(1);
-							if (cell != null){
+							if (cell != null)
 								fileName = convertHSSFCellToString(row.getCell(1));
 							cell = sheet.getRow(r).getCell(2);
-							if (cell != null){
+							if (cell != null)
 								sheetName = convertHSSFCellToString(row.getCell(2));
 							break;
-								}
-							}
 						}
 					}
 				}
@@ -164,9 +163,9 @@ public class ExcelReader {
 			data = getTestData(filePath, fileName, sheetName, testCaseId);
 
 		} catch (RuntimeException e) {
-			e.getMessage();
+			e.printStackTrace();
 		} catch (IOException e) {
-			e.getMessage();
+			e.printStackTrace();
 		}
 		return data;
 	}
@@ -181,61 +180,66 @@ public class ExcelReader {
 	 * @throws IOException
 	 * @throws FileNotFoundException
 	 */
-	public static HashedMap getTestData(String filePath, String workBook, String sheetName, String testCaseId)
-			throws FileNotFoundException, IOException {
-		HSSFRow row = null;
-		HSSFCell cell = null;
+	public static ArrayList<HashedMap> getTestData(String filePath, String workBook, String sheetName, String testCaseId)
+	throws FileNotFoundException, IOException {
+HSSFRow row = null;
+HSSFCell cell = null;
 
-		// Establish connection to work sheet
-		POIFSFileSystem fs = new POIFSFileSystem(new FileInputStream(filePath));
-		HSSFWorkbook wb = new HSSFWorkbook(fs);
-		HSSFSheet sheet = wb.getSheet(sheetName);
-		Hashtable<String, Integer> excelrRowColumnCount = new Hashtable<String, Integer>();
-		excelrRowColumnCount = findRowColumnCount(sheet, excelrRowColumnCount);
+// Establish connection to work sheet
+POIFSFileSystem fs = new POIFSFileSystem(new FileInputStream(filePath));
+HSSFWorkbook wb = new HSSFWorkbook(fs);
+HSSFSheet sheet = wb.getSheet(sheetName);
+Hashtable<String, Integer> excelrRowColumnCount = new Hashtable<String, Integer>();
+excelrRowColumnCount = findRowColumnCount(sheet, excelrRowColumnCount);
 
-		// function call to find excel header fields
-		Hashtable<String, Integer> excelHeaders = new Hashtable<String, Integer>();
-		excelHeaders = readExcelHeaders(sheet, excelHeaders, excelrRowColumnCount);
-		HashedMap data = new HashedMap();
-		ArrayList<String> header = new ArrayList<String>();
-		ArrayList<String> matcher = new ArrayList<String>();
+// function call to find excel header fields
+Hashtable<String, Integer> excelHeaders = new Hashtable<String, Integer>();
+excelHeaders = readExcelHeaders(sheet, excelHeaders, excelrRowColumnCount);
+HashedMap data=null;
+ArrayList<String> header = new ArrayList<String>();
+ArrayList<String> matcher = null;
+ArrayList<HashedMap> matcherList = new ArrayList<HashedMap>();
 
-		// Get all header
-		row = sheet.getRow(0);
-		if (row != null) {
-			for (int c = 0; c < excelrRowColumnCount.get("ColumnCount"); c++) {
-				cell = sheet.getRow(0).getCell(c);
-				if (cell != null) {
-					String temp = convertHSSFCellToString(row.getCell(c));
-					header.add(temp);
-				}
-			}
+// Get all header
+row = sheet.getRow(0);
+if (row != null) {
+	for (int c = 0; c < excelrRowColumnCount.get("ColumnCount"); c++) {
+		cell = sheet.getRow(0).getCell(c);
+		if (cell != null) {
+			String temp = convertHSSFCellToString(row.getCell(c));
+			header.add(temp);
 		}
-
-		// Get test data set
-		for (int r = 1; r < excelrRowColumnCount.get("RowCount"); r++) {
-			row = sheet.getRow(r);
-			if (row != null) {
-				HSSFCell tempCell = sheet.getRow(r).getCell(0);
-				if (tempCell != null) {
-					String tcID = convertHSSFCellToString(row.getCell(0));
-					if (tcID.equalsIgnoreCase(testCaseId)) {
-						matcher.add(tcID);
-						for (int c = 1; c < excelrRowColumnCount.get("ColumnCount"); c++) {
-							cell = sheet.getRow(r).getCell(c);
-							String temp = convertHSSFCellToString(row.getCell(c));
-							matcher.add(temp);
-						}
-					}
-				}
-			}
-		}
-
-		// Add all the test data to a Map
-		for (int i = 0; i < matcher.size(); i++) {
-			data.put(header.get(i), matcher.get(i));
-		}
-
-		return data;
 	}
+}
+
+// Get test data set
+for (int r = 1; r < excelrRowColumnCount.get("RowCount"); r++) {
+	row = sheet.getRow(r);
+	if (row != null) {
+		HSSFCell tempCell = sheet.getRow(r).getCell(0);
+		if (tempCell != null) {
+			String tcID = convertHSSFCellToString(row.getCell(0));
+			if (tcID.equalsIgnoreCase(testCaseId)) {
+				data = new HashedMap();
+				matcher = new ArrayList<String>();
+				matcher.add(tcID);
+				for (int c = 1; c < excelrRowColumnCount.get("ColumnCount"); c++) {
+					cell = sheet.getRow(r).getCell(c);
+					String temp = convertHSSFCellToString(row.getCell(c));
+					matcher.add(temp);
+				}
+				// Add all the test data to a Map
+				for (int i = 0; i < matcher.size(); i++) {
+					data.put(header.get(i), matcher.get(i));
+				}
+				matcherList.add(data);
+			}
+		}
+	}
+}
+
+
+
+return matcherList;
+}
 }

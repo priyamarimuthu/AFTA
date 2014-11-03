@@ -1,6 +1,8 @@
 package com.projectname.test.functional.modulename2;
 
 
+import java.util.ArrayList;
+
 import org.apache.commons.collections.map.HashedMap;
 import org.junit.Assert;
 import org.openqa.selenium.support.PageFactory;
@@ -38,9 +40,9 @@ public class SearchByAnyName extends TestBaseClass{
 		// ------------------------------------------------------------------//
 		// Step-2: Get the test data //
 		// ------------------------------------------------------------------//
-		HashedMap testData = ExcelReader.getTestDataByTestCaseId(
+		ArrayList<HashedMap> testData = ExcelReader.getTestDataByTestCaseId(
 				"TC_CT_001", SearchByAnyName.class.getSimpleName());
-		log.info(testData.get("TC_ID").toString() + " - ");
+		log.info(testData.get(0).get("TC_ID").toString() + " - ");
 		
 		// ------------------------------------------------------------------//
 		// Step-2: Load the application //
@@ -54,7 +56,7 @@ public class SearchByAnyName extends TestBaseClass{
 		// ------------------------------------------------------------------//
 		// Step-3:Search by name //
 		// ------------------------------------------------------------------//
-		Assert.assertTrue(homeobject.searchbyanyname(testData));
+		Assert.assertTrue(homeobject.searchbyanyname(testData.get(0)));
 		
 		// ------------------------------------------------------------------//
 		// Step-4:Verify Search Screen page //

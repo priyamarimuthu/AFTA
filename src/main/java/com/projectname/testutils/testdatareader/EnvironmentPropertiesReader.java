@@ -19,6 +19,12 @@ public class EnvironmentPropertiesReader {
 	private static Properties property = new Properties();
 	private String filePath = "/src/main/resources/env.properties";
 	private String jenkinsPath = "/src/main/resources/jenkinsconfig";
+	private String testlinkURL;
+	private String testLinkDevKey;
+	private String testProject;
+	private String testPlan;
+	private String testSuiteID;
+	private String testBuildId;
 	
 	public EnvironmentPropertiesReader() {
 		try {
@@ -32,6 +38,12 @@ public class EnvironmentPropertiesReader {
 			this.setDBpassword(property.getProperty("DBpassword"));
 			this.setDBusername(property.getProperty("DBusername"));
 			this.setDbDriver(property.getProperty("DBdriver"));
+			this.setTestlinkURL(property.getProperty("testlinkUrl"));
+			this.setTestLinkDevKey(property.getProperty("testlinkKey"));
+			this.setTestProject(property.getProperty("testProject"));
+			this.setTestPlan(property.getProperty("testPlan"));
+			this.setTestSuiteID(property.getProperty("testSuiteID"));
+			this.setTestBuildId(property.getProperty("testBuildId"));
 
 		} catch (FileNotFoundException e) {
 			e.getMessage();
@@ -228,5 +240,52 @@ public class EnvironmentPropertiesReader {
 	 */
 	public String getDbDriver() {
 		return dbDriver;
+	}
+	public void setTestlinkURL(String testlinkURL) {
+		this.testlinkURL = testlinkURL;
+	}
+
+	public String getTestlinkURL() {
+		return testlinkURL;
+	}
+
+	public void setTestLinkDevKey(String testLinkDevKey) {
+		this.testLinkDevKey = testLinkDevKey;
+	}
+
+	public String getTestLinkDevKey() {
+		return testLinkDevKey;
+	}
+
+	public void setTestProject(String testProject) {
+		this.testProject = testProject;
+	}
+
+	public String getTestProject() {
+		return testProject;
+	}
+
+	public void setTestPlan(String testPlan) {
+		this.testPlan = testPlan;
+	}
+
+	public String getTestPlan() {
+		return testPlan;
+	}
+
+	public void setTestBuildId(String buildId) {
+		this.testBuildId = buildId;
+	}
+
+	public String getTestBuildId() {
+		return testBuildId;
+	}
+
+	public void setTestSuiteID(String suiteID) {
+		this.testSuiteID = suiteID;
+	}
+
+	public String getTestSuiteID() {
+		return testSuiteID;
 	}
 }
