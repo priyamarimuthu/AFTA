@@ -4,6 +4,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import com.projectname.functional.annotations.MapToTestLink;
 import com.projectname.testutils.baseclass.TestBaseClass;
 import com.projectname.testutils.pages.genericPages.HomePage;
 import com.projectname.testutils.pages.projectnamepages.HomeScreen;
@@ -21,6 +22,7 @@ public class HomePageTest  extends TestBaseClass{
    	 ***************************************************************************************************/
 
 	@Test(retryAnalyzer = RetryRule.class)
+	@MapToTestLink(testCaseID = "TestCase_2")
 	public void homePageTest(){
 		// ------------------------------------------------------------------//
 		// Step-1: Log in to the application //
