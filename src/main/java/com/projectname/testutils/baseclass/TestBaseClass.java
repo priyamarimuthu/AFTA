@@ -33,6 +33,7 @@ import static org.testng.internal.EclipseInterface.ASSERT_MIDDLE;
 import static org.testng.internal.EclipseInterface.ASSERT_RIGHT;
 
 import com.projectname.functional.annotations.MapToTestLink;
+import com.projectname.testutils.genericutility.Config;
 import com.projectname.testutils.genericutility.DateTimeUtility;
 import com.projectname.testutils.genericutility.ExceptionHandler;
 import com.projectname.testutils.genericutility.FileUtility;
@@ -219,14 +220,11 @@ public class TestBaseClass extends Assert {
 	 * @throws IOException
 	 */
 	public WebDriver loadURL() throws IOException {
-		// Reading the URL and Browser type
-		String url = "http://systems.aspiresys.com/";
-		String browser = "FIREFOX";
-
+	
 		// Instantiating the browser
-		driver = getWebDriver(browser);
+		driver = getWebDriver(Config.browser);
 		wait = new WebDriverWait(driver, 30);
-		driver.get(url);
+		driver.get(Config.URL);
 
 		// Maximize the window
 		driver.manage().window().maximize();

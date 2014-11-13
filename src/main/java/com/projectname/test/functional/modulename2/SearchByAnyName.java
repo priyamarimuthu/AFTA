@@ -28,7 +28,7 @@ public class SearchByAnyName extends TestBaseClass{
    	 * @since October 30, 2014
    	 ***************************************************************************************************/
 	
-	@Test(retryAnalyzer = RetryRule.class)
+	@Test(retryAnalyzer = RetryRule.class,groups = {"Review"})
 	@MapToTestLink(testCaseID = "TestCase_3")
 	public void searchbyname(){
 

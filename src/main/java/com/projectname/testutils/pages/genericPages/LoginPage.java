@@ -5,12 +5,13 @@ import java.io.IOException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import com.projectname.testutils.genericutility.Config;
 import com.projectname.testutils.genericutility.ExceptionHandler;
 import com.projectname.testutils.seleniumutils.SeleniumWebDriver;
 
 public class LoginPage extends SeleniumWebDriver {
 
-	protected By txtUserName = By.id("edit-name");
+	protected By txtUserName = By.id("edit-name1");
 	protected By txtPassword = By.id("edit-pass");
 
 	protected By logoutButton = By.linkText("Logout");
@@ -42,9 +43,9 @@ public class LoginPage extends SeleniumWebDriver {
 			} catch (InterruptedException e1) {
 				e1.printStackTrace();
 			}
-			assertTrue(sendKeys(txtUserName,UserName),
+			assertTrue(sendKeys(txtUserName,Config.userName),
 					"Could not enter user name",driver);
-			assertTrue(sendKeys(txtPassword, Password),
+			assertTrue(sendKeys(txtPassword, Config.password),
 					"Could not enter password",driver);
 	
 			assertTrue(click(submitButton), "Could not click on submit button",driver);

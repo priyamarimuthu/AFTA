@@ -26,7 +26,7 @@ import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.Assert;
 
-import com.projectname.testutils.genericutility.Constants;
+import com.projectname.testutils.genericutility.Config;
 import com.projectname.testutils.genericutility.ExceptionHandler;
 import com.thoughtworks.selenium.Selenium;
 
@@ -39,10 +39,7 @@ public class SeleniumWebDriver {
 	WebDriverWait wait;
 	private String returnString="";
 	private Boolean result = true;
-	
-	//Flag for to On/Off detailed log  
-	private Boolean requireToWrite = true; 
-	
+		
 	//Time to wait for page to load
 	private int secondsToWait = 20;
 	
@@ -65,7 +62,7 @@ public class SeleniumWebDriver {
 			status = "Fail";
 			new ExceptionHandler(e, driver, getCustomAttributeValue(getCurrentMethodName(), text.toString(), empty, status, empty, getCallingMethodAndLineNumber()) );
 		}
-		if(requireToWrite){
+		if(Config.requireToWrite){
 			logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue(getCurrentMethodName(), text.toString(), empty, status, empty, getCallingMethodAndLineNumber()));
 		}
 		return result;
@@ -88,7 +85,7 @@ public class SeleniumWebDriver {
 			new ExceptionHandler(e, driver, getCustomAttributeValue(getCurrentMethodName(), element.toString(), empty, status, empty, getCallingMethodAndLineNumber()) );
 		}
 		
-		if(requireToWrite){
+		if(Config.requireToWrite){
 			logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue(getCurrentMethodName(), element.toString(), empty, status, empty, getCallingMethodAndLineNumber()));
 		}
 		return exists;
@@ -99,7 +96,7 @@ public class SeleniumWebDriver {
 	 */
 	public void causeMinorTimeDelay() {
 		driver.manage().timeouts()
-				.implicitlyWait(Constants.DELAY_TIME, TimeUnit.SECONDS);
+				.implicitlyWait(Config.DELAY_TIME, TimeUnit.SECONDS);
 	}
 
 	/**
@@ -153,7 +150,7 @@ public class SeleniumWebDriver {
 			new ExceptionHandler(e, driver, getCustomAttributeValue(getCurrentMethodName(), ajaxElementName.toString(), empty, status, empty, getCallingMethodAndLineNumber()) );
 		}
 		
-		if(requireToWrite){
+		if(Config.requireToWrite){
 			logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue(getCurrentMethodName(), ajaxElementName.toString(), empty, status, empty, getCallingMethodAndLineNumber()));
 		}
 		return result;
@@ -198,7 +195,7 @@ public class SeleniumWebDriver {
 			new ExceptionHandler(e, driver, getCustomAttributeValue(getCurrentMethodName(), elementLocator.toString(), empty, status, empty, getCallingMethodAndLineNumber()) );
 		}
 		
-		if(requireToWrite){
+		if(Config.requireToWrite){
 			logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue(getCurrentMethodName(), elementLocator.toString(), empty, status, empty, getCallingMethodAndLineNumber()));
 		}
 		return result;
@@ -212,7 +209,7 @@ public class SeleniumWebDriver {
 	
 	public boolean click(final By ajaxElementName){
 		try {
-			waitForElement(ajaxElementName, Constants.AVG_WAIT_TIME_FOR_ELEMENT);
+			waitForElement(ajaxElementName, Config.AVG_WAIT_TIME_FOR_ELEMENT);
 			if (driver.findElement(ajaxElementName).isDisplayed()
 					&& driver.findElement(ajaxElementName).isEnabled()) {
 				driver.findElement(ajaxElementName).click();
@@ -225,7 +222,7 @@ public class SeleniumWebDriver {
 			new ExceptionHandler(e, driver, getCustomAttributeValue(getCurrentMethodName(), ajaxElementName.toString(), empty, status, empty, getCallingMethodAndLineNumber()) );
 		}
 		
-		if(requireToWrite){
+		if(Config.requireToWrite){
 			logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue(getCurrentMethodName(), ajaxElementName.toString(), empty, status, empty, getCallingMethodAndLineNumber()));
 		}
 		return result;
@@ -243,7 +240,7 @@ public class SeleniumWebDriver {
 	public boolean isChecked(final By ajaxCheckboxName){
 		try{
 			if (waitForElement(ajaxCheckboxName,
-					Constants.AVG_WAIT_TIME_FOR_ELEMENT)) {
+					Config.AVG_WAIT_TIME_FOR_ELEMENT)) {
 				driver.findElement(ajaxCheckboxName).isSelected();
 				boolean checkBoxStatus = driver.findElement(ajaxCheckboxName)
 						.isSelected();
@@ -265,7 +262,7 @@ public class SeleniumWebDriver {
 			new ExceptionHandler(e, driver, getCustomAttributeValue(getCurrentMethodName(), ajaxCheckboxName.toString(), empty, status, empty, getCallingMethodAndLineNumber()) );
 		}
 		
-		if(requireToWrite){
+		if(Config.requireToWrite){
 			logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue(getCurrentMethodName(), ajaxCheckboxName.toString(), empty, status, empty, getCallingMethodAndLineNumber()));
 		}
 		return result;
@@ -305,7 +302,7 @@ public class SeleniumWebDriver {
 			status = "Fail";
 			new ExceptionHandler(e, driver, getCustomAttributeValue(getCurrentMethodName(), empty, empty, status, empty, getCallingMethodAndLineNumber()) );
 		}
-		if(requireToWrite)
+		if(Config.requireToWrite)
 			logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue(getCurrentMethodName(), empty, empty, status, empty, getCallingMethodAndLineNumber()));		
 	}
 
@@ -330,7 +327,7 @@ public class SeleniumWebDriver {
 			new ExceptionHandler(e, driver, getCustomAttributeValue(getCurrentMethodName(), element.toString(), empty, status, empty, getCallingMethodAndLineNumber()) );
 		}
 		
-		if(requireToWrite){
+		if(Config.requireToWrite){
 			logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue(getCurrentMethodName(), element.toString(), empty, status, empty, getCallingMethodAndLineNumber()));
 		}
 	}
@@ -344,7 +341,7 @@ public class SeleniumWebDriver {
 		valueForSelection = valueForSelection != null ? valueForSelection
 				.trim() : "";
 		try {
-			waitForElement(listName, Constants.AVG_WAIT_TIME_FOR_ELEMENT);
+			waitForElement(listName, Config.AVG_WAIT_TIME_FOR_ELEMENT);
 			if (driver.findElement(listName).isDisplayed()) {
 				Select elSelect = new Select(driver.findElement(listName));
 				elSelect.selectByVisibleText(valueForSelection);
@@ -359,7 +356,7 @@ public class SeleniumWebDriver {
 			new ExceptionHandler(e, driver, getCustomAttributeValue(getCurrentMethodName(), listName.toString(), valueForSelection, status, empty, getCallingMethodAndLineNumber()) );
 		}
 		
-		if(requireToWrite){
+		if(Config.requireToWrite){
 			logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue(getCurrentMethodName(), listName.toString(), valueForSelection, status, empty, getCallingMethodAndLineNumber()));
 		}
 		return result;
@@ -383,7 +380,7 @@ public class SeleniumWebDriver {
 			new ExceptionHandler(e, driver, getCustomAttributeValue(getCurrentMethodName(), elementName.toString(), empty, status, empty, getCallingMethodAndLineNumber()) );
 		}
 		
-		if(requireToWrite){
+		if(Config.requireToWrite){
 			logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue(getCurrentMethodName(), elementName.toString(), empty, status, empty, getCallingMethodAndLineNumber()));
 		}
 		return returnString;
@@ -397,7 +394,7 @@ public class SeleniumWebDriver {
 	public String getValue(By elementName){
 
 		try {
-			if (waitForElement(elementName, Constants.AVG_WAIT_TIME_FOR_ELEMENT)) {
+			if (waitForElement(elementName, Config.AVG_WAIT_TIME_FOR_ELEMENT)) {
 				returnString=driver.findElement(elementName).getAttribute("value");
 				status = "Pass";
 			} 
@@ -405,7 +402,7 @@ public class SeleniumWebDriver {
 			status = "Fail";
 			new ExceptionHandler(e, driver, getCustomAttributeValue(getCurrentMethodName(), elementName.toString(), empty, status, empty, getCallingMethodAndLineNumber()) );
 		}
-		if(requireToWrite){
+		if(Config.requireToWrite){
 			logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue(getCurrentMethodName(), elementName.toString(), empty, status, empty, getCallingMethodAndLineNumber()));
 		}
 		return returnString;

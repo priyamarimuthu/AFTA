@@ -18,7 +18,7 @@ public class LoginTest extends TestBaseClass {
    	 * @since October 30, 2014
    	 ***************************************************************************************************/
 	
-	@Test(retryAnalyzer = RetryRule.class)
+	@Test(retryAnalyzer = RetryRule.class,groups = {"Regression"})
 	@MapToTestLink(testCaseID = "TestCase_1")
 	public void loginTest(){
 	

@@ -3,6 +3,8 @@ package com.projectname.testutils.retryAnalyser;
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 
+import com.projectname.testutils.genericutility.Config;
+
 /**
  * Retry rule for testclasses which are failed because of wait timed out No of retries can be specified in the TestBaseClass @Rule
  * annotated place
@@ -16,7 +18,7 @@ public class RetryRule implements IRetryAnalyzer {
 
 	public RetryRule() {
 		this.retryCount = 0;
-		this.maxRetry=1;
+		this.maxRetry=Config.retryCounter;
 	}
 	
 	public boolean retry(ITestResult result) {

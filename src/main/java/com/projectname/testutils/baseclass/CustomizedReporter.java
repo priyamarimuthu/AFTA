@@ -7,10 +7,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import org.testng.IReporter;
 import org.testng.ISuite;
 import org.testng.ISuiteListener;
+import org.testng.ISuiteResult;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -31,6 +33,7 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 	 * This function will execute before suite start
 	 */
 	public void onStart(ISuite suite) {
+		
 		//for get the current directory
 		String workingdirectory = System.getProperty("user.dir");
 		//used to delete directory
@@ -147,7 +150,7 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 	
 	private PrintWriter createRequiredFile(String testName) throws IOException
 	{
-		return new PrintWriter(new BufferedWriter(new FileWriter(new File(screenshotDir, testName+".html"))));
+		return new PrintWriter(new BufferedWriter(new FileWriter(new File(screenshotDir, testName+".html"),true)));
 	}
 
 	/**
@@ -180,8 +183,8 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 		out.println("}");
 		
 		out.println(".title {");
-		out.println("font-style: italic;");
-		out.println("background-color: #B2ACAC;");
+		out.println("font-style: italic,bold;");
+		out.println("background-color: #D3D3D3;");
 		out.println("}");
 		
 		out.println(".selected {");
@@ -212,20 +215,21 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 	    out.println("<title>Test results</title>");
 	    out.println("</head>");
 	    out.println("<body>");
-	    out.println("<h1>Test results </h1>");
-	    out.println("<h2>Test Name: "+className+"."+result.getName()+"</h2>");
+   
+	    out.println("<b><i><u><h1>Test results </h1></u></i></b>");
+	    out.println("<b><i><h2><u>Test Name: "+className+"."+result.getName()+"</u></h2></i></b>");
 	    
 	    out.println("<table border=\"1\">");
 	    out.println("<tbody>");
-	    out.println("<tr>");
-	    out.println("<td><b>Selenium-Command</b></td>");
-	    out.println("<td><b>Parameter-1</b></td>");
-		out.println("<td><b>Parameter-2</b></td>");
-		out.println("<td><b>Status</b></td>");
-		out.println("<td><b>Screenshot</b></td>");
-		out.println("<td><b>Calling-Class with Linenumber</b></td>");
+	    
+	    out.println("<tr style='background-color: #B2ACAC;'>");
+	    out.println("<td><b><i>Selenium-Command</i></b></td>");
+	    out.println("<td><b><i>Parameter-1</i></b></td>");
+		out.println("<td><b><i>Parameter-2</i></b></td>");
+		out.println("<td><b><i>Status</i></b></td>");
+		out.println("<td><b><i>Screenshot</i></b></td>");
+		out.println("<td><b><i>Calling-Class with Linenumber</i></b></td>");
 		out.println("</tr>");
-		
 	}
 	
 	/**
@@ -259,6 +263,7 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 	 * @throws IOException
 	 */
 	private void generateTestExecution(ITestResult result, String status) throws IOException{
+		
 		//create the html file with current running class and test name
 		fout = createRequiredFile(result.getName()+status);
 		
@@ -324,16 +329,11 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 	
 	
 	
-	public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites,
-			String outputDirectory) {
+	public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites, String outputDirectory) {
 		
 		//for get the current directory
 		String workingdirectory = System.getProperty("user.dir");
 
-		File file = new File(workingdirectory +"/custom-test-report");
-		String[] names = file.list();
-
-		
 		//create the html file with current running class and test name
 		try {
 			fout = new PrintWriter(new BufferedWriter(new FileWriter(new File(new File(workingdirectory +"/custom-test-report"), "index.html"))));
@@ -354,219 +354,101 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 		fout.println("table {");
 		fout.println("border-collapse: collapse;");
 		fout.println("border: 1px solid #ccc;");
+		fout.println("table-layout: fixed;");
 		fout.println("}");
 		
 		fout.println("th, td {");
 		fout.println("padding-left: 0.3em;");
 		fout.println("padding-right: 0.3em;");
+		fout.println("border: 1px solid black;");
+		fout.println("overflow: hidden;");
+		fout.println("width: 400px;");
 		fout.println("}");
+		
+		fout.println(".result {");
+		fout.println("padding-left: 0.3em;");
+		fout.println("padding-right: 0.3em;");
+		fout.println("border: 1px solid black;");
+		fout.println("overflow: hidden;");
+		fout.println("width: 100px;");
+		fout.println("}");
+		
+		fout.println(".report {");
+		fout.println("padding-left: 0.3em;");
+		fout.println("padding-right: 0.3em;");
+		fout.println("border: 1px solid black;");
+		fout.println("overflow: hidden;");
+		fout.println("width: 200px;");
+		fout.println("}");
+		
 		fout.println("</style>");
 		fout.println("</head>");
 		fout.println("<body>");
-		fout.println("<h1>Test results </h1>");
-		fout.println("<table border=\"1\">");
-	    fout.println("<tbody>");
+		fout.println("<b><i><u><h1>Test results </h1></u></i></b>");
 
+		
+		//Overview report block
+		int totalPassedMethods = 0;
+		int totalFailedMethods = 0;
+		int totalSkippedMethods = 0;
+		int totalMethods = 0;
+
+        //Iterating over each suite included in the test
+        for ( ISuite suite : suites ) {
+            //Following code gets the suite name
+            //String suiteName = suite.getName();
+            //Getting the results for the said suite
+            Map<String,ISuiteResult> suiteResults = suite.getResults();
+            for (ISuiteResult sr : suiteResults.values() ) {
+                ITestContext tc = sr.getTestContext();
+                totalMethods = totalMethods + tc.getAllTestMethods().length;
+               
+                 
+                totalPassedMethods = totalPassedMethods + tc.getPassedTests().getAllResults().size();
+                
+                totalFailedMethods = totalFailedMethods + tc.getFailedTests().getAllResults().size();
+                
+                totalSkippedMethods = totalSkippedMethods + tc.getSkippedTests().getAllResults().size();
+                
+            }
+        }
+		
+        
+        
+        fout.println("<table border=\"1\">");
+	    
+        fout.println("<tr style='background-color: ;'>");
+		fout.println("<td align=\"center\" colspan=\"4\"> <h3> Report Overview </h3> </td>");
+		fout.println("</tr>");
+		
+        fout.println("<tr style='background-color: #F5F5F5;'>");
+		fout.println("<td align=\"center\" class=\"report\"><b><i>Total Test Methods</i></b></td>");
+		fout.println("<td align=\"center\" class=\"report\"><b><i>Passed Test Methods</i></b></td>");
+		fout.println("<td align=\"center\" class=\"report\"><b><i>Failed Test Methods</i></b></td>");
+		fout.println("<td align=\"center\" class=\"report\"><b><i>Skipped Test Methods</i></b></td>");
+		fout.println("</tr>");
+        
+		fout.println("<tr>");
+		fout.println("<td align=\"center\" class=\"report\"><b><i>" + totalMethods + "</i></b></td>");
+		fout.println("<td align=\"center\" class=\"report\"><b><i>" + totalPassedMethods + "</i></b></td>");
+		fout.println("<td align=\"center\" class=\"report\"><b><i>" + totalFailedMethods + "</i></b></td>");
+		fout.println("<td align=\"center\" class=\"report\"><b><i>" + totalSkippedMethods + "</i></b></td>");
+		fout.println("</tr>");
+		
+	    fout.println("</table>");
+        
+	    fout.println("<br>");
+	    fout.println("<br>");
+	    fout.println("<br>");
+	    
 	    //Passed cases
-	    flag = true;
+	    generateIndexHtmlAreas(passed);
 	    
-	    for(String fullClassName : names)
-		{
-
-			String splitClassName[] = fullClassName.split("\\.");
-			int length = splitClassName.length;
-			
-			
-			if(!(fullClassName.equalsIgnoreCase("Failure_Screenshot"))){
-			    if (new File(workingdirectory +"/custom-test-report/" + fullClassName).isDirectory())
-			    {
-			    	String fullPackage = "";
-			    	
-			    	for(int temp=0; temp<length-1 ; temp++){
-			    		if(temp==0){
-			    			fullPackage = splitClassName[temp];
-			    		}else{
-			    			fullPackage = fullPackage + "." + splitClassName[temp];
-			    		}
-			    	}
-			    	
-			    	
-			    	File file1 = new File(workingdirectory +"/custom-test-report/" + fullClassName);
-					String[] names1 = file1.list();
-					
-					for(String testName : names1){
-						if(testName.endsWith(passed+".html")){
-							
-							if(flag){
-								//Passed
-							    fout.println("<tr style='background-color: #ccffcc;'");
-								fout.println("<td align=\"center\" colspan=\"3\">"+ "Passed cases" + "</td>");
-								fout.println("</tr>");
-								fout.println("<tr style='background-color: #F5F5F5;'>");
-								fout.println("<td>Package Name</td>");
-								fout.println("<td>Class Name With Test Name</td>");
-								fout.println("<td>Result</td>");
-								fout.println("</tr>");
-								flag = false;
-							}
-							
-							String temptestName = testName.replace(passed+".html", "");
-							
-							fout.println("<tr>");
-			    			fout.println("<td>"+ fullPackage + "</td>");
-							
-							String temp = "<a href='"+ fullClassName +"/"+ testName +"'>" + splitClassName[length-1] +"."+ temptestName  +"</a>";
-			    			fout.println("<td>"+ temp + "</td>");
-			    			
-			    			//fout.println("<td><img src='../src/main/resources/images/Tick_Mark.png' height=\"20\" width=\"20\">" + "</td>");
-			    			fout.println("<td> Pass </td>");
-			    			
-			    			fout.println("</tr>");
-						}
-					}
-			    	
-			    }
-			}
-		}
-	
-		fout.println("</table>");
+		//Failed Cases
+	    generateIndexHtmlAreas(failed);
 	    
-		
-		
-		
-		//Failed
-		fout.println("<table border=\"1\">");
-	    fout.println("<tbody>");
-
-	    flag = true;
-	    for(String fullClassName : names)
-		{
-
-			String splitClassName[] = fullClassName.split("\\.");
-			int length = splitClassName.length;
-			
-			
-			if(!(fullClassName.equalsIgnoreCase("Failure_Screenshot"))){
-			    if (new File(workingdirectory +"/custom-test-report/" + fullClassName).isDirectory())
-			    {
-			    	String fullPackage = "";
-			    	
-			    	
-			    	for(int temp=0; temp<length-1 ; temp++){
-			    		if(temp==0){
-			    			fullPackage = splitClassName[temp];
-			    		}else{
-			    			fullPackage = fullPackage + "." + splitClassName[temp];
-			    		}
-			    	}
-			    	
-			    	File file1 = new File(workingdirectory +"/custom-test-report/" + fullClassName);
-					String[] names1 = file1.list();
-			    	
-					for(String testName : names1){
-						if(testName.endsWith(failed+".html")){
-
-							if(flag){
-								//Failed
-								fout.println("<tr style='background-color: #ffcccc;'");
-								fout.println("<td align=\"center\" colspan=\"3\">"+ "Failed cases" + "</td>");
-								fout.println("</tr>");
-								fout.println("<tr style='background-color: #F5F5F5;'>");
-								fout.println("<td>Package Name</td>");
-								fout.println("<td>Class Name With Test Name</td>");
-								fout.println("<td>Result</td>");
-								fout.println("</tr>");
-								flag = false;
-							}
-							
-							String temptestName  = testName.replace(failed+".html", "");
-							
-							fout.println("<tr>");
-			    			fout.println("<td>"+ fullPackage + "</td>");
-							
-							String temp = "<a href='" + fullClassName +"/"+ testName +"'>" + splitClassName[length-1] +"."+ temptestName  +"</a>";
-			    			fout.println("<td>"+ temp + "</td>");
-			    			
-			    			//fout.println("<td><img src='../src/main/resources/images/Fail_Mark.jpg' height=\"20\" width=\"20\">" + "</td>");
-			    			fout.println("<td> Fail </td>");
-			    			
-			    			fout.println("</tr>");
-						}
-					}
-			    	
-			    }
-			}
-		}
-	
-		fout.println("</table>");
-		
-		
-		//Skipped
-		fout.println("<table border=\"1\">");
-	    fout.println("<tbody>");
-
-	    flag = true;
-	    
-	    for(String fullClassName : names)
-		{
-
-			String splitClassName[] = fullClassName.split("\\.");
-			int length = splitClassName.length;
-			
-			
-			if(!(fullClassName.equalsIgnoreCase("Failure_Screenshot"))){
-			    if (new File(workingdirectory +"/custom-test-report/" + fullClassName).isDirectory())
-			    {
-			    	String fullPackage = "";
-			    	
-			    	for(int temp=0; temp<length-1 ; temp++){
-			    		if(temp==0){
-			    			fullPackage = splitClassName[temp];
-			    		}else{
-			    			fullPackage = fullPackage + "." + splitClassName[temp];
-			    		}
-			    	}
-			    	
-			    	File file1 = new File(workingdirectory +"/custom-test-report/" + fullClassName);
-					String[] names1 = file1.list();
-			    	
-					for(String testName : names1){
-						
-						if(testName.endsWith(skipped)){
-						
-							if(flag){
-								//Skipped
-								fout.println("<tr style='background-color: #B2ACAC;'");
-								fout.println("<td align=\"center\" colspan=\"3\">"+ "Skipped cases" + "</td>");
-								fout.println("</tr>");
-								fout.println("<tr style='background-color: #F5F5F5;'>");
-								fout.println("<td>Package Name</td>");
-								fout.println("<td>Class Name With Test Name</td>");
-								fout.println("<td>Result</td>");
-								fout.println("</tr>");
-								flag = false;
-							}
-							
-							String temptestName  = testName.replace(skipped+".html", "");
-							
-							fout.println("<tr>");
-			    			fout.println("<td>"+ fullPackage + "</td>");
-							
-							String temp = "<a href='" + fullClassName +"/"+ testName +"'>" + splitClassName[length-1]+"." + temptestName  +"</a>";
-			    			fout.println("<td>"+ temp + "</td>");
-			    			
-			    			fout.println("<td>"+ skipped + "</td>");
-			    			
-			    			fout.println("</tr>");
-						}
-					}
-			    	
-			    	
-			    }
-			}
-		}
-	
-		fout.println("</table>");
+	    //Skipped Cases
+	    generateIndexHtmlAreas(skipped);
 		
 		
 		//used for create end html tags
@@ -579,6 +461,117 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 
 		
 	}
+	
+	
+	public void generateIndexHtmlAreas(String status){
+		//for get the current directory
+		String workingdirectory = System.getProperty("user.dir");
+
+		File file = new File(workingdirectory +"/custom-test-report");
+		String[] names = file.list();
+		
+		fout.println("<table border=\"1\">");
+	    fout.println("<tbody>");
+				
+		 flag = true;
+		    
+		    for(String fullClassName : names)
+			{
+
+				String splitClassName[] = fullClassName.split("\\.");
+				int length = splitClassName.length;
+				
+				
+				if(!(fullClassName.equalsIgnoreCase("Failure_Screenshot"))){
+				    if (new File(workingdirectory +"/custom-test-report/" + fullClassName).isDirectory())
+				    {
+				    	String fullPackage = "";
+				    	
+				    	for(int temp=0; temp<length-1 ; temp++){
+				    		if(temp==0){
+				    			fullPackage = splitClassName[temp];
+				    		}else{
+				    			fullPackage = fullPackage + "." + splitClassName[temp];
+				    		}
+				    	}
+				    	
+				    	
+				    	File file1 = new File(workingdirectory +"/custom-test-report/" + fullClassName);
+						String[] names1 = file1.list();
+						
+						int totalRowCountToMerge = 0;
+						boolean packageFlag = true;
+						
+						for(String testName : names1){
+							if(testName.endsWith(status+".html")){
+								totalRowCountToMerge = totalRowCountToMerge +1;
+							}
+						}
+						
+						for(String testName : names1){
+							if(testName.endsWith(status+".html")){
+								
+								if(flag){
+									if(status.equalsIgnoreCase(passed)){
+										//Passed
+									    fout.println("<tr style='background-color: #ccffcc;'>");
+										fout.println("<td align=\"center\" colspan=\"3\"> Passed cases </td>");
+										fout.println("</tr>");
+									}else if(status.equalsIgnoreCase(failed)){
+										//Failed
+										fout.println("<tr style='background-color: #ffcccc;'>");
+										fout.println("<td align=\"center\" colspan=\"3\"> Failed cases </td>");
+										fout.println("</tr>");
+									}else{
+										//Skipped
+										fout.println("<tr style='background-color: #B2ACAC;'>");
+										fout.println("<td align=\"center\" colspan=\"3\">"+ "Skipped cases" + "</td>");
+										fout.println("</tr>");
+									}
+									
+									fout.println("<tr style='background-color: #F5F5F5;'>");
+									fout.println("<td><b><i>Package Name</i></b></td>");
+									fout.println("<td><b><i>Class Name With Test Name</i></b></td>");
+									fout.println("<td align=\"center\" class=\"result\"><b><i>Result</i></b></td>");
+									fout.println("</tr>");
+									flag = false;
+								}
+								
+								String temptestName = testName.replace(status+".html", "");
+								
+								fout.println("<tr>");
+								
+								if(packageFlag){
+									fout.println("<td rowspan='"+totalRowCountToMerge+"'>"+ fullPackage + "</td>");
+									packageFlag = false;
+								}
+								
+								String temp = "<a href='"+ fullClassName +"/"+ testName +"'>" + splitClassName[length-1] +"."+ temptestName  +"</a>";
+				    			fout.println("<td>"+ temp + "</td>");
+				    			
+				    			if(status.equalsIgnoreCase(passed)){
+									//Passed
+				    				fout.println("<td align=\"center\" class='result'><img src='images/Tick_Mark.png' height=\"20\" width=\"20\">" + "</td>");
+								}else if(status.equalsIgnoreCase(failed)){
+									//Failed
+									fout.println("<td align=\"center\" class='result'><img src='images/Fail_Mark.jpg' height=\"20\" width=\"20\">" + "</td>");
+								}else{
+									//Skipped
+									fout.println("<td align=\"center\" class='result'>"+ skipped + "</td>");
+								}
+				    			
+				    			
+				    			fout.println("</tr>");
+							}
+						}
+				    	
+				    }
+				}
+			}
+		
+			fout.println("</table>");
+	}
+	
 
 	/**
 	 * This function is used for delete all the files and folders in the directory
@@ -600,9 +593,11 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
         	   for (String temp : files) {
         	      //construct the file structure
         	      File fileDelete = new File(file, temp);
- 
-        	      //recursive delete
-        	     delete(fileDelete);
+        	      
+        	      if(!(temp.equalsIgnoreCase("images"))){
+        	    	  //recursive delete
+        	    	  delete(fileDelete);
+        	      }
         	   }
  
         	   //check the directory again, if empty then delete it
