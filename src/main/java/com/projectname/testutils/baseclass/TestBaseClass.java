@@ -37,8 +37,8 @@ import com.projectname.testutils.genericutility.Config;
 import com.projectname.testutils.genericutility.DateTimeUtility;
 import com.projectname.testutils.genericutility.ExceptionHandler;
 import com.projectname.testutils.genericutility.FileUtility;
-import com.projectname.testutils.pages.genericPages.HomePage;
-import com.projectname.testutils.pages.genericPages.LoginPage;
+import com.projectname.testutils.pages.HomePage;
+import com.projectname.testutils.pages.SharedPage;
 import com.projectname.testutils.seleniumutils.SeleniumWebDriver;
 import com.projectname.testutils.testdatareader.DataAccessClient;
 import com.projectname.testutils.testdatareader.EnvironmentPropertiesReader;
@@ -46,7 +46,7 @@ import com.projectname.testutils.testlink.xmlrpcclient.TestLinkAPIClient;
 import com.projectname.testutils.testlink.xmlrpcclient.TestLinkAPIException;
 import com.projectname.testutils.testlink.xmlrpcclient.TestLinkAPIResults;
 
-public class TestBaseClass extends Assert {
+public class TestBaseClass extends SeleniumWebDriver{
 
 	/**
 	 * This page object is initialized before the start of every test.
@@ -56,7 +56,7 @@ public class TestBaseClass extends Assert {
 	/**
 	 * For Core Selenium2 functionality
 	 */
-	protected WebDriver driver = null;
+	protected static WebDriver driver = null;
 	protected WebDriverWait wait;
 	private final String deliminator = "####";
 
@@ -111,6 +111,7 @@ public class TestBaseClass extends Assert {
 	 * @throws IOException
 	 */
 	public TestBaseClass() {
+		super(driver);
 		// Getting the properties
 		try {
 			PropertyConfigurator.configure(new File(".").getCanonicalPath()
@@ -145,15 +146,15 @@ public class TestBaseClass extends Assert {
 	 * @throws AWTException
 	 * @throws InterruptedException
 	 */
-	protected HomePage loginUser1(){
+	protected HomePage loginUser(){
 		// Intializing the objects
-		LoginPage LoginPage = PageFactory.initElements(driver, LoginPage.class);
+		SharedPage sharedPage = PageFactory.initElements(driver, SharedPage.class);
 		homePage = PageFactory.initElements(driver, HomePage.class);
 
 		// Get the user name from home page
 		String user = environmentPropertiesReader.getAccMgrUsername();
 
-		homePage = LoginPage.login(user,
+		homePage = sharedPage.login(user,
 				environmentPropertiesReader.getPassword());
 		log.info("Logged into the application as - "
 				+user);
@@ -430,7 +431,7 @@ public class TestBaseClass extends Assert {
 		  
 		  
 		  static private void failNotEquals(Object actual , Object expected, String message ) {
-			    fail(format(actual, expected, message));
+			  Assert.fail(format(actual, expected, message));
 		  }
 
 		  static String format(Object actual, Object expected, String message) {

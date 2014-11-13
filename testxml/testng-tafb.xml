@@ -5,8 +5,19 @@
       <listener class-name="org.uncommons.reportng.HTMLReporter"/>
       <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
   </listeners>       
-  
+	
     <test name="com.projectname.test.functional.modulename">
+    
+     <groups>  
+		   <define name="Regression Tests">    
+		      <include name="Regression"/>           
+		    </define>
+		    <run>
+		    	 <include name="Regression Tests"/>
+		    </run>
+	</groups>  
+  
+  
     <packages>
       <package name="com.projectname.test.functional.modulename1.*"/>
     </packages>

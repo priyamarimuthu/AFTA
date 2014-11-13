@@ -1,19 +1,25 @@
 package com.projectname.test.functional.modulename1;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.projectname.functional.annotations.MapToTestLink;
-import com.projectname.testutils.baseclass.TestBaseClass;
-import com.projectname.testutils.pages.genericPages.HomePage;
-import com.projectname.testutils.pages.projectnamepages.HomeScreen;
+import com.projectname.testutils.pages.HomePage;
+import com.projectname.testutils.pages.IntranetHomePage;
+import com.projectname.testutils.pages.SharedPage;
 import com.projectname.testutils.retryAnalyser.RetryRule;
 
 @Listeners(com.projectname.testutils.baseclass.CustomizedReporter.class)
 
-public class HomePageTest  extends TestBaseClass{
+public class HomePageTest  extends SharedPage{
 	
+	public HomePageTest(WebDriver driver) {
+		super(driver);
+		// TODO Auto-generated constructor stub
+	}
+
 	/*************************************************************************************************** 
 	 * @purpose To verify home page elements
  	 * @action Verify the links present on the home page
@@ -28,7 +34,7 @@ public class HomePageTest  extends TestBaseClass{
 		// Step-1: Log in to the application //
 		// ------------------------------------------------------------------//
 		logTitleMessage("Login to application");
-		homePage = loginUser1();
+		homePage = loginUser();
 		logTitleMessage("Login Successful");
 		
 		// ------------------------------------------------------------------//
@@ -36,7 +42,7 @@ public class HomePageTest  extends TestBaseClass{
 		// ------------------------------------------------------------------//
 		logTitleMessage("Load home page elements");
 		homePage = PageFactory.initElements(driver, HomePage.class);	
-		HomeScreen homeobject = homePage.navigateToHomePage();
+		IntranetHomePage homeobject = homePage.navigateToHomePage();
 		
 		logTitleMessage("Successfully loaded Home Page elements");
 		

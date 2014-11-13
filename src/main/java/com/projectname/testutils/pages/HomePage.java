@@ -1,20 +1,24 @@
-package com.projectname.testutils.pages.genericPages;
+package com.projectname.testutils.pages;
 
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import com.projectname.testutils.pages.projectnamepages.HomeScreen;
+import com.projectname.testutils.pages.IntranetHomePage;
 import com.projectname.testutils.seleniumutils.SeleniumWebDriver;
 
 
 public class HomePage extends SeleniumWebDriver {
-
+	
+	protected By readyLocator = By.linkText("LMS");
+	
 	/***
 	 * Call to super constructor
 	 */
 	public HomePage(WebDriver driver) {
 		super(driver);
+		waitForElement(readyLocator, 2000);
 	}
 
 	public String getLoggedInUserName() {
@@ -29,16 +33,16 @@ public class HomePage extends SeleniumWebDriver {
 
 	
 
-	public LoginPage navigateToLoginPage(){
-		LoginPage createRequestPage = PageFactory.initElements(driver,
-				LoginPage.class);
+	public SharedPage navigateToLoginPage(){
+		SharedPage createRequestPage = PageFactory.initElements(driver,
+				SharedPage.class);
 		return createRequestPage;
 
 	}
 
-	public HomeScreen navigateToHomePage(){
-		HomeScreen createHomePage = PageFactory.initElements(driver,
-				HomeScreen.class);
+	public IntranetHomePage navigateToHomePage(){
+		IntranetHomePage createHomePage = PageFactory.initElements(driver,
+				IntranetHomePage.class);
 		return createHomePage;
 	}
 	

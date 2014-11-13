@@ -1,22 +1,24 @@
-package com.projectname.testutils.pages.genericPages;
+package com.projectname.testutils.pages;
 
 import java.awt.AWTException;
 import java.io.IOException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import com.projectname.testutils.baseclass.TestBaseClass;
 import com.projectname.testutils.genericutility.Config;
 import com.projectname.testutils.genericutility.ExceptionHandler;
-import com.projectname.testutils.seleniumutils.SeleniumWebDriver;
 
-public class LoginPage extends SeleniumWebDriver {
+
+public class SharedPage extends TestBaseClass {
 
 	protected By txtUserName = By.id("edit-name1");
+	protected By readyLocator = By.id("edit-name1");
 	protected By txtPassword = By.id("edit-pass");
 
-	protected By logoutButton = By.linkText("Logout");
-	protected By submitButton = By.id("edit-submit--2");
-	protected By loginButton = By.linkText("Log In");
+	protected By btnLogout = By.linkText("Logout");
+	protected By btnSubmit = By.id("edit-submit--2");
+	protected By btnLogin = By.linkText("Log In");
 	protected By lnkChangePwd = By.linkText("change password");
 	protected By imgLoginPopup = By.id("modal-content");
 	
@@ -24,8 +26,9 @@ public class LoginPage extends SeleniumWebDriver {
 	/***
 	 * Call to super constructor
 	 */
-	public LoginPage(WebDriver driver) {
-		super(driver);
+	public SharedPage(WebDriver driver) {
+		super();
+		waitForElement(readyLocator, 2000);
 	}
 
 	/***
@@ -37,25 +40,23 @@ public class LoginPage extends SeleniumWebDriver {
 	 */
 	
 	public HomePage login(String UserName, String Password){
-			assertTrue(click(loginButton), "Could not click on login  button",driver);
+			click(btnLogin);
 			try {
 				Thread.sleep(5000);
 			} catch (InterruptedException e1) {
 				e1.printStackTrace();
 			}
-			assertTrue(sendKeys(txtUserName,Config.userName),
-					"Could not enter user name",driver);
-			assertTrue(sendKeys(txtPassword, Config.password),
-					"Could not enter password",driver);
+			sendKeys(txtUserName,Config.userName);
+			sendKeys(txtPassword, Config.password);
 	
-			assertTrue(click(submitButton), "Could not click on submit button",driver);
+			click(btnSubmit);
 			try {
 				Thread.sleep(5000);
 			} catch (InterruptedException e) {
 				e.getMessage();
 			}
 			waitForPageToLoad();
-			assertTrue(isTextPresent("LMS"),"Could not Login to the application",driver);
+			isTextPresent("LMS");
 			try {
 				Thread.sleep(5000);
 			} catch (InterruptedException e) {
@@ -65,10 +66,10 @@ public class LoginPage extends SeleniumWebDriver {
 	}
 	
 	public void logOut(){
-		assertTrue(click(lnkUserName), "Could not click on user name  button",driver);
+		click(lnkUserName);
 		waitForPageToLoad();
-		if (waitForElement(logoutButton, 5)) {
-			click(logoutButton);
+		if (waitForElement(btnLogout, 5)) {
+			click(btnLogout);
 			waitForPageToLoad();
 		}
 	}

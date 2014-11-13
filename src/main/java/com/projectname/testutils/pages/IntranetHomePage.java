@@ -1,4 +1,4 @@
-package com.projectname.testutils.pages.projectnamepages;
+package com.projectname.testutils.pages;
 
 import java.awt.AWTException;
 import java.io.IOException;
@@ -8,11 +8,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.projectname.testutils.genericutility.ExceptionHandler;
-import com.projectname.testutils.pages.projectnamepages.HomeScreen;
+import com.projectname.testutils.pages.IntranetHomePage;
 import com.projectname.testutils.seleniumutils.SeleniumWebDriver;
-public class HomeScreen extends SeleniumWebDriver{
+public class IntranetHomePage extends SeleniumWebDriver{
 	
 	protected By lnkIDM = By.linkText("123");
+	protected By readyLocator = By.linkText("Learn Station");
 	protected By lnkLearnStation = By.linkText("Learn Station");
 	protected By lnkLMS = By.linkText("LMS");
 	protected By lnkHelpDesk = By.linkText("Help Desk");
@@ -27,8 +28,9 @@ public class HomeScreen extends SeleniumWebDriver{
 	/***
 	 * Call to super constructor
 	 */
-	public HomeScreen(WebDriver driver) {
+	public IntranetHomePage(WebDriver driver) {
 		super(driver);
+		waitForElement(readyLocator, 2000);
 	}
 	
 
@@ -40,8 +42,8 @@ public class HomeScreen extends SeleniumWebDriver{
 	 * @throws InterruptedException
 	 */
 	public boolean searchbyanyname(HashedMap dashboardLibObj){
-		assertTrue(sendKeys(txtSearchtextbox,dashboardLibObj.get("UserName").toString()),"Could not enter user name",driver);
-		assertTrue(click(btnSearch),"could not press the enter button",driver);
+		sendKeys(txtSearchtextbox,dashboardLibObj.get("UserName").toString());
+		click(btnSearch);
 		return true;
 	}
 	
