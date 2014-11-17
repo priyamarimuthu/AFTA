@@ -13,11 +13,11 @@ import com.projectname.testutils.genericutility.Config;
  * 
  */
 public class RetryRule implements IRetryAnalyzer {
-	private int retryCount;
+	public static int retryCount;
 	private int maxRetry;
 
 	public RetryRule() {
-		this.retryCount = 0;
+		RetryRule.retryCount = 0;
 		this.maxRetry=Config.retryCounter;
 	}
 	

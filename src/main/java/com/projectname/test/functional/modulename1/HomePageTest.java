@@ -14,6 +14,9 @@ import com.projectname.testutils.retryAnalyser.RetryRule;
 @Listeners(com.projectname.testutils.baseclass.CustomizedReporter.class)
 
 public class HomePageTest  extends SharedPage{
+	public HomePageTest() {
+		super(driver);
+	}
 	
 	public HomePageTest(WebDriver driver) {
 		super(driver);

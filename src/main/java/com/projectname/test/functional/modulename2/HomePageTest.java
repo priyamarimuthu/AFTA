@@ -15,6 +15,10 @@ import com.projectname.testutils.retryAnalyser.RetryRule;
 
 public class HomePageTest  extends SharedPage{
 	
+	public HomePageTest(){
+		super();
+	
+	}
 	public HomePageTest(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub

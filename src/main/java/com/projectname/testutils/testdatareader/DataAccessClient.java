@@ -10,6 +10,9 @@ public class DataAccessClient extends DataAccessBase {
 	private String userName;
 	private String passWord;
 
+	public DataAccessClient(){
+		super();
+	}
 	public DataAccessClient(String dbDriver, String dbUrl, String userName, String password) throws SQLException {
 		try {
 			this.dbDriver = dbDriver;

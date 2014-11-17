@@ -64,7 +64,9 @@ public class SearchByAnyName extends SharedPage{
 		// ------------------------------------------------------------------//
 		// Step-3:Search by name //
 		// ------------------------------------------------------------------//
-		Assert.assertTrue(homeobject.searchbyanyname(testData.get(0)));
+		for(int i=0;i<testData.size();i++){
+			Assert.assertTrue(homeobject.searchbyanyname(testData.get(i)));
+		}
 		
 		// ------------------------------------------------------------------//
 		// Step-4:Verify Search Screen page //

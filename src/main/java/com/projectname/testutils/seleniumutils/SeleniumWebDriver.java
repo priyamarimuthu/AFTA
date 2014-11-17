@@ -43,6 +43,9 @@ public class SeleniumWebDriver {
 	//Time to wait for page to load
 	private int secondsToWait = 20;
 	
+	public SeleniumWebDriver() {
+		//SeleniumWebDriver.driver = driver;
+	}
 	public SeleniumWebDriver(WebDriver driver) {
 		SeleniumWebDriver.driver = driver;
 	}

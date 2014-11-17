@@ -26,9 +26,12 @@ public class SharedPage extends TestBaseClass {
 	/***
 	 * Call to super constructor
 	 */
-	public SharedPage(WebDriver driver) {
+	public SharedPage() {
 		super();
-		waitForElement(readyLocator, 2000);
+	}
+	public SharedPage(WebDriver driver) {
+		super(driver);
+		//waitForElement(readyLocator, 2000);
 	}
 
 	/***
@@ -41,27 +44,15 @@ public class SharedPage extends TestBaseClass {
 	
 	public HomePage login(String UserName, String Password){
 			click(btnLogin);
-			try {
-				Thread.sleep(5000);
-			} catch (InterruptedException e1) {
-				e1.printStackTrace();
-			}
+			waitForPageToLoad();
 			sendKeys(txtUserName,Config.userName);
 			sendKeys(txtPassword, Config.password);
 	
 			click(btnSubmit);
-			try {
-				Thread.sleep(5000);
-			} catch (InterruptedException e) {
-				e.getMessage();
-			}
+			waitForPageToLoad();
 			waitForPageToLoad();
 			isTextPresent("LMS");
-			try {
-				Thread.sleep(5000);
-			} catch (InterruptedException e) {
-				e.getMessage();
-			}
+			waitForPageToLoad();
 		return new HomePage(driver);
 	}
 	

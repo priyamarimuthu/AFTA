@@ -111,6 +111,10 @@ public class TestBaseClass extends SeleniumWebDriver{
 	 * @throws IOException
 	 */
 	public TestBaseClass() {
+		super();
+		
+	}
+	public TestBaseClass(WebDriver driver) {
 		super(driver);
 		// Getting the properties
 		try {
