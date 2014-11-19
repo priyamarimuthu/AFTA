@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import org.apache.commons.collections.map.HashedMap;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.LoadableComponent;
 

@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import org.openqa.selenium.WebDriver;
+
 
 public class DataAccessClient extends DataAccessBase {
 	private String dbDriver;

@@ -3,11 +3,11 @@ package com.projectname.testutils.pages;
 import java.awt.AWTException;
 import java.io.IOException;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.LoadableComponent;
 
-import com.projectname.testutils.baseclass.TestBaseClass;
+
 import com.projectname.testutils.genericutility.Config;
 import com.projectname.testutils.genericutility.ExceptionHandler;
 import com.projectname.testutils.seleniumutils.SeleniumWebDriver;

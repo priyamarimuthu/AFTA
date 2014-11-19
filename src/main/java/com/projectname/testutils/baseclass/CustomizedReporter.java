@@ -417,7 +417,7 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
         //Iterating over each suite included in the test
         for ( ISuite suite : suites ) {
             //Following code gets the suite name
-            //String suiteName = suite.getName();
+           
             //Getting the results for the said suite
             Map<String,ISuiteResult> suiteResults = suite.getResults();
             for (ISuiteResult sr : suiteResults.values() ) {

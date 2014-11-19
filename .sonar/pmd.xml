@@ -135,11 +135,8 @@
   <rule ref="rulesets/codesize.xml/NcssMethodCount">
     <priority>3</priority>
     <properties>
-      <property name="minimum" value="50" />
+      <property name="minimum" value="100" />
     </properties>
-  </rule>
-  <rule ref="rulesets/logging-java.xml/AvoidPrintStackTrace">
-    <priority>3</priority>
   </rule>
   <rule ref="rulesets/naming.xml/MethodWithSameNameAsEnclosingClass">
     <priority>3</priority>
@@ -180,9 +177,6 @@
   <rule ref="rulesets/basic.xml/AvoidDecimalLiteralsInBigDecimalConstructor">
     <priority>3</priority>
   </rule>
-  <rule ref="rulesets/strictexception.xml/SignatureDeclareThrowsException">
-    <priority>3</priority>
-  </rule>
   <rule ref="rulesets/finalizers.xml/EmptyFinalizer">
     <priority>3</priority>
   </rule>
@@ -201,14 +195,8 @@
   <rule ref="rulesets/migrating.xml/AvoidEnumAsIdentifier">
     <priority>3</priority>
   </rule>
-  <rule ref="rulesets/logging-java.xml/SystemPrintln">
-    <priority>3</priority>
-  </rule>
   <rule ref="rulesets/strings.xml/UselessStringValueOf">
     <priority>4</priority>
-  </rule>
-  <rule ref="rulesets/strings.xml/AvoidDuplicateLiterals">
-    <priority>3</priority>
   </rule>
 </ruleset>
 

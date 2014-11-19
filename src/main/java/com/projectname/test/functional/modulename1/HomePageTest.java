@@ -1,15 +1,12 @@
 package com.projectname.test.functional.modulename1;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
+
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.projectname.functional.annotations.MapToTestLink;
 import com.projectname.testutils.baseclass.TestBaseClass;
-import com.projectname.testutils.pages.HomePage;
 import com.projectname.testutils.pages.IntranetHomePage;
-import com.projectname.testutils.pages.SharedPage;
 import com.projectname.testutils.retryAnalyser.RetryRule;
 
 @Listeners(com.projectname.testutils.baseclass.CustomizedReporter.class)
@@ -38,7 +35,7 @@ public class HomePageTest  extends TestBaseClass{
 		// Step-2:Load Home Page Variable //
 		// ------------------------------------------------------------------//
 		logTitleMessage("Load home page elements");
-		//homePage = PageFactory.initElements(driver, HomePage.class);	
+			
 		IntranetHomePage homeobject = homePage.navigateToHomePage();
 		
 		logTitleMessage("Successfully loaded Home Page elements");

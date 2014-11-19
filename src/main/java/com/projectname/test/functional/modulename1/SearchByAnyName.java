@@ -5,17 +5,16 @@ import java.util.ArrayList;
 
 import org.apache.commons.collections.map.HashedMap;
 import org.junit.Assert;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
+
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.projectname.functional.annotations.MapToTestLink;
 import com.projectname.testutils.baseclass.TestBaseClass;
-import com.projectname.testutils.pages.HomePage;
+
 import com.projectname.testutils.pages.SearchPage;
 import com.projectname.testutils.pages.IntranetHomePage;
-import com.projectname.testutils.pages.SharedPage;
+
 import com.projectname.testutils.retryAnalyser.RetryRule;
 import com.projectname.testutils.testdatareader.ExcelReader;
 

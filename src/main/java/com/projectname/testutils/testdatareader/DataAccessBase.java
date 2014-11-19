@@ -7,8 +7,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Random;
 
-import org.openqa.selenium.WebDriver;
-
 import com.projectname.testutils.baseclass.TestBaseClass;
 
 public abstract class DataAccessBase extends TestBaseClass implements DatabaseReader {

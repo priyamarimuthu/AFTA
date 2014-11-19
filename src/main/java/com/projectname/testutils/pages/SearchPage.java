@@ -2,11 +2,11 @@ package com.projectname.testutils.pages;
 
 import org.openqa.selenium.By;
 import com.projectname.testutils.seleniumutils.SeleniumWebDriver;
-import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.LoadableComponent;
 
-import com.projectname.testutils.seleniumutils.SeleniumWebDriver;
+
 
 public class SearchPage extends LoadableComponent<SearchPage>{
 
