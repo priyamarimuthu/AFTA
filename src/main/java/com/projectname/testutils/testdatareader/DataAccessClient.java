@@ -4,15 +4,15 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import org.openqa.selenium.WebDriver;
+
 public class DataAccessClient extends DataAccessBase {
 	private String dbDriver;
 	private String dbUrl;
 	private String userName;
 	private String passWord;
 
-	public DataAccessClient(){
-		super();
-	}
+	
 	public DataAccessClient(String dbDriver, String dbUrl, String userName, String password) throws SQLException {
 		try {
 			this.dbDriver = dbDriver;

@@ -11,6 +11,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.projectname.functional.annotations.MapToTestLink;
+import com.projectname.testutils.baseclass.TestBaseClass;
 import com.projectname.testutils.pages.HomePage;
 import com.projectname.testutils.pages.SearchPage;
 import com.projectname.testutils.pages.IntranetHomePage;
@@ -20,12 +21,9 @@ import com.projectname.testutils.testdatareader.ExcelReader;
 
 @Listeners(com.projectname.testutils.baseclass.CustomizedReporter.class)
 
-public class SearchByAnyName extends SharedPage{
+public class SearchByAnyName extends TestBaseClass{
 
-	public SearchByAnyName(WebDriver driver) {
-		super(driver);
-		// TODO Auto-generated constructor stub
-	}
+	
 
 	/*************************************************************************************************** 
 	 * @purpose To verify search function
@@ -55,23 +53,23 @@ public class SearchByAnyName extends SharedPage{
 		// ------------------------------------------------------------------//
 		// Step-2: Load Home page elements //
 		// ------------------------------------------------------------------//
-		homePage = PageFactory.initElements(driver, HomePage.class);	
 		IntranetHomePage homeobject = homePage.navigateToHomePage();
-		
-		SearchPage searchobject = homePage.navigateToSearchPage();
 		log.info("Successfully loaded Home Page elements");
 		
 		// ------------------------------------------------------------------//
 		// Step-3:Search by name //
 		// ------------------------------------------------------------------//
 		for(int i=0;i<testData.size();i++){
-			Assert.assertTrue(homeobject.searchbyanyname(testData.get(i)));
+			log.info("Searching for: - "+testData.get(i).get("UserName"));
+			Assert.assertTrue("Could not find the Name: "+testData.get(i).get("UserName"),homeobject.searchbyanyname(testData.get(i)));
+			log.info("Successfully got: - "+testData.get(i).get("UserName"));
 		}
 		
 		
 		// ------------------------------------------------------------------//
 		// Step-4:Verify Search Screen page //
 		// ------------------------------------------------------------------//
+		SearchPage searchobject = homePage.navigateToSearchPage();
 		Assert.assertTrue(searchobject.searchPage());
 			
 	}

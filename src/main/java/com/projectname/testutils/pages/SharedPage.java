@@ -4,16 +4,19 @@ import java.awt.AWTException;
 import java.io.IOException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.LoadableComponent;
 
 import com.projectname.testutils.baseclass.TestBaseClass;
 import com.projectname.testutils.genericutility.Config;
 import com.projectname.testutils.genericutility.ExceptionHandler;
+import com.projectname.testutils.seleniumutils.SeleniumWebDriver;
 
 
-public class SharedPage extends TestBaseClass {
+public class SharedPage extends LoadableComponent<SharedPage>{
 
-	protected By txtUserName = By.id("edit-name1");
-	protected By readyLocator = By.id("edit-name1");
+	protected By txtUserName = By.id("edit-name");
+	protected By readyLocator = By.id("searchtextbox");
 	protected By txtPassword = By.id("edit-pass");
 
 	protected By btnLogout = By.linkText("Logout");
@@ -26,12 +29,8 @@ public class SharedPage extends TestBaseClass {
 	/***
 	 * Call to super constructor
 	 */
-	public SharedPage() {
-		super();
-	}
-	public SharedPage(WebDriver driver) {
-		super(driver);
-		//waitForElement(readyLocator, 2000);
+	public SharedPage(){
+		PageFactory.initElements(SeleniumWebDriver.driver, this);
 	}
 
 	/***
@@ -43,26 +42,39 @@ public class SharedPage extends TestBaseClass {
 	 */
 	
 	public HomePage login(String UserName, String Password){
-			click(btnLogin);
-			waitForPageToLoad();
-			sendKeys(txtUserName,Config.userName);
-			sendKeys(txtPassword, Config.password);
+		SeleniumWebDriver.click(btnLogin);
+		SeleniumWebDriver.waitForPageToLoad();
+		SeleniumWebDriver.sendKeys(txtUserName,Config.userName);
+		SeleniumWebDriver.sendKeys(txtPassword, Config.password);
 	
-			click(btnSubmit);
-			waitForPageToLoad();
-			waitForPageToLoad();
-			isTextPresent("LMS");
-			waitForPageToLoad();
-		return new HomePage(driver);
+		SeleniumWebDriver.click(btnSubmit);
+		SeleniumWebDriver.waitForPageToLoad();
+		SeleniumWebDriver.waitForPageToLoad();
+		SeleniumWebDriver.isTextPresent("LMS");
+		SeleniumWebDriver.waitForPageToLoad();
+		return new HomePage().get();
 	}
 	
 	public void logOut(){
-		click(lnkUserName);
-		waitForPageToLoad();
-		if (waitForElement(btnLogout, 5)) {
-			click(btnLogout);
-			waitForPageToLoad();
+		SeleniumWebDriver.click(lnkUserName);
+		SeleniumWebDriver.waitForPageToLoad();
+		if (SeleniumWebDriver.waitForElement(btnLogout, 5)) {
+			SeleniumWebDriver.click(btnLogout);
+			SeleniumWebDriver.waitForPageToLoad();
 		}
+	}
+
+	@Override
+	protected void load() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void isLoaded() throws Error {
+		// TODO Auto-generated method stub
+		SeleniumWebDriver.isElementPresent(readyLocator);
+		
 	}
 
 }

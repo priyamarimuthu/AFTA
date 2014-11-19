@@ -423,15 +423,13 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
             for (ISuiteResult sr : suiteResults.values() ) {
                 ITestContext tc = sr.getTestContext();
                 
-               
+                totalMethods = totalMethods + tc.getAllTestMethods().length;
                  
                 totalPassedMethods = totalPassedMethods + tc.getPassedTests().getAllResults().size();
                 
-                totalFailedMethods = totalFailedMethods + tc.getFailedTests().getAllResults().size();
-                
                 totalSkippedMethods = totalSkippedMethods + tc.getSkippedTests().getAllResults().size();
                 
-                totalMethods = totalPassedMethods + totalFailedMethods + totalSkippedMethods;
+                totalFailedMethods = totalPassedMethods - (totalPassedMethods + totalSkippedMethods);
                 
             }
         }

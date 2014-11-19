@@ -46,7 +46,7 @@ import com.projectname.testutils.testlink.xmlrpcclient.TestLinkAPIClient;
 import com.projectname.testutils.testlink.xmlrpcclient.TestLinkAPIException;
 import com.projectname.testutils.testlink.xmlrpcclient.TestLinkAPIResults;
 
-public class TestBaseClass extends SeleniumWebDriver{
+public class TestBaseClass{
 
 	/**
 	 * This page object is initialized before the start of every test.
@@ -110,12 +110,8 @@ public class TestBaseClass extends SeleniumWebDriver{
 	 * Displaying the environment details
 	 * @throws IOException
 	 */
+	
 	public TestBaseClass() {
-		super();
-		
-	}
-	public TestBaseClass(WebDriver driver) {
-		super(driver);
 		// Getting the properties
 		try {
 			PropertyConfigurator.configure(new File(".").getCanonicalPath()
@@ -135,6 +131,7 @@ public class TestBaseClass extends SeleniumWebDriver{
 			// Instantiating logger
 			logFile = new File(".").getCanonicalPath() + File.separator
 					+ "test-output" + File.separator + "temp.log";
+			
 
 		} catch (IOException e) {
 			e.getMessage();
@@ -152,10 +149,10 @@ public class TestBaseClass extends SeleniumWebDriver{
 	 */
 	protected HomePage loginUser(){
 		// Intializing the objects
-		SharedPage sharedPage = PageFactory.initElements(driver, SharedPage.class);
-		homePage = PageFactory.initElements(driver, HomePage.class);
+		SharedPage sharedPage = new SharedPage().get();
+//		homePage = PageFactory.initElements(driver, HomePage.class);
 
-		// Get the user name from home page
+				// Get the user name from home page
 		String user = environmentPropertiesReader.getAccMgrUsername();
 
 		homePage = sharedPage.login(user,
@@ -193,6 +190,7 @@ public class TestBaseClass extends SeleniumWebDriver{
 		// Instantiating Logger
 		
 		driver = loadURL();
+		SeleniumWebDriver.driver=driver;
 		Layout layout = new PatternLayout(
 				"%d{dd-MMM-yyyy HH:mm:ss:SSS} %-5p %c{1}:%L - %m%n");
 		log.removeAllAppenders();

@@ -35,21 +35,14 @@ public class SeleniumWebDriver {
 	/**
 	 * Creating the web driver object to be used
 	*/
-	protected static WebDriver driver;
-	WebDriverWait wait;
-	private String returnString="";
-	private Boolean result = true;
+	public static WebDriver driver;
+	static WebDriverWait wait;
+	private static String returnString="";
+	private static Boolean result = true;
 		
 	//Time to wait for page to load
-	private int secondsToWait = 20;
+	private static int secondsToWait = 20;
 	
-	public SeleniumWebDriver() {
-		//SeleniumWebDriver.driver = driver;
-	}
-	public SeleniumWebDriver(WebDriver driver) {
-		SeleniumWebDriver.driver = driver;
-	}
-
 	/**
 	 * Verify the presence of a text in the page.
 	 * @param driver
@@ -57,7 +50,7 @@ public class SeleniumWebDriver {
 	 * @return true/false
 	 * @throws IOException 
 	 */
-	public boolean isTextPresent(String text){
+	public static boolean isTextPresent(String text){
 		try {
 			result= driver.getPageSource().contains(text);
 			status = "Pass";
@@ -78,7 +71,7 @@ public class SeleniumWebDriver {
 	 * @return true/false
 	 * @throws IOException 
 	 */
-	public boolean isElementPresent(By element){
+	public static boolean isElementPresent(By element){
 		boolean exists = true;
 		try {
 			exists = driver.findElement(element).isDisplayed();
@@ -97,7 +90,7 @@ public class SeleniumWebDriver {
 	/**
 	 * Wait for page to load
 	 */
-	public void causeMinorTimeDelay() {
+	public static void causeMinorTimeDelay() {
 		driver.manage().timeouts()
 				.implicitlyWait(Config.DELAY_TIME, TimeUnit.SECONDS);
 	}
@@ -105,7 +98,7 @@ public class SeleniumWebDriver {
 	/**
 	 * Wait for page to load
 	 */
-	public void causeTimeDelay() {
+	public static void causeTimeDelay() {
 		try {
 			int counter = 0;
 			Thread.sleep(2000);
@@ -136,7 +129,7 @@ public class SeleniumWebDriver {
 		return ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 	}
 
-	public boolean waitForElement(final By ajaxElementName, int timeOutValue){
+	public static boolean waitForElement(final By ajaxElementName, int timeOutValue){
 		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 		wait = new WebDriverWait(driver, timeOutValue);
 		try {
@@ -166,7 +159,7 @@ public class SeleniumWebDriver {
 	 * @return
 	 */
 	
-	public void waitForElementToLoad(Selenium selenium, String elementId)
+	public static void waitForElementToLoad(Selenium selenium, String elementId)
 			throws InterruptedException {
 		int i = 0;
 		while (!selenium.isElementPresent(elementId)) {
@@ -186,7 +179,7 @@ public class SeleniumWebDriver {
 	 * @return
 	 */
 
-	public boolean sendKeys(By elementLocator, String value) {
+	public static boolean sendKeys(By elementLocator, String value) {
 		try {
 			driver.manage().timeouts().implicitlyWait(45, TimeUnit.SECONDS);
 			driver.findElement(elementLocator).clear();
@@ -210,7 +203,7 @@ public class SeleniumWebDriver {
 	 * @return
 	 */
 	
-	public boolean click(final By ajaxElementName){
+	public static boolean click(final By ajaxElementName){
 		try {
 			waitForElement(ajaxElementName, Config.AVG_WAIT_TIME_FOR_ELEMENT);
 			if (driver.findElement(ajaxElementName).isDisplayed()
@@ -240,7 +233,7 @@ public class SeleniumWebDriver {
 	 * @since March 04, 2013
 	 */
 	
-	public boolean isChecked(final By ajaxCheckboxName){
+	public static boolean isChecked(final By ajaxCheckboxName){
 		try{
 			if (waitForElement(ajaxCheckboxName,
 					Config.AVG_WAIT_TIME_FOR_ELEMENT)) {
@@ -278,7 +271,7 @@ public class SeleniumWebDriver {
 	 * @return
 	 */
 	
-	public void waitForPageToLoad() {
+	public static void waitForPageToLoad() {
 		try {
 			int counter = 0;
 			
@@ -317,7 +310,7 @@ public class SeleniumWebDriver {
 	 * @return
 	 */
 	
-	public void mouseOver(WebElement element){
+	public static void mouseOver(WebElement element){
 		try {
 			String code = "var fireOnThis = arguments[0];"
 					+ "var evObj = document.createEvent('MouseEvents');"
@@ -340,7 +333,7 @@ public class SeleniumWebDriver {
 	 * @param driver
 	 * @return
 	 */
-	public boolean select(By listName, String valueForSelection){
+	public static boolean select(By listName, String valueForSelection){
 		valueForSelection = valueForSelection != null ? valueForSelection
 				.trim() : "";
 		try {
@@ -371,7 +364,7 @@ public class SeleniumWebDriver {
 	 * @return
 	 */
 	
-	public String getText(By elementName, int wait) throws ExceptionHandler, IOException {
+	public static String getText(By elementName, int wait) throws ExceptionHandler, IOException {
 
 		try {
 			if (waitForElement(elementName, wait)) {
@@ -394,7 +387,7 @@ public class SeleniumWebDriver {
 	 * @param driver
 	 * @return
 	 */
-	public String getValue(By elementName){
+	public static String getValue(By elementName){
 
 		try {
 			if (waitForElement(elementName, Config.AVG_WAIT_TIME_FOR_ELEMENT)) {
@@ -419,7 +412,7 @@ public class SeleniumWebDriver {
 	 * @param condition the condition to evaluate
 	 * @param message the assertion error message
 	 */
-		 public void assertTrue(boolean condition, String message, WebDriver driver) {
+		 public static void assertTrue(boolean condition, String message, WebDriver driver) {
 		    if(!condition) {
   	
 			    File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
@@ -462,7 +455,7 @@ public class SeleniumWebDriver {
 	   * @param condition the condition to evaluate
 	   * @param message the assertion error message
 	   */
-		 public void verifyTrue(boolean condition, String message, WebDriver driver) {
+		 public static void verifyTrue(boolean condition, String message, WebDriver driver) {
 		    if(!condition) {
 			    	
 		    	File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
@@ -482,15 +475,15 @@ public class SeleniumWebDriver {
 	// Customized Verify block Ends
 	
 	//Report Part
-	private final String deliminator = "####";
-	private final String empty = "";
+	private static final String deliminator = "####";
+	private static final String empty = "";
 	
-	private final String dot = ".";	
+	private static final String dot = ".";	
 	
-	private String status = null;
+	private static String status = null;
 	
 
-	private ITestResult logCustomMessage() {
+	private static ITestResult logCustomMessage() {
 		return Reporter.getCurrentTestResult();
 	}
 	
@@ -498,7 +491,7 @@ public class SeleniumWebDriver {
 	 * used for get the calling method name with line number
 	 * @return
 	 */
-	private String getCallingMethodAndLineNumber(){
+	private static String getCallingMethodAndLineNumber(){
 		StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
 		
 		String callingMethodWithLineNumber = stackTraceElements[3].getClassName() + dot + stackTraceElements[3].getMethodName() + dot + stackTraceElements[3].getLineNumber() ;
@@ -529,7 +522,7 @@ public class SeleniumWebDriver {
 	 * @param callingMethodAndLineNumber
 	 * @return
 	 */
-	private String getCustomAttributeValue(String operation,String elementLocator1, String optional,String status, String screenShot, String callingMethodAndLineNumber){
+	private static String getCustomAttributeValue(String operation,String elementLocator1, String optional,String status, String screenShot, String callingMethodAndLineNumber){
 		
 		return operation + deliminator + elementLocator1 + deliminator + optional + deliminator + status + deliminator + screenShot + deliminator + callingMethodAndLineNumber;
 		
@@ -542,7 +535,7 @@ public class SeleniumWebDriver {
 	 * used for get the current method name
 	 * @return
 	 */
-	private String getCurrentMethodName(){
+	private static String getCurrentMethodName(){
 		StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
 		
 		String currentMethodName = stackTraceElements[2].getMethodName();

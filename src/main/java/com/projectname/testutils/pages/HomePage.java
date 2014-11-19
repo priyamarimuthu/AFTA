@@ -4,21 +4,21 @@ package com.projectname.testutils.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.LoadableComponent;
 
 import com.projectname.testutils.pages.IntranetHomePage;
 import com.projectname.testutils.seleniumutils.SeleniumWebDriver;
 
 
-public class HomePage extends SeleniumWebDriver {
+public class HomePage extends LoadableComponent<HomePage>{
 	
-	protected By readyLocator = By.linkText("LMS");
+	protected By readyLocator = By.linkText("IDM/PMS");
 	
 	/***
 	 * Call to super constructor
 	 */
-	public HomePage(WebDriver driver) {
-		super(driver);
-		waitForElement(readyLocator, 2000);
+	public HomePage(){
+		PageFactory.initElements(SeleniumWebDriver.driver, this);	
 	}
 
 	public String getLoggedInUserName() {
@@ -34,22 +34,31 @@ public class HomePage extends SeleniumWebDriver {
 	
 
 	public SharedPage navigateToLoginPage(){
-		SharedPage createRequestPage = PageFactory.initElements(driver,
-				SharedPage.class);
+		SharedPage createRequestPage = new SharedPage().get();
 		return createRequestPage;
 
 	}
 
 	public IntranetHomePage navigateToHomePage(){
-		IntranetHomePage createHomePage = PageFactory.initElements(driver,
-				IntranetHomePage.class);
+		IntranetHomePage createHomePage = new IntranetHomePage().get();
 		return createHomePage;
 	}
 	
 	public SearchPage navigateToSearchPage(){
-		SearchPage searchPage = PageFactory.initElements(driver,
-				SearchPage.class);
+		SearchPage searchPage = new	SearchPage().get();
 		return searchPage;
+	}
+
+	@Override
+	protected void load() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void isLoaded() throws Error {
+		// TODO Auto-generated method stub
+		SeleniumWebDriver.isElementPresent(readyLocator);
 	}
 
 }

@@ -6,6 +6,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.projectname.functional.annotations.MapToTestLink;
+import com.projectname.testutils.baseclass.TestBaseClass;
 import com.projectname.testutils.pages.HomePage;
 import com.projectname.testutils.pages.IntranetHomePage;
 import com.projectname.testutils.pages.SharedPage;
@@ -13,15 +14,8 @@ import com.projectname.testutils.retryAnalyser.RetryRule;
 
 @Listeners(com.projectname.testutils.baseclass.CustomizedReporter.class)
 
-public class HomePageTest  extends SharedPage{
-	public HomePageTest() {
-		super(driver);
-	}
-	
-	public HomePageTest(WebDriver driver) {
-		super(driver);
-		// TODO Auto-generated constructor stub
-	}
+public class HomePageTest  extends TestBaseClass{
+		
 
 	/*************************************************************************************************** 
 	 * @purpose To verify home page elements
@@ -44,7 +38,7 @@ public class HomePageTest  extends SharedPage{
 		// Step-2:Load Home Page Variable //
 		// ------------------------------------------------------------------//
 		logTitleMessage("Load home page elements");
-		homePage = PageFactory.initElements(driver, HomePage.class);	
+		//homePage = PageFactory.initElements(driver, HomePage.class);	
 		IntranetHomePage homeobject = homePage.navigateToHomePage();
 		
 		logTitleMessage("Successfully loaded Home Page elements");

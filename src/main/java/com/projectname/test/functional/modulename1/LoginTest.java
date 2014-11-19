@@ -5,18 +5,15 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.projectname.functional.annotations.MapToTestLink;
+import com.projectname.testutils.baseclass.TestBaseClass;
 import com.projectname.testutils.pages.SharedPage;
 import com.projectname.testutils.retryAnalyser.RetryRule;
 
 @Listeners(com.projectname.testutils.baseclass.CustomizedReporter.class)
 
-public class LoginTest extends SharedPage {
+public class LoginTest extends TestBaseClass {
 	
-	public LoginTest(WebDriver driver) {
-		super(driver);
-		// TODO Auto-generated constructor stub
-	}
-
+	
 	/*************************************************************************************************** 
 	 * @purpose To verify login
  	 * @action Enter the credentials and click on submit button
