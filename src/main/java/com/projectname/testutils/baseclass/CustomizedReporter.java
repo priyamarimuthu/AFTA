@@ -429,7 +429,7 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
                 
                 totalSkippedMethods = totalSkippedMethods + tc.getSkippedTests().getAllResults().size();
                 
-                totalFailedMethods = totalPassedMethods - (totalPassedMethods + totalSkippedMethods);
+                totalFailedMethods = totalMethods - (totalPassedMethods + totalSkippedMethods);
                 
             }
         }
