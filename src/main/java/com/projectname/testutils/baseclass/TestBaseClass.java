@@ -20,7 +20,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
-
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -37,7 +37,7 @@ import com.projectname.testutils.genericutility.Config;
 import com.projectname.testutils.genericutility.DateTimeUtility;
 import com.projectname.testutils.genericutility.ExceptionHandler;
 import com.projectname.testutils.genericutility.FileUtility;
-import com.projectname.testutils.pages.HomePage;
+import com.projectname.testutils.pages.LoginPage;
 import com.projectname.testutils.pages.SharedPage;
 import com.projectname.testutils.seleniumutils.SeleniumWebDriver;
 import com.projectname.testutils.testdatareader.DataAccessClient;
@@ -51,7 +51,7 @@ public class TestBaseClass{
 	/**
 	 * This page object is initialized before the start of every test.
 	 */
-	protected HomePage homePage;
+	protected LoginPage loginPage;
 
 	/**
 	 * For Core Selenium2 functionality
@@ -136,30 +136,6 @@ public class TestBaseClass{
 		} catch (IOException e) {
 			e.getMessage();
 		}
-	}
-
-	/**
-	 * Log in to the application using the user name and password
-	 * properties file
-	 * @return homePage
-	 * @throws ClassNotFoundException
-	 * @throws ExceptionHandler
-	 * @throws AWTException
-	 * @throws InterruptedException
-	 */
-	protected HomePage loginUser(){
-		// Intializing the objects
-		SharedPage sharedPage = new SharedPage().get();
-//		homePage = PageFactory.initElements(driver, HomePage.class);
-
-				// Get the user name from home page
-		String user = environmentPropertiesReader.getAccMgrUsername();
-
-		homePage = sharedPage.login(user,
-				environmentPropertiesReader.getPassword());
-		log.info("Logged into the application as - "
-				+user);
-		return homePage;
 	}
 
 	/**

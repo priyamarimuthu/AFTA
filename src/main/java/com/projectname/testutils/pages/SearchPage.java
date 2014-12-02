@@ -2,13 +2,13 @@ package com.projectname.testutils.pages;
 
 import org.openqa.selenium.By;
 import com.projectname.testutils.seleniumutils.SeleniumWebDriver;
-
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.LoadableComponent;
 
+import com.projectname.testutils.seleniumutils.SeleniumWebDriver;
 
-
-public class SearchPage extends LoadableComponent<SearchPage>{
+public class SearchPage extends SeleniumWebDriver{
 
 	protected By lnkHome = By.linkText("Home");
 	protected By readyLocator= By.linkText("Home");
@@ -23,34 +23,22 @@ public class SearchPage extends LoadableComponent<SearchPage>{
 	 */
 	public SearchPage() {
 		PageFactory.initElements(SeleniumWebDriver.driver, this);
+		isElementPresent(readyLocator);
 	}
 	
-	public boolean searchPage(){
-		if(!SeleniumWebDriver.isElementPresent(lnkHome)){
+	public boolean verifySearchPage(){
+		if(!isElementPresent(lnkHome)){
 			return false;
 		}
-		if(!SeleniumWebDriver.isElementPresent(lnkAnnouncement)){
+		if(!isElementPresent(lnkAnnouncement)){
 			return false;
 		}
-		if(!SeleniumWebDriver.isElementPresent(lnkCelebrations)){
+		if(!isElementPresent(lnkCelebrations)){
 			return false;
 		}
-		if(!SeleniumWebDriver.isElementPresent(lnkClassifields)){
+		if(!isElementPresent(lnkClassifields)){
 			return false;
 		}
 		return true;
-	}
-
-	@Override
-	protected void load() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected void isLoaded() throws Error {
-		// TODO Auto-generated method stub
-		SeleniumWebDriver.isElementPresent(readyLocator);
-		
 	}
 }

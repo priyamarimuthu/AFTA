@@ -412,7 +412,7 @@ public class SeleniumWebDriver {
 	 * @param condition the condition to evaluate
 	 * @param message the assertion error message
 	 */
-		 public static void assertTrue(boolean condition, String message, WebDriver driver) {
+		 public void assertTrue(boolean condition, String message, WebDriver driver) {
 		    if(!condition) {
   	
 			    File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);

@@ -2,79 +2,64 @@ package com.projectname.testutils.pages;
 
 import java.awt.AWTException;
 import java.io.IOException;
-import org.openqa.selenium.By;
 
+import org.apache.commons.collections.map.HashedMap;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.LoadableComponent;
 
-
+import com.projectname.testutils.baseclass.TestBaseClass;
 import com.projectname.testutils.genericutility.Config;
 import com.projectname.testutils.genericutility.ExceptionHandler;
 import com.projectname.testutils.seleniumutils.SeleniumWebDriver;
 
 
-public class SharedPage extends LoadableComponent<SharedPage>{
+public class SharedPage extends SeleniumWebDriver{
 
-	protected By txtUserName = By.id("edit-name");
+	
 	protected By readyLocator = By.id("searchtextbox");
-	protected By txtPassword = By.id("edit-pass");
+
 
 	protected By btnLogout = By.linkText("Logout");
-	protected By btnSubmit = By.id("edit-submit--2");
+
 	protected By btnLogin = By.linkText("Log In");
 	protected By lnkChangePwd = By.linkText("change password");
 	protected By imgLoginPopup = By.id("modal-content");
 	
 	protected By lnkUserName = By.cssSelector("css=span.user_name");
+	protected By lnkTrainingSystem = By.linkText("Training System");
+	protected By txtSearchtextbox = By.id("searchtextbox");
+	protected By btnSearch = By.id("searchbtn");
 	/***
 	 * Call to super constructor
 	 */
 	public SharedPage(){
 		PageFactory.initElements(SeleniumWebDriver.driver, this);
+		isElementPresent(readyLocator);
 	}
 
+	
+	public void logOut(){
+		click(lnkUserName);
+		waitForPageToLoad();
+		if (waitForElement(btnLogout, 5)) {
+			click(btnLogout);
+			waitForPageToLoad();
+		}
+	}
 	/***
-	 * Login to the application
+	 * Search by any name to the Home screen
 	 * @throws ExceptionHandler
 	 * @throws IOException 
 	 * @throws AWTException
 	 * @throws InterruptedException
 	 */
-	
-	public HomePage login(String UserName, String Password){
-		SeleniumWebDriver.click(btnLogin);
-		SeleniumWebDriver.waitForPageToLoad();
-		SeleniumWebDriver.sendKeys(txtUserName,Config.userName);
-		SeleniumWebDriver.sendKeys(txtPassword, Config.password);
-	
-		SeleniumWebDriver.click(btnSubmit);
-		SeleniumWebDriver.waitForPageToLoad();
-		SeleniumWebDriver.waitForPageToLoad();
-		SeleniumWebDriver.isTextPresent("LMS");
-		SeleniumWebDriver.waitForPageToLoad();
-		return new HomePage().get();
-	}
-	
-	public void logOut(){
-		SeleniumWebDriver.click(lnkUserName);
-		SeleniumWebDriver.waitForPageToLoad();
-		if (SeleniumWebDriver.waitForElement(btnLogout, 5)) {
-			SeleniumWebDriver.click(btnLogout);
-			SeleniumWebDriver.waitForPageToLoad();
-		}
-	}
-
-	@Override
-	protected void load() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected void isLoaded() throws Error {
-		// TODO Auto-generated method stub
-		SeleniumWebDriver.isElementPresent(readyLocator);
-		
+	public SearchPage searchbyanyname(HashedMap dashboardLibObj){
+		sendKeys(txtSearchtextbox,dashboardLibObj.get("UserName").toString());
+		click(btnSearch);
+		waitForPageToLoad();
+		return new SearchPage();
 	}
 
 }
