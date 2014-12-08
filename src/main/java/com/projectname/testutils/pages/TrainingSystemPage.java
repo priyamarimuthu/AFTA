@@ -40,26 +40,69 @@ public class TrainingSystemPage extends SeleniumWebDriver{
 
 	public boolean verifyTrainingSystemPage(){
 		boolean returnValue=true;
-		if(!SeleniumWebDriver.isElementPresent(lnktrainingHours)){
+		if(!verifyTrainingHours()){
 			returnValue=true;
 		}
-		if(!SeleniumWebDriver.isElementPresent(lnktrainingHoursReport)){
+		if(!verifyTrainingHoursReport()){
 			returnValue=false;
 		}
-		if(!SeleniumWebDriver.isElementPresent(lnkHome)){
+		if(!verifyElementHome()){
 			returnValue=false;
 		}
-		if(!SeleniumWebDriver.isElementPresent(lnkProfileSettings)){
+		if(!verifyElementProfileSettings()){
 			returnValue=true;
 		}
-		if(!SeleniumWebDriver.isElementPresent(lnkISMS)){
+		if(!verifyElementISMS()){
 			returnValue=false;
 		}
-		if(!SeleniumWebDriver.isElementPresent(lnkOrientationProg)){
+		if(!verifyElementOrientationProg()){
 			returnValue=false;
 		}
 		return returnValue;
 		
+	}
+	
+	public boolean verifyTrainingHours() {
+		if (!isElementPresent(lnktrainingHours)) {
+			return true;
+		} else
+			return false;
+
+	}
+	public boolean verifyTrainingHoursReport() {
+		if (!isElementPresent(lnktrainingHoursReport)) {
+			return true;
+		} else
+			return false;
+
+	}
+	public boolean verifyElementHome() {
+		if (!isElementPresent(lnkHome)) {
+			return true;
+		} else
+			return false;
+
+	}
+	public boolean verifyElementProfileSettings() {
+		if (!isElementPresent(lnkProfileSettings)) {
+			return true;
+		} else
+			return false;
+
+	}
+	public boolean verifyElementISMS() {
+		if (!isElementPresent(lnkISMS)) {
+			return true;
+		} else
+			return false;
+
+	}
+	public boolean verifyElementOrientationProg() {
+		if (!isElementPresent(lnkOrientationProg)) {
+			return true;
+		} else
+			return false;
+
 	}
 
 }

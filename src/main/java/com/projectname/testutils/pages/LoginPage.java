@@ -2,12 +2,8 @@ package com.projectname.testutils.pages;
 
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.LoadableComponent;
 
-import com.projectname.testutils.genericutility.Config;
-import com.projectname.testutils.pages.IntranetHomePage;
 import com.projectname.testutils.seleniumutils.SeleniumWebDriver;
 
 
@@ -32,13 +28,10 @@ public class LoginPage extends SeleniumWebDriver{
 	public IntranetHomePage login(String UserName, String Password){
 		click(btnLogin);
 		waitForPageToLoad();
-		sendKeys(txtUserName,Config.userName);
-		sendKeys(txtPassword, Config.password);
+		sendKeys(txtUserName,UserName);
+		sendKeys(txtPassword, Password);
 	
 		click(btnSubmit);
-		waitForPageToLoad();
-		waitForPageToLoad();
-		isTextPresent("LMS");
 		waitForPageToLoad();
 		return new IntranetHomePage();
 	}

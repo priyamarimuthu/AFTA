@@ -2,13 +2,13 @@ package com.projectname.testutils.pages;
 
 import java.util.Set;
 
-import org.apache.commons.collections.map.HashedMap;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
 
 import com.projectname.testutils.seleniumutils.SeleniumWebDriver;
-public class IntranetHomePage extends SeleniumWebDriver{
-	
+
+public class IntranetHomePage extends SeleniumWebDriver {
+
 	protected By lnkIDM = By.linkText("123");
 	protected By readyLocator = By.linkText("IDM/PMS");
 	protected By lnkLearnStation = By.linkText("Learn Station");
@@ -20,36 +20,58 @@ public class IntranetHomePage extends SeleniumWebDriver{
 	protected By lnkPayroll = By.linkText("Payroll");
 	protected By lnkGain = By.linkText("iGain");
 	protected By lnkTrainingSystem = By.linkText("Training System");
-	
+
 	/***
 	 * Call to super constructor
 	 */
-	public IntranetHomePage(){
-		PageFactory.initElements(SeleniumWebDriver.driver, this);	
+	public IntranetHomePage() {
+		PageFactory.initElements(SeleniumWebDriver.driver, this);
 		isElementPresent(readyLocator);
 	}
-	
 
-	public boolean verifyelement(){
-		boolean returnValue=true;
-		if(!isElementPresent(lnkIDM)){
-			returnValue=true;
+	public boolean verifyelement() {
+		boolean returnValue = true;
+		if (!verifyElementIDM()) {
+			returnValue = true;
 		}
-		if(!isElementPresent(lnkLMS)){
-			returnValue=false;
+		if (!verifyElementMS()) {
+			returnValue = false;
 		}
-		if(!isElementPresent(lnkSeventhSense)){
-			returnValue=false;
+		if (!verifyElementSeventhSense()) {
+			returnValue = false;
 		}
 		return returnValue;
 	}
-	
-	public TrainingSystemPage goToTrainingSystemPage(){
-		String parentHandle = driver.getWindowHandle();
+
+	public TrainingSystemPage clickTrainingSystemLink() {
 		click(lnkTrainingSystem);
-		Set<String> winHandle=driver.getWindowHandles();
-		driver.switchTo().window(winHandle.iterator().toString()); 
+		Set<String> winHandle = driver.getWindowHandles();
+		driver.switchTo().window(winHandle.iterator().toString());
 		waitForPageToLoad();
 		return new TrainingSystemPage();
+	}
+
+	public boolean verifyElementIDM() {
+		if (!isElementPresent(lnkIDM)) {
+			return true;
+		} else
+			return false;
+
+	}
+
+	public boolean verifyElementMS() {
+		if (!isElementPresent(lnkLMS)) {
+			return true;
+		} else
+			return false;
+
+	}
+
+	public boolean verifyElementSeventhSense() {
+		if (!isElementPresent(lnkSeventhSense)) {
+			return true;
+		} else
+			return false;
+
 	}
 }

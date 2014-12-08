@@ -1,10 +1,7 @@
 package com.projectname.testutils.pages;
 
 import org.openqa.selenium.By;
-import com.projectname.testutils.seleniumutils.SeleniumWebDriver;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.LoadableComponent;
 
 import com.projectname.testutils.seleniumutils.SeleniumWebDriver;
 
@@ -27,18 +24,47 @@ public class SearchPage extends SeleniumWebDriver{
 	}
 	
 	public boolean verifySearchPage(){
-		if(!isElementPresent(lnkHome)){
+		if(!verifyElementHome()){
 			return false;
 		}
-		if(!isElementPresent(lnkAnnouncement)){
+		if(!verifyElementAnnouncement()){
 			return false;
 		}
-		if(!isElementPresent(lnkCelebrations)){
+		if(!verifyElementCelebrations()){
 			return false;
 		}
-		if(!isElementPresent(lnkClassifields)){
+		if(!verifyElementCelebrations()){
 			return false;
 		}
 		return true;
+	}
+	
+	public boolean verifyElementHome() {
+		if (!isElementPresent(lnkHome)) {
+			return true;
+		} else
+			return false;
+
+	}
+	public boolean verifyElementAnnouncement() {
+		if (!isElementPresent(lnkAnnouncement)) {
+			return true;
+		} else
+			return false;
+
+	}
+	public boolean verifyElementCelebrations() {
+		if (!isElementPresent(lnkCelebrations)) {
+			return true;
+		} else
+			return false;
+
+	}
+	public boolean verifyElementClassifields() {
+		if (!isElementPresent(lnkClassifields)) {
+			return true;
+		} else
+			return false;
+
 	}
 }

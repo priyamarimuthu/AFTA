@@ -3,14 +3,9 @@ package com.projectname.testutils.pages;
 import java.awt.AWTException;
 import java.io.IOException;
 
-import org.apache.commons.collections.map.HashedMap;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.LoadableComponent;
 
-import com.projectname.testutils.baseclass.TestBaseClass;
-import com.projectname.testutils.genericutility.Config;
 import com.projectname.testutils.genericutility.ExceptionHandler;
 import com.projectname.testutils.seleniumutils.SeleniumWebDriver;
 
@@ -55,8 +50,8 @@ public class SharedPage extends SeleniumWebDriver{
 	 * @throws AWTException
 	 * @throws InterruptedException
 	 */
-	public SearchPage searchbyanyname(HashedMap dashboardLibObj){
-		sendKeys(txtSearchtextbox,dashboardLibObj.get("UserName").toString());
+	public SearchPage searchbyanyname(String userName){
+		sendKeys(txtSearchtextbox,userName);
 		click(btnSearch);
 		waitForPageToLoad();
 		return new SearchPage();

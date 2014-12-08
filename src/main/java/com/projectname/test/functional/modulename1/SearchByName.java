@@ -18,7 +18,7 @@ import com.projectname.testutils.testdatareader.ExcelReader;
 
 @Listeners(com.projectname.testutils.baseclass.CustomizedReporter.class)
 
-public class SearchByAnyName extends TestBaseClass{
+public class SearchByName extends TestBaseClass{
 	SearchPage searchPage;
 
 	
@@ -54,7 +54,7 @@ public class SearchByAnyName extends TestBaseClass{
 		// Step-2: Get the test data to search//
 		// ------------------------------------------------------------------//
 		ArrayList<HashedMap> testData = ExcelReader.getTestDataByTestCaseId(
-				"TC_CT_001", SearchByAnyName.class.getSimpleName());
+				"TC_CT_001", SearchByName.class.getSimpleName());
 		log.info(testData.get(0).get("TC_ID").toString() + " - ");
 		
 		// ------------------------------------------------------------------//
@@ -68,7 +68,7 @@ public class SearchByAnyName extends TestBaseClass{
 		// ------------------------------------------------------------------//
 		for(int i=0;i<testData.size();i++){
 			log.info("Searching for: - "+testData.get(i).get("UserName"));
-			searchPage=sharedPage.searchbyanyname(testData.get(i));
+			searchPage=sharedPage.searchbyanyname(testData.get(i).get("UserName").toString());
 			Assert.assertTrue("Could not find the Name: "+testData.get(i).get("UserName"),searchPage.verifySearchPage());
 			log.info("Successfully got: - "+testData.get(i).get("UserName"));
 		}

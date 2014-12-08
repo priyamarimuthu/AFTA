@@ -1,6 +1,10 @@
 package com.projectname.testutils.baseclass;
 
 
+import static org.testng.internal.EclipseInterface.ASSERT_LEFT;
+import static org.testng.internal.EclipseInterface.ASSERT_MIDDLE;
+import static org.testng.internal.EclipseInterface.ASSERT_RIGHT;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -20,7 +24,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -28,17 +31,12 @@ import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
-import static org.testng.internal.EclipseInterface.ASSERT_LEFT;
-import static org.testng.internal.EclipseInterface.ASSERT_MIDDLE;
-import static org.testng.internal.EclipseInterface.ASSERT_RIGHT;
-
 import com.projectname.functional.annotations.MapToTestLink;
 import com.projectname.testutils.genericutility.Config;
 import com.projectname.testutils.genericutility.DateTimeUtility;
 import com.projectname.testutils.genericutility.ExceptionHandler;
 import com.projectname.testutils.genericutility.FileUtility;
 import com.projectname.testutils.pages.LoginPage;
-import com.projectname.testutils.pages.SharedPage;
 import com.projectname.testutils.seleniumutils.SeleniumWebDriver;
 import com.projectname.testutils.testdatareader.DataAccessClient;
 import com.projectname.testutils.testdatareader.EnvironmentPropertiesReader;

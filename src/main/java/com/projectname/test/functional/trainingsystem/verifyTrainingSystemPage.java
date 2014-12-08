@@ -4,7 +4,6 @@ package com.projectname.test.functional.trainingsystem;
 import java.util.ArrayList;
 
 import org.apache.commons.collections.map.HashedMap;
-import org.junit.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -13,8 +12,6 @@ import com.projectname.test.functional.modulename1.LoginTest;
 import com.projectname.testutils.baseclass.TestBaseClass;
 import com.projectname.testutils.pages.IntranetHomePage;
 import com.projectname.testutils.pages.LoginPage;
-import com.projectname.testutils.pages.SearchPage;
-import com.projectname.testutils.pages.SharedPage;
 import com.projectname.testutils.pages.TrainingSystemPage;
 import com.projectname.testutils.retryAnalyser.RetryRule;
 import com.projectname.testutils.testdatareader.ExcelReader;
@@ -57,7 +54,7 @@ public class verifyTrainingSystemPage extends TestBaseClass{
 		// ------------------------------------------------------------------//
 		// Step-2: Go to Training system Page //
 		// ------------------------------------------------------------------//
-		trainingSystemPage=homePage.goToTrainingSystemPage();
+		trainingSystemPage=homePage.clickTrainingSystemLink();
 		assertTrue(trainingSystemPage.verifyTrainingSystemPage(),"Error in verifying training system page",driver);
 		
 	}
