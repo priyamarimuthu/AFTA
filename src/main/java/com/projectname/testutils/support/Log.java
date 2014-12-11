@@ -167,7 +167,7 @@ public class Log{
 		return time;
 	}
 
-	public void message(String description, WebDriver driver) {
+	public void message(String description, WebDriver driver) throws IOException {
 
 		String inputFile = "";
 
@@ -179,7 +179,7 @@ public class Log{
 			File screenshot = ((TakesScreenshot) augmented).getScreenshotAs(OutputType.FILE);
 			FileUtils.copyFile(screenshot, new File(strBasePath + inputFile));
 		}
-		catch (IOException | WebDriverException e1) {
+		catch (WebDriverException e1) {
 			message("Screen shot capture failed.");
 			e1.printStackTrace();
 		}
@@ -227,7 +227,7 @@ public class Log{
 			System.out.println("Pass: " + description);
 	}
 
-	public void pass(String description, WebDriver driver) {
+	public void pass(String description, WebDriver driver) throws IOException {
 
 		String inputFile = "";
 
@@ -239,7 +239,7 @@ public class Log{
 			File screenshot = ((TakesScreenshot) augmented).getScreenshotAs(OutputType.FILE);
 			FileUtils.copyFile(screenshot, new File(strBasePath + inputFile));
 		}
-		catch (IOException | WebDriverException e1) {
+		catch (WebDriverException e1) {
 			message("Screen shot capture failed.");
 			e1.printStackTrace();
 		}
@@ -251,7 +251,7 @@ public class Log{
 			System.out.println("Pass: " + description);
 	}
 
-	public void fail(String description, WebDriver driver) {
+	public void fail(String description, WebDriver driver) throws IOException {
 
 		String inputFile = "";
 
@@ -263,7 +263,7 @@ public class Log{
 			File screenshot = ((TakesScreenshot) augmented).getScreenshotAs(OutputType.FILE);
 			FileUtils.copyFile(screenshot, new File(strBasePath + inputFile));
 		}
-		catch (IOException | WebDriverException e1) {
+		catch (WebDriverException e1) {
 			message("Screen shot capture failed.");
 			e1.printStackTrace();
 		}
@@ -278,7 +278,7 @@ public class Log{
 
 	}
 
-	public void captureScreenShot(WebDriver driver) {
+	public void captureScreenShot(WebDriver driver) throws IOException {
 
 		String inputFile = "";
 
@@ -290,7 +290,7 @@ public class Log{
 			File screenshot = ((TakesScreenshot) augmented).getScreenshotAs(OutputType.FILE);
 			FileUtils.copyFile(screenshot, new File(strBasePath + inputFile));
 		}
-		catch (IOException | WebDriverException e1) {
+		catch (WebDriverException e1) {
 			message("Screen shot capture failed.");
 			e1.printStackTrace();
 		}
@@ -308,7 +308,7 @@ public class Log{
 
 	}
 
-	public void failsoft(String description, WebDriver driver) {
+	public void failsoft(String description, WebDriver driver) throws IOException {
 
 		String inputFile = "";
 
@@ -320,7 +320,7 @@ public class Log{
 			File screenshot = ((TakesScreenshot) augmented).getScreenshotAs(OutputType.FILE);
 			FileUtils.copyFile(screenshot, new File(strBasePath + inputFile));
 		}
-		catch (IOException | WebDriverException e1) {
+		catch (WebDriverException e1) {
 			message("Screen shot capture failed.");
 			e1.printStackTrace();
 		}
@@ -347,7 +347,7 @@ public class Log{
 			File screenshot =((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 			FileUtils.copyFile(screenshot, new File(strBasePath + inputFile));
 		}
-		catch (IOException | WebDriverException e1) {
+		catch (WebDriverException e1) {
 			message("Screen shot capture failed.");
 			e1.printStackTrace();
 		}
@@ -386,7 +386,7 @@ public class Log{
 			File screenshot =((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 			FileUtils.copyFile(screenshot, new File(strBasePath + inputFile));
 		}
-		catch (IOException | WebDriverException e1) {
+		catch (WebDriverException e1) {
 			message("Screen shot capture failed.");
 			e1.printStackTrace();
 		}
