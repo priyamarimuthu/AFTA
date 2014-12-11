@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.projectname.test.functional.modulename2.LoginTest"
+           tests="1"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="24.078">
+  <properties />
+  
+
+  
+
+      <testcase name="loginTest" time="24.078" />
+  
+
+</testsuite>

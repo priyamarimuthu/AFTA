@@ -1,8 +1,6 @@
-29-Oct-2014 15:01:39:963 INFO  HomePageTest:194 - =====================================================================================================
-29-Oct-2014 15:01:39:979 INFO  HomePageTest:203 - App URL    : http://systems.aspiresys.com/
-29-Oct-2014 15:01:39:979 INFO  HomePageTest:204 - Browser    : FIREFOX
-29-Oct-2014 15:01:39:980 INFO  HomePageTest:205 - =====================================================================================================
-29-Oct-2014 15:01:39:987 INFO  HomePageTest:378 - Login to application
-29-Oct-2014 15:01:53:314 INFO  HomePageTest:297 - Captured Screenshot : C:\Users\priya.marimuthu\git\Selenium_Framework\test-output\screenshots\homePageTest 29-Oct-2014 15-01-53.png
-29-Oct-2014 15:01:53:585 ERROR HomePageTest:303 - The following error has occured while capturing a screen shot : C:\Users\priya.marimuthu\git\Selenium_Framework\test-output\screenshots\homePageTest 29-Oct-2014 15-01-53.png (The system cannot find the path specified)
-29-Oct-2014 15:01:53:585 INFO  HomePageTest:314 - The test result for homePageTest is FAIL
+11-Dec-2014 18:02:06:513 INFO  HomePageTest:176 - =====================================================================================================
+11-Dec-2014 18:02:06:518 INFO  HomePageTest:185 - App URL    : http://systems.aspiresys.com/
+11-Dec-2014 18:02:06:519 INFO  HomePageTest:186 - Browser    : FIREFOX
+11-Dec-2014 18:02:06:519 INFO  HomePageTest:187 - =====================================================================================================
+11-Dec-2014 18:02:36:246 ERROR HomePageTest:297 - The following error has occured while capturing a screen shot : C:\Users\priya.marimuthu\git\Demo\test-output\screenshots\homePageTest 11-Dec-2014 18-02-29.png (The system cannot find the path specified)
+11-Dec-2014 18:02:36:247 INFO  HomePageTest:308 - The test result for homePageTest is FAIL

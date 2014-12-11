@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Wed Oct 29 15:01:22 IST 2014</td>
+<td>Started on:</td><td>Thu Dec 11 18:01:43 IST 2014</td>
 </tr>
-<tr><td>Total time:</td><td>31 seconds (31608 ms)</td>
+<tr><td>Total time:</td><td>53 seconds (53356 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,14 +75,24 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.projectname.test.functional.modulename.HomePageTest.homePageTest()'><b>homePageTest</b><br>Test class: com.projectname.test.functional.modulename.HomePageTest</td>
-<td><div><pre>java.lang.AssertionError: Could not Login to the application expected [true] but found [false]
-	at org.testng.Assert.fail(Assert.java:94)
-	at org.testng.Assert.failNotEquals(Assert.java:494)
-	at org.testng.Assert.assertTrue(Assert.java:42)
-	at com.projectname.testutils.pages.genericPages.LoginPage.login(LoginPage.java:59)
-	at com.projectname.testutils.baseclass.TestBaseClass.loginUser1(TestBaseClass.java:151)
-	at com.projectname.test.functional.modulename.HomePageTest.homePageTest(HomePageTest.java:23)
+<td title='com.projectname.test.functional.modulename1.HomePageTest.homePageTest()'><b>homePageTest</b><br>Test class: com.projectname.test.functional.modulename1.HomePageTest<br/>
+<a href="#Output-7132946" onClick='toggleBox("Output-7132946", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-7132946" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-7132946">
+<div class="test-title"> <strong><font color = "blue">Home Page Test<small>[To verify home page elements]</small></font> </strong> </div><div><strong>Steps:</strong></div><!-- Report --><br/>
+<div class="test-message"><p><strong><font color = "black"></strong></p></div><br/>
+<div class="test-message"><p><strong><font color = "black">priya.marimuthu - </strong></p></div><br/>
+<div class="test-message"><p><strong><font color = "black">Login to application</strong></p></div><br/>
+<div class="test-message"><p><strong><font color = "black">Login Successful</strong></p></div><br/>
+<div class="test-message"><p><strong><font color = "black">Verify presense of home page elements</strong></p></div><br/>
+</div>
+</td>
+<td><div><pre>java.lang.NullPointerException
+	at com.projectname.testutils.seleniumutils.SeleniumWebDriver.isElementPresent(SeleniumWebDriver.java:84)
+	at com.projectname.testutils.pages.IntranetHomePage.verifyElementIDM(IntranetHomePage.java:56)
+	at com.projectname.testutils.pages.IntranetHomePage.verifyelement(IntranetHomePage.java:35)
+	at com.projectname.test.functional.modulename1.HomePageTest.homePageTest(HomePageTest.java:50)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -107,14 +117,12 @@ function toggleAllBoxes() {
 	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
-</pre></div><a href='#' onClick='toggleBox("stack-trace15977879", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace15977879'><pre>java.lang.AssertionError: Could not Login to the application expected [true] but found [false]
-	at org.testng.Assert.fail(Assert.java:94)
-	at org.testng.Assert.failNotEquals(Assert.java:494)
-	at org.testng.Assert.assertTrue(Assert.java:42)
-	at com.projectname.testutils.pages.genericPages.LoginPage.login(LoginPage.java:59)
-	at com.projectname.testutils.baseclass.TestBaseClass.loginUser1(TestBaseClass.java:151)
-	at com.projectname.test.functional.modulename.HomePageTest.homePageTest(HomePageTest.java:23)
+</pre></div><a href='#' onClick='toggleBox("stack-trace7132946", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace7132946'><pre>java.lang.NullPointerException
+	at com.projectname.testutils.seleniumutils.SeleniumWebDriver.isElementPresent(SeleniumWebDriver.java:84)
+	at com.projectname.testutils.pages.IntranetHomePage.verifyElementIDM(IntranetHomePage.java:56)
+	at com.projectname.testutils.pages.IntranetHomePage.verifyelement(IntranetHomePage.java:35)
+	at com.projectname.test.functional.modulename1.HomePageTest.homePageTest(HomePageTest.java:50)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -140,8 +148,8 @@ function toggleAllBoxes() {
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
 </pre></div></td>
-<td>13</td>
-<td>com.projectname.test.functional.modulename.HomePageTest@25997c</td></tr>
+<td>22</td>
+<td>com.projectname.test.functional.modulename1.HomePageTest@7f9e04</td></tr>
 </table><p>
 </body>
 </html>

@@ -32,13 +32,14 @@ public class TrainingSystemPage extends SeleniumWebDriver{
 	
 	/***
 	 * Call to super constructor
+	 * @throws Exception 
 	 */
-	public TrainingSystemPage(){
+	public TrainingSystemPage() throws Exception{
 		PageFactory.initElements(SeleniumWebDriver.driver, this);
 		isElementPresent(readyLocator);
 	}
 
-	public boolean verifyTrainingSystemPage(){
+	public boolean verifyTrainingSystemPage() throws Exception{
 		boolean returnValue=true;
 		if(!verifyTrainingHours()){
 			returnValue=true;
@@ -62,42 +63,42 @@ public class TrainingSystemPage extends SeleniumWebDriver{
 		
 	}
 	
-	public boolean verifyTrainingHours() {
+	public boolean verifyTrainingHours() throws Exception {
 		if (!isElementPresent(lnktrainingHours)) {
 			return true;
 		} else
 			return false;
 
 	}
-	public boolean verifyTrainingHoursReport() {
+	public boolean verifyTrainingHoursReport() throws Exception {
 		if (!isElementPresent(lnktrainingHoursReport)) {
 			return true;
 		} else
 			return false;
 
 	}
-	public boolean verifyElementHome() {
+	public boolean verifyElementHome() throws Exception {
 		if (!isElementPresent(lnkHome)) {
 			return true;
 		} else
 			return false;
 
 	}
-	public boolean verifyElementProfileSettings() {
+	public boolean verifyElementProfileSettings() throws Exception {
 		if (!isElementPresent(lnkProfileSettings)) {
 			return true;
 		} else
 			return false;
 
 	}
-	public boolean verifyElementISMS() {
+	public boolean verifyElementISMS() throws Exception {
 		if (!isElementPresent(lnkISMS)) {
 			return true;
 		} else
 			return false;
 
 	}
-	public boolean verifyElementOrientationProg() {
+	public boolean verifyElementOrientationProg() throws Exception {
 		if (!isElementPresent(lnkOrientationProg)) {
 			return true;
 		} else

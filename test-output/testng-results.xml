@@ -1,29 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testng-results skipped="0" failed="1" total="1" passed="0">
   <reporter-output>
+    <line>
+      <![CDATA[<div class="test-title"> <strong><font color = "blue">Home Page Test<small>[To verify home page elements]</small></font> </strong> </div><div><strong>Steps:</strong></div><!-- Report -->]]>
+    </line>
+    <line>
+      <![CDATA[<div class="test-message"><p><strong><font color = "black"></strong></p></div>]]>
+    </line>
+    <line>
+      <![CDATA[<div class="test-message"><p><strong><font color = "black">priya.marimuthu - </strong></p></div>]]>
+    </line>
+    <line>
+      <![CDATA[<div class="test-message"><p><strong><font color = "black">Login to application</strong></p></div>]]>
+    </line>
+    <line>
+      <![CDATA[<div class="test-message"><p><strong><font color = "black">Login Successful</strong></p></div>]]>
+    </line>
+    <line>
+      <![CDATA[<div class="test-message"><p><strong><font color = "black">Verify presense of home page elements</strong></p></div>]]>
+    </line>
+    <line>
+      <![CDATA[<div class="test-message"><p><strong><font color = "black">Captured Screenshot : C:\Users\priya.marimuthu\git\Demo\test-output\screenshots\homePageTest 11-Dec-2014 18-02-29.png</strong></p></div>]]>
+    </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="31608" started-at="2014-10-29T09:31:22Z" finished-at="2014-10-29T09:31:53Z">
+  <suite name="Default suite" duration-ms="53356" started-at="2014-12-11T12:31:43Z" finished-at="2014-12-11T12:32:36Z">
     <groups>
+      <group name="Regression">
+        <method signature="HomePageTest.homePageTest()[pri:0, instance:com.projectname.test.functional.modulename1.HomePageTest@7f9e04]" name="homePageTest" class="com.projectname.test.functional.modulename1.HomePageTest"/>
+      </group> <!-- Regression -->
     </groups>
-    <test name="Default test" duration-ms="31608" started-at="2014-10-29T09:31:22Z" finished-at="2014-10-29T09:31:53Z">
-      <class name="com.projectname.test.functional.modulename.HomePageTest">
-        <test-method status="PASS" signature="genericSetUp()[pri:0, instance:com.projectname.test.functional.modulename.HomePageTest@25997c]" name="genericSetUp" is-config="true" duration-ms="17806" started-at="2014-10-29T15:01:22Z" finished-at="2014-10-29T15:01:39Z">
+    <test name="Default test" duration-ms="53356" started-at="2014-12-11T12:31:43Z" finished-at="2014-12-11T12:32:36Z">
+      <class name="com.projectname.test.functional.modulename1.HomePageTest">
+        <test-method status="PASS" signature="genericSetUp()[pri:0, instance:com.projectname.test.functional.modulename1.HomePageTest@7f9e04]" name="genericSetUp" is-config="true" duration-ms="23453" started-at="2014-12-11T18:01:43Z" finished-at="2014-12-11T18:02:06Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- genericSetUp -->
-        <test-method status="FAIL" signature="homePageTest()[pri:0, instance:com.projectname.test.functional.modulename.HomePageTest@25997c]" name="homePageTest" duration-ms="13317" started-at="2014-10-29T15:01:39Z" finished-at="2014-10-29T15:01:53Z">
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[Could not Login to the application expected [true] but found [false]]]>
-            </message>
+        <test-method status="FAIL" signature="homePageTest()[pri:0, instance:com.projectname.test.functional.modulename1.HomePageTest@7f9e04]" name="homePageTest" duration-ms="22672" started-at="2014-12-11T18:02:06Z" finished-at="2014-12-11T18:02:29Z">
+          <exception class="java.lang.NullPointerException">
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: Could not Login to the application expected [true] but found [false]
-	at org.testng.Assert.fail(Assert.java:94)
-	at org.testng.Assert.failNotEquals(Assert.java:494)
-	at org.testng.Assert.assertTrue(Assert.java:42)
-	at com.projectname.testutils.pages.genericPages.LoginPage.login(LoginPage.java:59)
-	at com.projectname.testutils.baseclass.TestBaseClass.loginUser1(TestBaseClass.java:151)
-	at com.projectname.test.functional.modulename.HomePageTest.homePageTest(HomePageTest.java:23)
+              <![CDATA[java.lang.NullPointerException
+	at com.projectname.testutils.seleniumutils.SeleniumWebDriver.isElementPresent(SeleniumWebDriver.java:84)
+	at com.projectname.testutils.pages.IntranetHomePage.verifyElementIDM(IntranetHomePage.java:56)
+	at com.projectname.testutils.pages.IntranetHomePage.verifyelement(IntranetHomePage.java:35)
+	at com.projectname.test.functional.modulename1.HomePageTest.homePageTest(HomePageTest.java:50)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -50,22 +69,43 @@
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
 ]]>
             </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
+          </exception> <!-- java.lang.NullPointerException -->
           <reporter-output>
+            <line>
+              <![CDATA[<div class="test-title"> <strong><font color = "blue">Home Page Test<small>[To verify home page elements]</small></font> </strong> </div><div><strong>Steps:</strong></div><!-- Report -->]]>
+            </line>
+            <line>
+              <![CDATA[<div class="test-message"><p><strong><font color = "black"></strong></p></div>]]>
+            </line>
+            <line>
+              <![CDATA[<div class="test-message"><p><strong><font color = "black">priya.marimuthu - </strong></p></div>]]>
+            </line>
+            <line>
+              <![CDATA[<div class="test-message"><p><strong><font color = "black">Login to application</strong></p></div>]]>
+            </line>
+            <line>
+              <![CDATA[<div class="test-message"><p><strong><font color = "black">Login Successful</strong></p></div>]]>
+            </line>
+            <line>
+              <![CDATA[<div class="test-message"><p><strong><font color = "black">Verify presense of home page elements</strong></p></div>]]>
+            </line>
           </reporter-output>
         </test-method> <!-- homePageTest -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.projectname.test.functional.modulename.HomePageTest@25997c]" name="tearDown" is-config="true" duration-ms="472" started-at="2014-10-29T15:01:53Z" finished-at="2014-10-29T15:01:53Z">
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.projectname.test.functional.modulename1.HomePageTest@7f9e04]" name="tearDown" is-config="true" duration-ms="7217" started-at="2014-12-11T18:02:29Z" finished-at="2014-12-11T18:02:36Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=homePageTest status=FAILURE method=HomePageTest.homePageTest()[pri:0, instance:com.projectname.test.functional.modulename.HomePageTest@25997c] output={null}]]]>
+                <![CDATA[[TestResult name=homePageTest status=FAILURE method=HomePageTest.homePageTest()[pri:0, instance:com.projectname.test.functional.modulename1.HomePageTest@7f9e04] output=<div class="test-title"> <strong><font color = "blue">Home Page Test<small>[To verify home page elements]</small></font> </strong> </div><div><strong>Steps:</strong></div><!-- Report -->]]]>
               </value>
             </param>
           </params>
           <reporter-output>
+            <line>
+              <![CDATA[<div class="test-message"><p><strong><font color = "black">Captured Screenshot : C:\Users\priya.marimuthu\git\Demo\test-output\screenshots\homePageTest 11-Dec-2014 18-02-29.png</strong></p></div>]]>
+            </line>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.projectname.test.functional.modulename.HomePageTest -->
+      </class> <!-- com.projectname.test.functional.modulename1.HomePageTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

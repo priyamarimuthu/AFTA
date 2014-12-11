@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Selenium Automation Framework]">
+  <listeners>
+    <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+    <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+  </listeners>
+  <test name="com.projectname.test.functional.modulename(failed)">
+    <groups>
+      <run>
+        <include name="Regression Tests"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="com.projectname.test.functional.modulename2.HomePageTest">
+        <methods>
+          <include name="genericSetUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.projectname.test.functional.modulename2.HomePageTest -->
+      <class name="com.projectname.test.functional.modulename2.LoginTest">
+        <methods>
+          <include name="genericSetUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.projectname.test.functional.modulename2.LoginTest -->
+      <class name="com.projectname.test.functional.modulename2.SearchByName">
+        <methods>
+          <include name="genericSetUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.projectname.test.functional.modulename2.SearchByName -->
+      <class name="com.projectname.test.functional.modulename1.HomePageTest">
+        <methods>
+          <include name="genericSetUp"/>
+          <include name="homePageTest"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.projectname.test.functional.modulename1.HomePageTest -->
+      <class name="com.projectname.test.functional.modulename1.LoginTest">
+        <methods>
+          <include name="genericSetUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.projectname.test.functional.modulename1.LoginTest -->
+      <class name="com.projectname.test.functional.modulename1.SearchByName">
+        <methods>
+          <include name="genericSetUp"/>
+          <include name="tearDown"/>
+          <include name="searchbyname"/>
+        </methods>
+      </class> <!-- com.projectname.test.functional.modulename1.SearchByName -->
+    </classes>
+  </test> <!-- com.projectname.test.functional.modulename(failed) -->
+  <test name="com.projectname.test.functional.modulename1(failed)">
+    <classes>
+      <class name="com.projectname.test.functional.modulename2.HomePageTest">
+        <methods>
+          <include name="genericSetUp"/>
+          <include name="homePageTest"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.projectname.test.functional.modulename2.HomePageTest -->
+      <class name="com.projectname.test.functional.modulename1.HomePageTest">
+        <methods>
+          <include name="genericSetUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.projectname.test.functional.modulename1.HomePageTest -->
+      <class name="com.projectname.test.functional.modulename2.LoginTest">
+        <methods>
+          <include name="genericSetUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.projectname.test.functional.modulename2.LoginTest -->
+      <class name="com.projectname.test.functional.modulename2.SearchByName">
+        <methods>
+          <include name="searchbyname"/>
+          <include name="genericSetUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.projectname.test.functional.modulename2.SearchByName -->
+      <class name="com.projectname.test.functional.modulename1.LoginTest">
+        <methods>
+          <include name="genericSetUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.projectname.test.functional.modulename1.LoginTest -->
+      <class name="com.projectname.test.functional.modulename1.SearchByName">
+        <methods>
+          <include name="genericSetUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.projectname.test.functional.modulename1.SearchByName -->
+    </classes>
+  </test> <!-- com.projectname.test.functional.modulename1(failed) -->
+</suite> <!-- Failed suite [Selenium Automation Framework] -->

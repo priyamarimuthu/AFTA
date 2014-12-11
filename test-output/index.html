@@ -48,7 +48,7 @@
               <ul>
                 <li>
                   <a href="#" class="navigator-link " panel-name="test-xml-Default_suite">
-                    <span>C:\Users\priya.marimuthu\AppData\Local\Temp\testng-eclipse--2007583302\testng-customsuite.xml</span>
+                    <span>C:\Users\priya.marimuthu\AppData\Local\Temp\testng-eclipse--986499122\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -58,7 +58,7 @@
                 </li>
                 <li>
                   <a href="#" class="navigator-link " panel-name="group-Default_suite">
-                    <span>0 groups</span>
+                    <span>1 group</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -101,7 +101,7 @@
                     <div class="method-list-content failed suite-Default_suite">
                       <span>
                         <img width="3%" src="failed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.projectname.test.functional.modulename.HomePageTest" hash-for-method="homePageTest">homePageTest</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.projectname.test.functional.modulename1.HomePageTest" hash-for-method="homePageTest">homePageTest</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Default_suite -->
@@ -119,7 +119,7 @@
           <div class="suite-Default_suite-class-failed">
             <div class="main-panel-header rounded-window-top">
               <img src="failed.png"/>
-              <span class="class-name">com.projectname.test.functional.modulename.HomePageTest</span>
+              <span class="class-name">com.projectname.test.functional.modulename1.HomePageTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
@@ -127,13 +127,11 @@
                   <a name="homePageTest">
                   </a> <!-- homePageTest -->
                   <span class="method-name">homePageTest</span>
-                  <div class="stack-trace">java.lang.AssertionError: Could not Login to the application expected [true] but found [false]
-	at org.testng.Assert.fail(Assert.java:94)
-	at org.testng.Assert.failNotEquals(Assert.java:494)
-	at org.testng.Assert.assertTrue(Assert.java:42)
-	at com.projectname.testutils.pages.genericPages.LoginPage.login(LoginPage.java:59)
-	at com.projectname.testutils.baseclass.TestBaseClass.loginUser1(TestBaseClass.java:151)
-	at com.projectname.test.functional.modulename.HomePageTest.homePageTest(HomePageTest.java:23)
+                  <div class="stack-trace">java.lang.NullPointerException
+	at com.projectname.testutils.seleniumutils.SeleniumWebDriver.isElementPresent(SeleniumWebDriver.java:84)
+	at com.projectname.testutils.pages.IntranetHomePage.verifyElementIDM(IntranetHomePage.java:56)
+	at com.projectname.testutils.pages.IntranetHomePage.verifyelement(IntranetHomePage.java:35)
+	at com.projectname.test.functional.modulename1.HomePageTest.homePageTest(HomePageTest.java:50)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -167,7 +165,7 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\priya.marimuthu\AppData\Local\Temp\testng-eclipse--2007583302\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\priya.marimuthu\AppData\Local\Temp\testng-eclipse--986499122\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -176,11 +174,11 @@
 &lt;suite name=&quot;Default suite&quot;&gt;
   &lt;test verbose=&quot;2&quot; name=&quot;Default test&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;com.projectname.test.functional.modulename.HomePageTest&quot;&gt;
+      &lt;class name=&quot;com.projectname.test.functional.modulename1.HomePageTest&quot;&gt;
         &lt;methods&gt;
           &lt;include name=&quot;homePageTest&quot;/&gt;
         &lt;/methods&gt;
-      &lt;/class&gt; &lt;!-- com.projectname.test.functional.modulename.HomePageTest --&gt;
+      &lt;/class&gt; &lt;!-- com.projectname.test.functional.modulename1.HomePageTest --&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Default test --&gt;
 &lt;/suite&gt; &lt;!-- Default suite --&gt;
@@ -204,6 +202,14 @@
             <span class="header-content">Groups for Default suite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
+            <div class="test-group">
+              <span class="test-group-name">Regression</span>
+              <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">homePageTest</span>
+                <br/>
+              </div> <!-- method-in-group -->
+            </div> <!-- test-group -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="times-Default_suite" class="panel">
@@ -223,13 +229,13 @@ data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'homePageTest')
-data.setCell(0, 2, 'com.projectname.test.functional.modulename.HomePageTest')
-data.setCell(0, 3, 13317);
+data.setCell(0, 2, 'com.projectname.test.functional.modulename1.HomePageTest')
+data.setCell(0, 3, 22672);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 13 seconds</span>
+              <span class="suite-total-time">Total running time: 22 seconds</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -240,6 +246,17 @@ return data;
             <span class="header-content">Reporter output for Default suite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
+            <div class="reporter-method-div">
+              <span class="reporter-method-name">homePageTest</span>
+              <div class="reporter-method-output-div">
+                <span class="reporter-method-output"><div class="test-title"> <strong><font color = "blue">Home Page Test<small>[To verify home page elements]</small></font> </strong> </div><div><strong>Steps:</strong></div><!-- Report --></span>
+                <span class="reporter-method-output"><div class="test-message"><p><strong><font color = "black"></strong></p></div></span>
+                <span class="reporter-method-output"><div class="test-message"><p><strong><font color = "black">priya.marimuthu - </strong></p></div></span>
+                <span class="reporter-method-output"><div class="test-message"><p><strong><font color = "black">Login to application</strong></p></div></span>
+                <span class="reporter-method-output"><div class="test-message"><p><strong><font color = "black">Login Successful</strong></p></div></span>
+                <span class="reporter-method-output"><div class="test-message"><p><strong><font color = "black">Verify presense of home page elements</strong></p></div></span>
+              </div> <!-- reporter-method-output-div -->
+            </div> <!-- reporter-method-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Default_suite" class="panel">
@@ -255,7 +272,7 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">com.projectname.test.functional.modulename.HomePageTest</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">com.projectname.test.functional.modulename1.HomePageTest</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
                 <span class="method-name">genericSetUp</span>
                 <span class="method-start">0 ms</span>
@@ -264,11 +281,11 @@ return data;
                 <img src="failed.png">
                 </img>
                 <span class="method-name">homePageTest</span>
-                <span class="method-start">17806 ms</span>
+                <span class="method-start">23453 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown([TestResult name=homePageTest status=FAILURE method=HomePageTest.homePageTest()[pri:0, instance:com....)</span>
-                <span class="method-start">31125 ms</span>
+                <span class="method-start">46126 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
