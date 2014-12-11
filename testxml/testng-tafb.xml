@@ -29,4 +29,10 @@
     </packages>
 	</test>
 	
+	 <test name="com.projectname.test.functional.trainingsystem.*">
+    <packages>
+      <package name="com.projectname.test.functional.trainingsystem.*"/>
+    </packages>
+	</test>
+	
 </suite> <!-- [EBS Selenium Automated QA Test]] -->

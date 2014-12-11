@@ -28,14 +28,15 @@ public class SharedPage extends SeleniumWebDriver{
 	protected By btnSearch = By.id("searchbtn");
 	/***
 	 * Call to super constructor
+	 * @throws Exception 
 	 */
-	public SharedPage(){
+	public SharedPage() throws Exception{
 		PageFactory.initElements(SeleniumWebDriver.driver, this);
 		isElementPresent(readyLocator);
 	}
 
 	
-	public void logOut(){
+	public void logOut() throws Exception{
 		click(lnkUserName);
 		waitForPageToLoad();
 		if (waitForElement(btnLogout, 5)) {
@@ -45,12 +46,13 @@ public class SharedPage extends SeleniumWebDriver{
 	}
 	/***
 	 * Search by any name to the Home screen
+	 * @throws Exception 
 	 * @throws ExceptionHandler
 	 * @throws IOException 
 	 * @throws AWTException
 	 * @throws InterruptedException
 	 */
-	public SearchPage searchbyanyname(String userName){
+	public SearchPage searchbyanyname(String userName) throws Exception{
 		sendKeys(txtSearchtextbox,userName);
 		click(btnSearch);
 		waitForPageToLoad();
