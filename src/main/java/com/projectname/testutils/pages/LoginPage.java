@@ -19,14 +19,13 @@ public class LoginPage extends SeleniumWebDriver{
 	
 	/***
 	 * Call to super constructor
-	 * @throws Exception 
 	 */
-	public LoginPage() throws Exception{
+	public LoginPage(){
 		PageFactory.initElements(SeleniumWebDriver.driver, this);	
 		isElementPresent(readyLocator);
 	}
 
-	public IntranetHomePage login(String UserName, String Password) throws Exception{
+	public IntranetHomePage login(String UserName, String Password){
 		click(btnLogin);
 		waitForPageToLoad();
 		sendKeys(txtUserName,UserName);

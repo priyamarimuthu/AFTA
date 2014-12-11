@@ -17,14 +17,13 @@ public class SearchPage extends SeleniumWebDriver{
 	
 	/***
 	 * Call to super constructor
-	 * @throws Exception 
 	 */
-	public SearchPage() throws Exception {
+	public SearchPage() {
 		PageFactory.initElements(SeleniumWebDriver.driver, this);
 		isElementPresent(readyLocator);
 	}
 	
-	public boolean verifySearchPage() throws Exception{
+	public boolean verifySearchPage(){
 		if(!verifyElementHome()){
 			return false;
 		}
@@ -40,28 +39,28 @@ public class SearchPage extends SeleniumWebDriver{
 		return true;
 	}
 	
-	public boolean verifyElementHome() throws Exception {
+	public boolean verifyElementHome() {
 		if (!isElementPresent(lnkHome)) {
 			return true;
 		} else
 			return false;
 
 	}
-	public boolean verifyElementAnnouncement() throws Exception {
+	public boolean verifyElementAnnouncement() {
 		if (!isElementPresent(lnkAnnouncement)) {
 			return true;
 		} else
 			return false;
 
 	}
-	public boolean verifyElementCelebrations() throws Exception {
+	public boolean verifyElementCelebrations() {
 		if (!isElementPresent(lnkCelebrations)) {
 			return true;
 		} else
 			return false;
 
 	}
-	public boolean verifyElementClassifields() throws Exception {
+	public boolean verifyElementClassifields() {
 		if (!isElementPresent(lnkClassifields)) {
 			return true;
 		} else

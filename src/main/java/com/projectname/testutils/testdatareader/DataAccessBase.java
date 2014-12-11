@@ -52,7 +52,7 @@ public abstract class DataAccessBase extends TestBaseClass implements DatabaseRe
 	 * @return result
 	 */
 	public ResultSet executeQuery(String query) throws SQLException {
-		log.message("Executing query : " + query);
+		log.info("Executing query : " + query);
 		connection = getConnection();
 		statement = createStatement();
 		return statement.executeQuery(query);
@@ -117,7 +117,7 @@ public abstract class DataAccessBase extends TestBaseClass implements DatabaseRe
 	 * @return resultSet - the values in the result set
 	 */
 	public ResultSet getResultSet(String queryCommand) throws SQLException {
-		log.message("Executing query : " + queryCommand);
+		log.info("Executing query : " + queryCommand);
 		connection = getConnection();
 		statement = createStatement();
 		resultSet = executeQuery(queryCommand);
@@ -133,7 +133,7 @@ public abstract class DataAccessBase extends TestBaseClass implements DatabaseRe
 	 * @return result - the values in the result set
 	 */
 	public String executeQueryReturnRandom(String queryCommand) throws SQLException {
-		log.message("Executing query : " + queryCommand);
+		log.info("Executing query : " + queryCommand);
 		Random rand = new Random();
 		int min = 0, max = 0;
 		String result = "";
@@ -148,7 +148,7 @@ public abstract class DataAccessBase extends TestBaseClass implements DatabaseRe
 			}
 			resultSet.absolute(randomNum);
 			result = resultSet.getString(1);
-			log.message("Value picked in Random : " + result);
+			log.info("Value picked in Random : " + result);
 			closeResultSet();
 			closeStatement();
 			closeConnection();
@@ -259,11 +259,11 @@ public abstract class DataAccessBase extends TestBaseClass implements DatabaseRe
 	 * @return rowCount - count of the row
 	 */
 	public int executeUpdate(String sql) throws SQLException {
-		log.message("Executing query : " + sql);
+		log.info("Executing query : " + sql);
 		connection = getConnection();
 		statement = createStatement();
 		int rowCount = statement.executeUpdate(sql);
-		log.message("The update query affected : " + rowCount + " rows.");
+		log.info("The update query affected : " + rowCount + " rows.");
 		connection.commit();
 		closeResultSet();
 		closeStatement();
@@ -278,13 +278,13 @@ public abstract class DataAccessBase extends TestBaseClass implements DatabaseRe
 	 * @return firstVal - value of the first entry
 	 */
 	public String executeQueryReturnFirst(String queryCommand) throws SQLException {
-		log.message("Executing query : " + queryCommand);
+		log.info("Executing query : " + queryCommand);
 		connection = getConnection();
 		statement = createStatement();
 		resultSet = executeQuery(queryCommand);
 		resultSet.first();
 		String firstVal = resultSet.getString(1);
-		log.message("The first value fetched : " + firstVal);
+		log.info("The first value fetched : " + firstVal);
 		closeResultSet();
 		closeStatement();
 		closeConnection();
@@ -299,7 +299,7 @@ public abstract class DataAccessBase extends TestBaseClass implements DatabaseRe
 	 * @return values - values up to the given count
 	 */
 	public String[] executeQueryReturnGivenCount(String queryCommand, int countToReturn) throws SQLException {
-		log.message("Executing query : " + queryCommand);
+		log.info("Executing query : " + queryCommand);
 		String[] values = new String[countToReturn];
 		connection = getConnection();
 		statement = createStatement();
@@ -325,7 +325,7 @@ public abstract class DataAccessBase extends TestBaseClass implements DatabaseRe
 	 */
 	public ArrayList<String> executeQueryReturnGivenCountArray(String queryCommand, int countToReturn)
 			throws SQLException {
-		log.message("Executing query : " + queryCommand);
+		log.info("Executing query : " + queryCommand);
 		ArrayList<String> values = new ArrayList<String>();
 		connection = getConnection();
 		statement = createStatement();
@@ -359,7 +359,7 @@ public abstract class DataAccessBase extends TestBaseClass implements DatabaseRe
 	 * @return next data of the result set
 	 */
 	public String executeQueryReturnNext(String queryCommand) throws SQLException {
-		log.message("Executing query : " + queryCommand);
+		log.info("Executing query : " + queryCommand);
 		connection = getConnection();
 		statement = createStatement();
 		resultSet = executeQuery(queryCommand);

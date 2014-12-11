@@ -23,14 +23,13 @@ public class IntranetHomePage extends SeleniumWebDriver {
 
 	/***
 	 * Call to super constructor
-	 * @throws Exception 
 	 */
-	public IntranetHomePage() throws Exception {
+	public IntranetHomePage() {
 		PageFactory.initElements(SeleniumWebDriver.driver, this);
 		isElementPresent(readyLocator);
 	}
 
-	public boolean verifyelement() throws Exception {
+	public boolean verifyelement() {
 		boolean returnValue = true;
 		if (!verifyElementIDM()) {
 			returnValue = true;
@@ -44,7 +43,7 @@ public class IntranetHomePage extends SeleniumWebDriver {
 		return returnValue;
 	}
 
-	public TrainingSystemPage clickTrainingSystemLink() throws Exception {
+	public TrainingSystemPage clickTrainingSystemLink() {
 		click(lnkTrainingSystem);
 		Set<String> winHandle = driver.getWindowHandles();
 		driver.switchTo().window(winHandle.iterator().toString());
@@ -52,7 +51,7 @@ public class IntranetHomePage extends SeleniumWebDriver {
 		return new TrainingSystemPage();
 	}
 
-	public boolean verifyElementIDM() throws Exception {
+	public boolean verifyElementIDM() {
 		if (!isElementPresent(lnkIDM)) {
 			return true;
 		} else
@@ -60,7 +59,7 @@ public class IntranetHomePage extends SeleniumWebDriver {
 
 	}
 
-	public boolean verifyElementMS() throws Exception {
+	public boolean verifyElementMS() {
 		if (!isElementPresent(lnkLMS)) {
 			return true;
 		} else
@@ -68,7 +67,7 @@ public class IntranetHomePage extends SeleniumWebDriver {
 
 	}
 
-	public boolean verifyElementSeventhSense() throws Exception {
+	public boolean verifyElementSeventhSense() {
 		if (!isElementPresent(lnkSeventhSense)) {
 			return true;
 		} else

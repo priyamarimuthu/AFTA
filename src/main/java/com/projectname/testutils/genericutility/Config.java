@@ -8,7 +8,7 @@ public class Config {
 	public static Boolean requireToWrite = true; 
 	
 	//Retry Analyzer Initialization
-	public static final int retryCounter = 0; 
+	public static final int retryCounter = 1; 
 	
 	//Browser
 	public static String browser="FIREFOX";

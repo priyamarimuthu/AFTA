@@ -38,7 +38,6 @@ import com.projectname.testutils.genericutility.ExceptionHandler;
 import com.projectname.testutils.genericutility.FileUtility;
 import com.projectname.testutils.pages.LoginPage;
 import com.projectname.testutils.seleniumutils.SeleniumWebDriver;
-import com.projectname.testutils.support.Log;
 import com.projectname.testutils.testdatareader.DataAccessClient;
 import com.projectname.testutils.testdatareader.EnvironmentPropertiesReader;
 import com.projectname.testutils.testlink.xmlrpcclient.TestLinkAPIClient;
@@ -51,18 +50,18 @@ public class TestBaseClass{
 	 * This page object is initialized before the start of every test.
 	 */
 	protected LoginPage loginPage;
-	public static Log log;
+
 	/**
 	 * For Core Selenium2 functionality
 	 */
 	protected static WebDriver driver = null;
 	protected WebDriverWait wait;
-
+	private final String deliminator = "####";
 
 	/**
 	 * Standard log4j logger.
 	 */
-	protected final Logger logger = Logger.getLogger(getClass().getSimpleName());
+	protected final Logger log = Logger.getLogger(getClass().getSimpleName());
 
 	/**
 	 * To Read the environment details
@@ -130,7 +129,8 @@ public class TestBaseClass{
 			// Instantiating logger
 			logFile = new File(".").getCanonicalPath() + File.separator
 					+ "test-output" + File.separator + "temp.log";
-			log=new Log();
+			
+
 		} catch (IOException e) {
 			e.getMessage();
 		}
@@ -167,24 +167,24 @@ public class TestBaseClass{
 		SeleniumWebDriver.driver=driver;
 		Layout layout = new PatternLayout(
 				"%d{dd-MMM-yyyy HH:mm:ss:SSS} %-5p %c{1}:%L - %m%n");
-		logger.removeAllAppenders();
+		log.removeAllAppenders();
 		FileAppender appender = new FileAppender(layout, logFile, false);
-		logger.addAppender(appender);
+		log.addAppender(appender);
 
 		String fileParam = System.getProperty("selenium.properties.file");
 
-		logger.info("=====================================================================================================");
+		log.info("=====================================================================================================");
 		if (fileParam == null || fileParam.contains("selenium.properties.file")) {
 			environmentPropertiesReader = new EnvironmentPropertiesReader();
 		} else {
-			logger.info("Properties file used : " + fileParam);
+			log.info("Properties file used : " + fileParam);
 			environmentPropertiesReader = new EnvironmentPropertiesReader(
 					fileParam);
 		}
 
-		logger.info("App URL    : " + environmentPropertiesReader.getURL());
-		logger.info("Browser    : " + environmentPropertiesReader.getBrowser());
-		logger.info("=====================================================================================================");
+		log.info("App URL    : " + environmentPropertiesReader.getURL());
+		log.info("Browser    : " + environmentPropertiesReader.getBrowser());
+		log.info("=====================================================================================================");
 	}
 
 	
@@ -288,13 +288,13 @@ public class TestBaseClass{
 			if (!result.isSuccess()) {
 				String destFile = screenshotBasePath + File.separator
 						+ result.getName() + " " + dateTimeStamp + ".png";
-				log.message("Captured Screenshot : " + destFile);
+				log.info("Captured Screenshot : " + destFile);
 				status = "FAIL";
 				File scrFile = SeleniumWebDriver.takeScreenshot(driver);
 				FileUtility.copyFile(scrFile, new File(destFile));
 			}
 		} catch (Exception e) {
-			logger.error("The following error has occured while capturing a screen shot : "
+			log.error("The following error has occured while capturing a screen shot : "
 					+ e.getMessage());
 		} finally {
 
@@ -305,7 +305,7 @@ public class TestBaseClass{
 			//FileUtility.copyFile(new File(logFile), new File(fileName));
 
 			// Logging the test result
-			logger.info("The test result for " + result.getName() + " is "
+			log.info("The test result for " + result.getName() + " is "
 					+ status);
 
 			// Closing the browser and closing driver
@@ -313,7 +313,66 @@ public class TestBaseClass{
 		}
 	}
 	
+	//Report Part
+		protected final String empty = "";
 		
+		protected final String dot = ".";	
+		
+		protected String status = null;
+		
+
+		protected ITestResult logCustomMessage() {
+			return Reporter.getCurrentTestResult();
+		}
+		
+		/**
+		 * used for get the calling method name with line number
+		 * @return
+		 */
+		protected String getCallingMethodAndLineNumber(){
+			StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
+			
+			String callingMethodWithLineNumber = stackTraceElements[3].getClassName() + dot + stackTraceElements[3].getMethodName() + dot + stackTraceElements[3].getLineNumber() ;
+			
+			return callingMethodWithLineNumber;
+		}
+		
+		
+		/**
+		 * This method returns the current date and time in format HH-mm-ss.SSS
+		 * 
+		 * @return time - in the above mentioned format
+		 */
+		protected static String getCurrentDateAndTime() {
+			SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss.SSS");
+			Date date = new Date();
+			String time = sdf.format(date);
+			return time;
+		}
+		
+		/**
+		 * used to get the custom attribute value
+		 * @param operation
+		 * @param elementLocator1
+		 * @param optional
+		 * @param status
+		 * @param screenShot
+		 * @param callingMethodAndLineNumber
+		 * @return
+		 */
+		protected String getCustomAttributeValue(String operation,String elementLocator1, String optional,String status, String screenShot, String callingMethodAndLineNumber){
+			
+			return operation + deliminator + elementLocator1 + deliminator + optional + deliminator + status + deliminator + screenShot + deliminator + callingMethodAndLineNumber;
+			
+		}
+		
+		protected boolean logTitleMessage(String message1){
+			
+			logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue(message1,empty, empty, "title", empty, getCallingMethodAndLineNumber()));
+			log.info(message1);
+			return true;
+		}
+
 		//End of code for reporting
 			
 		
@@ -340,7 +399,7 @@ public class TestBaseClass{
 					e1.printStackTrace();
 				}
 				
-				log.message("Customized Assert true block executed...Temprory function, Need to enhance if You wish scrrenshot in report. Failure screenshot in 'custom-test-report/Failure_Screenshot/AssertFailure.jpg");
+				log.info("Customized Assert true block executed...Temprory function, Need to enhance if You wish scrrenshot in report. Failure screenshot in 'custom-test-report/Failure_Screenshot/AssertFailure.jpg");
 				
 				failNotEquals( Boolean.valueOf(condition), Boolean.TRUE, message);
 		    }
@@ -386,7 +445,7 @@ public class TestBaseClass{
 					e1.printStackTrace();
 				}
 				
-				log.message("Customized Verify True block executed...Temprory function, Need to enhance if You wish scrrenshot in report. Failure screenshot in 'custom-test-report/Failure_Screenshot/AssertFailure.jpg");
+				log.info("Customized Verify True block executed...Temprory function, Need to enhance if You wish scrrenshot in report. Failure screenshot in 'custom-test-report/Failure_Screenshot/AssertFailure.jpg");
 				
 		    }
 		 }

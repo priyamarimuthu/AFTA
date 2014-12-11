@@ -28,7 +28,6 @@ import org.testng.Assert;
 
 import com.projectname.testutils.genericutility.Config;
 import com.projectname.testutils.genericutility.ExceptionHandler;
-import com.projectname.testutils.support.Log;
 import com.thoughtworks.selenium.Selenium;
 
 public class SeleniumWebDriver {
@@ -40,7 +39,6 @@ public class SeleniumWebDriver {
 	static WebDriverWait wait;
 	private static String returnString="";
 	private static Boolean result = true;
-	public static Log log;
 		
 	//Time to wait for page to load
 	private static int secondsToWait = 20;
@@ -71,17 +69,15 @@ public class SeleniumWebDriver {
 	 * @param By
 	 * @param text
 	 * @return true/false
-	 * @throws Exception 
 	 * @throws IOException 
 	 */
-	public static boolean isElementPresent(By element) throws Exception{
+	public static boolean isElementPresent(By element){
 		boolean exists = true;
 		try {
 			exists = driver.findElement(element).isDisplayed();
 			status = "Pass";
 		} catch (Exception e) {
 			status = "Fail";
-			log.exception(e, driver,getCurrentDateAndTime(), getCurrentMethodName(), element, status, getCallingMethodAndLineNumber());
 			new ExceptionHandler(e, driver, getCustomAttributeValue(getCurrentMethodName(), element.toString(), empty, status, empty, getCallingMethodAndLineNumber()) );
 		}
 		
@@ -133,7 +129,7 @@ public class SeleniumWebDriver {
 		return ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 	}
 
-	public static boolean waitForElement(final By ajaxElementName, int timeOutValue) throws Exception{
+	public static boolean waitForElement(final By ajaxElementName, int timeOutValue){
 		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 		wait = new WebDriverWait(driver, timeOutValue);
 		try {
@@ -147,7 +143,6 @@ public class SeleniumWebDriver {
 		} catch (Exception e) {
 			status = "Fail";
 			result = false;
-			log.exception(e, driver,getCurrentDateAndTime(), getCurrentMethodName(), ajaxElementName, status, getCallingMethodAndLineNumber());
 			new ExceptionHandler(e, driver, getCustomAttributeValue(getCurrentMethodName(), ajaxElementName.toString(), empty, status, empty, getCallingMethodAndLineNumber()) );
 		}
 		
@@ -182,10 +177,9 @@ public class SeleniumWebDriver {
 	 * To type text on the field
 	 * @param driver
 	 * @return
-	 * @throws Exception 
 	 */
 
-	public static boolean sendKeys(By elementLocator, String value) throws Exception {
+	public static boolean sendKeys(By elementLocator, String value) {
 		try {
 			driver.manage().timeouts().implicitlyWait(45, TimeUnit.SECONDS);
 			driver.findElement(elementLocator).clear();
@@ -194,7 +188,6 @@ public class SeleniumWebDriver {
 		} catch (Exception e) {
 			status = "Fail";
 			result = false;
-			log.exception(e, driver,getCurrentDateAndTime(), getCurrentMethodName(), elementLocator, status, getCallingMethodAndLineNumber());
 			new ExceptionHandler(e, driver, getCustomAttributeValue(getCurrentMethodName(), elementLocator.toString(), empty, status, empty, getCallingMethodAndLineNumber()) );
 		}
 		
@@ -208,10 +201,9 @@ public class SeleniumWebDriver {
 	 * To click an element on the screen
 	 * @param driver
 	 * @return
-	 * @throws Exception 
 	 */
 	
-	public static boolean click(final By ajaxElementName) throws Exception{
+	public static boolean click(final By ajaxElementName){
 		try {
 			waitForElement(ajaxElementName, Config.AVG_WAIT_TIME_FOR_ELEMENT);
 			if (driver.findElement(ajaxElementName).isDisplayed()
@@ -223,7 +215,6 @@ public class SeleniumWebDriver {
 		} catch (Exception e) {
 			status = "Fail";
 			result = false;
-			log.exception(e, driver,getCurrentDateAndTime(), getCurrentMethodName(), ajaxElementName, status, getCallingMethodAndLineNumber());
 			new ExceptionHandler(e, driver, getCustomAttributeValue(getCurrentMethodName(), ajaxElementName.toString(), empty, status, empty, getCallingMethodAndLineNumber()) );
 		}
 		
@@ -237,13 +228,12 @@ public class SeleniumWebDriver {
 	 * isChecked function to verify if the AJAX based Checkbox is checked
 	 * @param selenium
 	 * @param ajaxCheckboxName (Name of the ajax Checkbox)
-	 * @throws Exception 
 	 * @throws IOException 
 	 * @throws MyException
 	 * @since March 04, 2013
 	 */
 	
-	public static boolean isChecked(final By ajaxCheckboxName) throws Exception{
+	public static boolean isChecked(final By ajaxCheckboxName){
 		try{
 			if (waitForElement(ajaxCheckboxName,
 					Config.AVG_WAIT_TIME_FOR_ELEMENT)) {
@@ -265,7 +255,6 @@ public class SeleniumWebDriver {
 		catch (Exception e) {
 			status = "fail";
 			result = false;
-			log.exception(e, driver,getCurrentDateAndTime(), getCurrentMethodName(), ajaxCheckboxName, status, getCallingMethodAndLineNumber());
 			new ExceptionHandler(e, driver, getCustomAttributeValue(getCurrentMethodName(), ajaxCheckboxName.toString(), empty, status, empty, getCallingMethodAndLineNumber()) );
 		}
 		
@@ -343,9 +332,8 @@ public class SeleniumWebDriver {
 	 * To select an option from the list
 	 * @param driver
 	 * @return
-	 * @throws Exception 
 	 */
-	public static boolean select(By listName, String valueForSelection) throws Exception{
+	public static boolean select(By listName, String valueForSelection){
 		valueForSelection = valueForSelection != null ? valueForSelection
 				.trim() : "";
 		try {
@@ -361,7 +349,6 @@ public class SeleniumWebDriver {
 		} catch (Exception e) {
 			status = "Fail";
 			result = false;
-			log.exception(e, driver,getCurrentDateAndTime(), getCurrentMethodName(), listName, status, getCallingMethodAndLineNumber());
 			new ExceptionHandler(e, driver, getCustomAttributeValue(getCurrentMethodName(), listName.toString(), valueForSelection, status, empty, getCallingMethodAndLineNumber()) );
 		}
 		
@@ -375,10 +362,9 @@ public class SeleniumWebDriver {
 	 * To get the text of a field
 	 * @param driver
 	 * @return
-	 * @throws Exception 
 	 */
 	
-	public static String getText(By elementName, int wait) throws Exception {
+	public static String getText(By elementName, int wait) throws ExceptionHandler, IOException {
 
 		try {
 			if (waitForElement(elementName, wait)) {
@@ -387,7 +373,6 @@ public class SeleniumWebDriver {
 			}
 		}  catch (Exception e) {
 			status = "Fail";
-			log.exception(e, driver,getCurrentDateAndTime(), getCurrentMethodName(), elementName, status, getCallingMethodAndLineNumber());
 			new ExceptionHandler(e, driver, getCustomAttributeValue(getCurrentMethodName(), elementName.toString(), empty, status, empty, getCallingMethodAndLineNumber()) );
 		}
 		
@@ -401,9 +386,8 @@ public class SeleniumWebDriver {
 	 * To get the value of a field
 	 * @param driver
 	 * @return
-	 * @throws Exception 
 	 */
-	public static String getValue(By elementName) throws Exception{
+	public static String getValue(By elementName){
 
 		try {
 			if (waitForElement(elementName, Config.AVG_WAIT_TIME_FOR_ELEMENT)) {
@@ -412,7 +396,6 @@ public class SeleniumWebDriver {
 			} 
 		} catch (Exception e) {
 			status = "Fail";
-			log.exception(e, driver,getCurrentDateAndTime(), getCurrentMethodName(), elementName, status, getCallingMethodAndLineNumber());
 			new ExceptionHandler(e, driver, getCustomAttributeValue(getCurrentMethodName(), elementName.toString(), empty, status, empty, getCallingMethodAndLineNumber()) );
 		}
 		if(Config.requireToWrite){
