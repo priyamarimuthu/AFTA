@@ -13,7 +13,6 @@ import com.projectname.testutils.baseclass.TestBaseClass;
 import com.projectname.testutils.pages.IDMPage;
 import com.projectname.testutils.pages.IntranetHomePage;
 import com.projectname.testutils.pages.LoginPage;
-import com.projectname.testutils.pages.TrainingSystemPage;
 import com.projectname.testutils.retryAnalyser.RetryRule;
 import com.projectname.testutils.testdatareader.ExcelReader;
 

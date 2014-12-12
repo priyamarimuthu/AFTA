@@ -8,8 +8,6 @@ import com.projectname.testutils.seleniumutils.SeleniumWebDriver;
 public class LmsPage extends SeleniumWebDriver{
 
 	private By readyLocator = By.xpath("//td[@id='ctl00_IDMMenun2']/table/tbody/tr/td");
-	private By txtReleaseNote = By.xpath("//td[@id='ctl00_IDMMenun2']/table/tbody/tr/td");
-	private By ajxMyLeave = By.xpath("//td[@id='ctl00_IDMMenun1']/table/tbody/tr/td");
 	
 	public LmsPage() {
 		PageFactory.initElements(SeleniumWebDriver.driver, this);

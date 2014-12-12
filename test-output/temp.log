@@ -1,6 +1,15 @@
-11-Dec-2014 18:02:06:513 INFO  HomePageTest:176 - =====================================================================================================
-11-Dec-2014 18:02:06:518 INFO  HomePageTest:185 - App URL    : http://systems.aspiresys.com/
-11-Dec-2014 18:02:06:519 INFO  HomePageTest:186 - Browser    : FIREFOX
-11-Dec-2014 18:02:06:519 INFO  HomePageTest:187 - =====================================================================================================
-11-Dec-2014 18:02:36:246 ERROR HomePageTest:297 - The following error has occured while capturing a screen shot : C:\Users\priya.marimuthu\git\Demo\test-output\screenshots\homePageTest 11-Dec-2014 18-02-29.png (The system cannot find the path specified)
-11-Dec-2014 18:02:36:247 INFO  HomePageTest:308 - The test result for homePageTest is FAIL
+12-Dec-2014 14:43:15:180 INFO  verifyTrainingSystemPage:176 - =====================================================================================================
+12-Dec-2014 14:43:15:181 INFO  verifyTrainingSystemPage:185 - App URL    : http://systems.aspiresys.com/
+12-Dec-2014 14:43:15:181 INFO  verifyTrainingSystemPage:186 - Browser    : FIREFOX
+12-Dec-2014 14:43:15:181 INFO  verifyTrainingSystemPage:187 - =====================================================================================================
+12-Dec-2014 14:43:15:188 INFO  verifyTrainingSystemPage:44 - priya.marimuthu - 
+12-Dec-2014 14:43:15:189 INFO  verifyTrainingSystemPage:372 - Login to application
+12-Dec-2014 14:43:34:209 INFO  verifyTrainingSystemPage:291 - Captured Screenshot : C:\Users\priya.marimuthu\git\Demo\test-output\screenshots\verifyTrainingSystem 12-Dec-2014 14-43-32.png
+12-Dec-2014 14:43:34:938 ERROR verifyTrainingSystemPage:297 - The following error has occured while capturing a screen shot : C:\Users\priya.marimuthu\git\Demo\test-output\screenshots\verifyTrainingSystem 12-Dec-2014 14-43-32.png (The system cannot find the path specified)
+12-Dec-2014 14:43:34:939 INFO  verifyTrainingSystemPage:308 - The test result for verifyTrainingSystem is FAIL
+12-Dec-2014 14:44:24:423 INFO  verifyTrainingSystemPage:291 - Captured Screenshot : C:\Users\priya.marimuthu\git\Demo\test-output\screenshots\verifyTrainingSystem 12-Dec-2014 14-44-22.png
+12-Dec-2014 14:44:24:424 ERROR verifyTrainingSystemPage:297 - The following error has occured while capturing a screen shot : The FirefoxDriver cannot be used after quit() was called.
+Build info: version: '2.33.0', revision: '4ecaf82108b2a6cc6f006aae81961236eba93358', time: '2013-05-22 12:00:17'
+System info: os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_13'
+Driver info: driver.version: SeleniumWebDriver
+12-Dec-2014 14:44:24:424 INFO  verifyTrainingSystemPage:308 - The test result for verifyTrainingSystem is FAIL

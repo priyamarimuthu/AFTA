@@ -19,7 +19,6 @@ import org.testng.ITestResult;
 import org.testng.xml.XmlSuite;
 
 import com.projectname.testutils.genericutility.Config;
-import com.projectname.testutils.retryAnalyser.RetryRule;
 
 public class CustomizedReporter implements ITestListener, IReporter, ISuiteListener{
 	

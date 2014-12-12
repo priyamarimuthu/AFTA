@@ -12,9 +12,183 @@
 <body>
 <div class="title">com.projectname.test.functional.modulename1</div>
 <div class="small" style="margin-bottom: 15px;">
-  Test Duration: 122.147s
+  Test Duration: 134.514s
 </div>
 
+  <table class="resultsTable configTable" width="100%">
+    <tr><td colspan="3" class="header failedConfig">Failed Configuration</td></tr>
+              <tr class="group">
+        <td colspan="3">com.projectname.test.functional.modulename2.HomePageTest</td>
+      </tr>
+      
+<tr>
+  <td>
+    genericSetUp
+      </td>
+  <td class="duration">
+    0.000s
+  </td>
+  <td class="result">
+        
+    
+        
+
+        <a href="javascript:toggleDiv('exception-0')" title="Click to expand/collapse"><b>org.openqa.selenium.remote.UnreachableBrowserException: Error communicating with the remote browser. It may have died.<br/>
+Build info: version: &apos;2.33.0&apos;, revision: &apos;4ecaf82108b2a6cc6f006aae81961236eba93358&apos;, time: &apos;2013-05-22 12:00:17&apos;<br/>
+System info: os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_13&apos;<br/>
+Driver info: driver.version: RemoteWebDriver</b></a><br />
+    <div class="stackTrace" id="exception-0">
+              org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:548)<br />
+              org.openqa.selenium.remote.RemoteWebDriver$RemoteWebDriverOptions$RemoteWindow.maximize(RemoteWebDriver.java:783)<br />
+              com.projectname.testutils.baseclass.TestBaseClass.loadURL(TestBaseClass.java:207)<br />
+              com.projectname.testutils.baseclass.TestBaseClass.genericSetUp(TestBaseClass.java:166)<br />
+              sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br />
+              sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)<br />
+              sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)<br />
+              java.lang.reflect.Method.invoke(Unknown Source)<br />
+              org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)<br />
+              org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:564)<br />
+              org.testng.internal.Invoker.invokeConfigurations(Invoker.java:213)<br />
+              org.testng.internal.Invoker.invokeMethod(Invoker.java:653)<br />
+              org.testng.internal.Invoker.retryFailed(Invoker.java:1049)<br />
+              org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1254)<br />
+              org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)<br />
+              org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)<br />
+              java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)<br />
+              java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)<br />
+              java.lang.Thread.run(Unknown Source)<br />
+                    <b>Caused by: </b> <a href="javascript:toggleDiv('exception-1')" title="Click to expand/collapse">java.net.SocketException: Connection reset</a><br />
+        <div class="stackTrace" id="exception-1">
+                      java.net.SocketInputStream.read(Unknown Source)<br />
+                      java.net.SocketInputStream.read(Unknown Source)<br />
+                      org.apache.http.impl.io.AbstractSessionInputBuffer.fillBuffer(AbstractSessionInputBuffer.java:166)<br />
+                      org.apache.http.impl.io.SocketInputBuffer.fillBuffer(SocketInputBuffer.java:90)<br />
+                      org.apache.http.impl.io.AbstractSessionInputBuffer.readLine(AbstractSessionInputBuffer.java:281)<br />
+                      org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:92)<br />
+                      org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:62)<br />
+                      org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:254)<br />
+                      org.apache.http.impl.AbstractHttpClientConnection.receiveResponseHeader(AbstractHttpClientConnection.java:289)<br />
+                      org.apache.http.impl.conn.DefaultClientConnection.receiveResponseHeader(DefaultClientConnection.java:252)<br />
+                      org.apache.http.impl.conn.AbstractClientConnAdapter.receiveResponseHeader(AbstractClientConnAdapter.java:219)<br />
+                      org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:300)<br />
+                      org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:127)<br />
+                      org.apache.http.impl.client.DefaultRequestDirector.tryExecute(DefaultRequestDirector.java:712)<br />
+                      org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:517)<br />
+                      org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:906)<br />
+                      org.openqa.selenium.remote.HttpCommandExecutor.fallBackExecute(HttpCommandExecutor.java:316)<br />
+                      org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:295)<br />
+                      org.openqa.selenium.firefox.internal.NewProfileExtensionConnection.execute(NewProfileExtensionConnection.java:133)<br />
+                      org.openqa.selenium.firefox.FirefoxDriver$LazyCommandExecutor.execute(FirefoxDriver.java:355)<br />
+                      org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:527)<br />
+                      org.openqa.selenium.remote.RemoteWebDriver$RemoteWebDriverOptions$RemoteWindow.maximize(RemoteWebDriver.java:783)<br />
+                      com.projectname.testutils.baseclass.TestBaseClass.loadURL(TestBaseClass.java:207)<br />
+                      com.projectname.testutils.baseclass.TestBaseClass.genericSetUp(TestBaseClass.java:166)<br />
+                      sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br />
+                      sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)<br />
+                      sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)<br />
+                      java.lang.reflect.Method.invoke(Unknown Source)<br />
+                      org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)<br />
+                      org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:564)<br />
+                      org.testng.internal.Invoker.invokeConfigurations(Invoker.java:213)<br />
+                      org.testng.internal.Invoker.invokeMethod(Invoker.java:653)<br />
+                      org.testng.internal.Invoker.retryFailed(Invoker.java:1049)<br />
+                      org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1254)<br />
+                      org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)<br />
+                      org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)<br />
+                      java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)<br />
+                      java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)<br />
+                      java.lang.Thread.run(Unknown Source)<br />
+                  </div>
+          </div>
+      </td>
+</tr>
+          <tr class="group">
+        <td colspan="3">com.projectname.test.functional.modulename2.LoginTest</td>
+      </tr>
+      
+<tr>
+  <td>
+    genericSetUp
+      </td>
+  <td class="duration">
+    0.000s
+  </td>
+  <td class="result">
+        
+    
+        
+
+        <a href="javascript:toggleDiv('exception-2')" title="Click to expand/collapse"><b>org.openqa.selenium.remote.UnreachableBrowserException: Error communicating with the remote browser. It may have died.<br/>
+Build info: version: &apos;2.33.0&apos;, revision: &apos;4ecaf82108b2a6cc6f006aae81961236eba93358&apos;, time: &apos;2013-05-22 12:00:17&apos;<br/>
+System info: os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_13&apos;<br/>
+Driver info: driver.version: RemoteWebDriver</b></a><br />
+    <div class="stackTrace" id="exception-2">
+              org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:548)<br />
+              org.openqa.selenium.remote.RemoteWebDriver$RemoteWebDriverOptions$RemoteWindow.maximize(RemoteWebDriver.java:783)<br />
+              com.projectname.testutils.baseclass.TestBaseClass.loadURL(TestBaseClass.java:207)<br />
+              com.projectname.testutils.baseclass.TestBaseClass.genericSetUp(TestBaseClass.java:166)<br />
+              sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br />
+              sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)<br />
+              sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)<br />
+              java.lang.reflect.Method.invoke(Unknown Source)<br />
+              org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)<br />
+              org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:564)<br />
+              org.testng.internal.Invoker.invokeConfigurations(Invoker.java:213)<br />
+              org.testng.internal.Invoker.invokeMethod(Invoker.java:653)<br />
+              org.testng.internal.Invoker.retryFailed(Invoker.java:1049)<br />
+              org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1254)<br />
+              org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)<br />
+              org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)<br />
+              java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)<br />
+              java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)<br />
+              java.lang.Thread.run(Unknown Source)<br />
+                    <b>Caused by: </b> <a href="javascript:toggleDiv('exception-3')" title="Click to expand/collapse">java.net.SocketException: Connection reset</a><br />
+        <div class="stackTrace" id="exception-3">
+                      java.net.SocketInputStream.read(Unknown Source)<br />
+                      java.net.SocketInputStream.read(Unknown Source)<br />
+                      org.apache.http.impl.io.AbstractSessionInputBuffer.fillBuffer(AbstractSessionInputBuffer.java:166)<br />
+                      org.apache.http.impl.io.SocketInputBuffer.fillBuffer(SocketInputBuffer.java:90)<br />
+                      org.apache.http.impl.io.AbstractSessionInputBuffer.readLine(AbstractSessionInputBuffer.java:281)<br />
+                      org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:92)<br />
+                      org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:62)<br />
+                      org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:254)<br />
+                      org.apache.http.impl.AbstractHttpClientConnection.receiveResponseHeader(AbstractHttpClientConnection.java:289)<br />
+                      org.apache.http.impl.conn.DefaultClientConnection.receiveResponseHeader(DefaultClientConnection.java:252)<br />
+                      org.apache.http.impl.conn.AbstractClientConnAdapter.receiveResponseHeader(AbstractClientConnAdapter.java:219)<br />
+                      org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:300)<br />
+                      org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:127)<br />
+                      org.apache.http.impl.client.DefaultRequestDirector.tryExecute(DefaultRequestDirector.java:712)<br />
+                      org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:517)<br />
+                      org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:906)<br />
+                      org.openqa.selenium.remote.HttpCommandExecutor.fallBackExecute(HttpCommandExecutor.java:316)<br />
+                      org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:295)<br />
+                      org.openqa.selenium.firefox.internal.NewProfileExtensionConnection.execute(NewProfileExtensionConnection.java:133)<br />
+                      org.openqa.selenium.firefox.FirefoxDriver$LazyCommandExecutor.execute(FirefoxDriver.java:355)<br />
+                      org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:527)<br />
+                      org.openqa.selenium.remote.RemoteWebDriver$RemoteWebDriverOptions$RemoteWindow.maximize(RemoteWebDriver.java:783)<br />
+                      com.projectname.testutils.baseclass.TestBaseClass.loadURL(TestBaseClass.java:207)<br />
+                      com.projectname.testutils.baseclass.TestBaseClass.genericSetUp(TestBaseClass.java:166)<br />
+                      sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br />
+                      sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)<br />
+                      sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)<br />
+                      java.lang.reflect.Method.invoke(Unknown Source)<br />
+                      org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)<br />
+                      org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:564)<br />
+                      org.testng.internal.Invoker.invokeConfigurations(Invoker.java:213)<br />
+                      org.testng.internal.Invoker.invokeMethod(Invoker.java:653)<br />
+                      org.testng.internal.Invoker.retryFailed(Invoker.java:1049)<br />
+                      org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1254)<br />
+                      org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)<br />
+                      org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)<br />
+                      java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)<br />
+                      java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)<br />
+                      java.lang.Thread.run(Unknown Source)<br />
+                  </div>
+          </div>
+      </td>
+</tr>
+    
+      </table>
 
 <table class="resultsTable" width="100%">
       <tr><td colspan="3" class="header failed">Failed Tests</td></tr>
@@ -27,32 +201,26 @@
     homePageTest
       </td>
   <td class="duration">
-    8.491s
+    8.081s
   </td>
   <td class="result">
         
     
-            <div class="testOutput">
-                        &lt;div class=&quot;test-title&quot;&gt; &lt;strong&gt;&lt;font color = &quot;blue&quot;&gt;Home Page Test&lt;small&gt;[To verify home page elements]&lt;/small&gt;&lt;/font&gt; &lt;/strong&gt; &lt;/div&gt;&lt;div&gt;&lt;strong&gt;Steps:&lt;/strong&gt;&lt;/div&gt;&lt;!-- Report --&gt;<br />
-                                &lt;div class=&quot;test-message&quot;&gt;&lt;p&gt;&lt;strong&gt;&lt;font color = &quot;black&quot;&gt;&lt;/strong&gt;&lt;/p&gt;&lt;/div&gt;<br />
-                                &lt;div class=&quot;test-message&quot;&gt;&lt;p&gt;&lt;strong&gt;&lt;font color = &quot;black&quot;&gt;priya.marimuthu - &lt;/strong&gt;&lt;/p&gt;&lt;/div&gt;<br />
-                                &lt;div class=&quot;test-message&quot;&gt;&lt;p&gt;&lt;strong&gt;&lt;font color = &quot;black&quot;&gt;Login to application&lt;/strong&gt;&lt;/p&gt;&lt;/div&gt;<br />
-                  </div>
-    
+        
 
-        <a href="javascript:toggleDiv('exception-0')" title="Click to expand/collapse"><b>java.lang.AssertionError: Unable to locate element: {&quot;method&quot;:&quot;link text&quot;,&quot;selector&quot;:&quot;Log In&quot;}<br/>
-Command duration or timeout: 371 milliseconds<br/>
+        <a href="javascript:toggleDiv('exception-4')" title="Click to expand/collapse"><b>java.lang.AssertionError: Unable to locate element: {&quot;method&quot;:&quot;link text&quot;,&quot;selector&quot;:&quot;Log In&quot;}<br/>
+Command duration or timeout: 7.41 seconds<br/>
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html<br/>
 Build info: version: &apos;2.33.0&apos;, revision: &apos;4ecaf82108b2a6cc6f006aae81961236eba93358&apos;, time: &apos;2013-05-22 12:00:17&apos;<br/>
 System info: os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_13&apos;<br/>
-Session ID: a5376968-4f2e-4788-adb1-5dc02f568f6a<br/>
+Session ID: 9f8b21c6-b45f-4d72-adf3-7dedf5c8cd87<br/>
 Driver info: org.openqa.selenium.firefox.FirefoxDriver<br/>
 Capabilities [{platform=XP, databaseEnabled=true, cssSelectorsEnabled=true, javascriptEnabled=true, acceptSslCerts=true, handlesAlerts=true, browserName=firefox, browserConnectionEnabled=true, nativeEvents=true, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=17.0}]</b></a><br />
-    <div class="stackTrace" id="exception-0">
+    <div class="stackTrace" id="exception-4">
               org.junit.Assert.fail(Assert.java:93)<br />
-              com.projectname.testutils.genericutility.ExceptionHandler.takeScreenshot(ExceptionHandler.java:69)<br />
+              com.projectname.testutils.genericutility.ExceptionHandler.takeScreenshot(ExceptionHandler.java:74)<br />
               com.projectname.testutils.genericutility.ExceptionHandler.&lt;init&gt;(ExceptionHandler.java:50)<br />
-              com.projectname.testutils.seleniumutils.SeleniumWebDriver.isElementPresent(SeleniumWebDriver.java:81)<br />
+              com.projectname.testutils.seleniumutils.SeleniumWebDriver.isElementPresent(SeleniumWebDriver.java:83)<br />
               com.projectname.testutils.pages.LoginPage.&lt;init&gt;(LoginPage.java:25)<br />
               com.projectname.test.functional.modulename2.HomePageTest.homePageTest(HomePageTest.java:40)<br />
               sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br />
@@ -65,20 +233,56 @@ Capabilities [{platform=XP, databaseEnabled=true, cssSelectorsEnabled=true, java
               org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)<br />
               org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)<br />
               org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)<br />
-              org.testng.TestRunner.privateRun(TestRunner.java:767)<br />
-              org.testng.TestRunner.run(TestRunner.java:617)<br />
-              org.testng.SuiteRunner.runTest(SuiteRunner.java:334)<br />
-              org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)<br />
-              org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)<br />
-              org.testng.SuiteRunner.run(SuiteRunner.java:240)<br />
-              org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)<br />
-              org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)<br />
-              org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)<br />
-              org.testng.TestNG.runSuitesLocally(TestNG.java:1149)<br />
-              org.testng.TestNG.run(TestNG.java:1057)<br />
-              org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)<br />
-              org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)<br />
-              org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)<br />
+              java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)<br />
+              java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)<br />
+              java.lang.Thread.run(Unknown Source)<br />
+                </div>
+      </td>
+</tr>
+          <tr>
+        <td colspan="3" class="group">com.projectname.test.functional.modulename2.LoginTest</td>
+      </tr>
+      
+<tr>
+  <td>
+    loginTest
+      </td>
+  <td class="duration">
+    3.190s
+  </td>
+  <td class="result">
+        
+    
+        
+
+        <a href="javascript:toggleDiv('exception-5')" title="Click to expand/collapse"><b>java.lang.AssertionError: Unable to locate element: {&quot;method&quot;:&quot;link text&quot;,&quot;selector&quot;:&quot;Log In&quot;}<br/>
+Command duration or timeout: 2.52 seconds<br/>
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html<br/>
+Build info: version: &apos;2.33.0&apos;, revision: &apos;4ecaf82108b2a6cc6f006aae81961236eba93358&apos;, time: &apos;2013-05-22 12:00:17&apos;<br/>
+System info: os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_13&apos;<br/>
+Session ID: 9f8b21c6-b45f-4d72-adf3-7dedf5c8cd87<br/>
+Driver info: org.openqa.selenium.firefox.FirefoxDriver<br/>
+Capabilities [{platform=XP, databaseEnabled=true, cssSelectorsEnabled=true, javascriptEnabled=true, acceptSslCerts=true, handlesAlerts=true, browserName=firefox, browserConnectionEnabled=true, nativeEvents=true, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=17.0}]</b></a><br />
+    <div class="stackTrace" id="exception-5">
+              org.junit.Assert.fail(Assert.java:93)<br />
+              com.projectname.testutils.genericutility.ExceptionHandler.takeScreenshot(ExceptionHandler.java:74)<br />
+              com.projectname.testutils.genericutility.ExceptionHandler.&lt;init&gt;(ExceptionHandler.java:50)<br />
+              com.projectname.testutils.seleniumutils.SeleniumWebDriver.isElementPresent(SeleniumWebDriver.java:83)<br />
+              com.projectname.testutils.pages.LoginPage.&lt;init&gt;(LoginPage.java:25)<br />
+              com.projectname.test.functional.modulename2.LoginTest.loginTest(LoginTest.java:40)<br />
+              sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br />
+              sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)<br />
+              sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)<br />
+              java.lang.reflect.Method.invoke(Unknown Source)<br />
+              org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)<br />
+              org.testng.internal.Invoker.invokeMethod(Invoker.java:714)<br />
+              org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)<br />
+              org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)<br />
+              org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)<br />
+              org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)<br />
+              java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)<br />
+              java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)<br />
+              java.lang.Thread.run(Unknown Source)<br />
                 </div>
       </td>
 </tr>
@@ -91,25 +295,19 @@ Capabilities [{platform=XP, databaseEnabled=true, cssSelectorsEnabled=true, java
     searchbyname
       </td>
   <td class="duration">
-    22.955s
+    6.385s
   </td>
   <td class="result">
         
     
-            <div class="testOutput">
-                        &lt;div class=&quot;test-title&quot;&gt; &lt;strong&gt;&lt;font color = &quot;blue&quot;&gt;Search by Name&lt;small&gt;[To verify search functionality]&lt;/small&gt;&lt;/font&gt; &lt;/strong&gt; &lt;/div&gt;&lt;div&gt;&lt;strong&gt;Steps:&lt;/strong&gt;&lt;/div&gt;&lt;!-- Report --&gt;<br />
-                                &lt;div class=&quot;test-message&quot;&gt;&lt;p&gt;&lt;strong&gt;&lt;font color = &quot;black&quot;&gt;&lt;/strong&gt;&lt;/p&gt;&lt;/div&gt;<br />
-                                &lt;div class=&quot;test-message&quot;&gt;&lt;p&gt;&lt;strong&gt;&lt;font color = &quot;black&quot;&gt;priya.marimuthu - &lt;/strong&gt;&lt;/p&gt;&lt;/div&gt;<br />
-                                &lt;div class=&quot;test-message&quot;&gt;&lt;p&gt;&lt;strong&gt;&lt;font color = &quot;black&quot;&gt;Login to application&lt;/strong&gt;&lt;/p&gt;&lt;/div&gt;<br />
-                                &lt;div class=&quot;test-message&quot;&gt;&lt;p&gt;&lt;strong&gt;&lt;font color = &quot;black&quot;&gt;Login Successful&lt;/strong&gt;&lt;/p&gt;&lt;/div&gt;<br />
-                  </div>
-    
+        
 
-        <a href="javascript:toggleDiv('exception-1')" title="Click to expand/collapse"><b>java.lang.IndexOutOfBoundsException: Index: 0, Size: 0</b></a><br />
-    <div class="stackTrace" id="exception-1">
-              java.util.ArrayList.rangeCheck(Unknown Source)<br />
-              java.util.ArrayList.get(Unknown Source)<br />
-              com.projectname.test.functional.modulename2.SearchByName.searchbyname(SearchByName.java:59)<br />
+        <a href="javascript:toggleDiv('exception-6')" title="Click to expand/collapse"><b>java.lang.NullPointerException</b></a><br />
+    <div class="stackTrace" id="exception-6">
+              com.projectname.testutils.genericutility.ExceptionHandler.&lt;init&gt;(ExceptionHandler.java:31)<br />
+              com.projectname.testutils.seleniumutils.SeleniumWebDriver.waitForPageToLoad(SeleniumWebDriver.java:301)<br />
+              com.projectname.testutils.pages.LoginPage.login(LoginPage.java:30)<br />
+              com.projectname.test.functional.modulename2.SearchByName.searchbyname(SearchByName.java:50)<br />
               sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br />
               sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)<br />
               sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)<br />
@@ -120,28 +318,34 @@ Capabilities [{platform=XP, databaseEnabled=true, cssSelectorsEnabled=true, java
               org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)<br />
               org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)<br />
               org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)<br />
-              org.testng.TestRunner.privateRun(TestRunner.java:767)<br />
-              org.testng.TestRunner.run(TestRunner.java:617)<br />
-              org.testng.SuiteRunner.runTest(SuiteRunner.java:334)<br />
-              org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)<br />
-              org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)<br />
-              org.testng.SuiteRunner.run(SuiteRunner.java:240)<br />
-              org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)<br />
-              org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)<br />
-              org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)<br />
-              org.testng.TestNG.runSuitesLocally(TestNG.java:1149)<br />
-              org.testng.TestNG.run(TestNG.java:1057)<br />
-              org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)<br />
-              org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)<br />
-              org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)<br />
+              java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)<br />
+              java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)<br />
+              java.lang.Thread.run(Unknown Source)<br />
                 </div>
       </td>
 </tr>
         <tr style="border: 0;"><td colspan="3">&nbsp;</td></tr>
   
-  
-      <tr><td colspan="3" class="header passed">Passed Tests</td></tr>
+      <tr><td colspan="3" class="header skipped">Skipped Tests</td></tr>
               <tr>
+        <td colspan="3" class="group">com.projectname.test.functional.modulename2.HomePageTest</td>
+      </tr>
+      
+<tr>
+  <td>
+    homePageTest
+      </td>
+  <td class="duration">
+    0.000s
+  </td>
+  <td class="result">
+                         
+    
+        
+
+      </td>
+</tr>
+          <tr>
         <td colspan="3" class="group">com.projectname.test.functional.modulename2.LoginTest</td>
       </tr>
       
@@ -150,23 +354,17 @@ Capabilities [{platform=XP, databaseEnabled=true, cssSelectorsEnabled=true, java
     loginTest
       </td>
   <td class="duration">
-    24.078s
+    0.000s
   </td>
   <td class="result">
+                         
+    
         
-    
-            <div class="testOutput">
-                        &lt;div class=&quot;test-title&quot;&gt; &lt;strong&gt;&lt;font color = &quot;blue&quot;&gt;Login Test&lt;small&gt;[To verify login]&lt;/small&gt;&lt;/font&gt; &lt;/strong&gt; &lt;/div&gt;&lt;div&gt;&lt;strong&gt;Steps:&lt;/strong&gt;&lt;/div&gt;&lt;!-- Report --&gt;<br />
-                                &lt;div class=&quot;test-message&quot;&gt;&lt;p&gt;&lt;strong&gt;&lt;font color = &quot;black&quot;&gt;&lt;/strong&gt;&lt;/p&gt;&lt;/div&gt;<br />
-                                &lt;div class=&quot;test-message&quot;&gt;&lt;p&gt;&lt;strong&gt;&lt;font color = &quot;black&quot;&gt;priya.marimuthu - &lt;/strong&gt;&lt;/p&gt;&lt;/div&gt;<br />
-                                &lt;div class=&quot;test-message&quot;&gt;&lt;p&gt;&lt;strong&gt;&lt;font color = &quot;black&quot;&gt;Login to application&lt;/strong&gt;&lt;/p&gt;&lt;/div&gt;<br />
-                                &lt;div class=&quot;test-message&quot;&gt;&lt;p&gt;&lt;strong&gt;&lt;font color = &quot;black&quot;&gt;Login Successful&lt;/strong&gt;&lt;/p&gt;&lt;/div&gt;<br />
-                  </div>
-    
 
       </td>
 </tr>
         <tr style="border: 0;"><td colspan="3">&nbsp;</td></tr>
+  
     
 </table>
 </body>

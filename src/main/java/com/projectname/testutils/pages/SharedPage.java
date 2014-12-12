@@ -1,12 +1,8 @@
 package com.projectname.testutils.pages;
 
-import java.awt.AWTException;
-import java.io.IOException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
-
-import com.projectname.testutils.genericutility.ExceptionHandler;
 import com.projectname.testutils.seleniumutils.SeleniumWebDriver;
 
 
@@ -18,12 +14,7 @@ public class SharedPage extends SeleniumWebDriver{
 
 	private By btnLogout = By.linkText("Logout");
 
-	private By btnLogin = By.linkText("Log In");
-	private By lnkChangePwd = By.linkText("change password");
-	private By imgLoginPopup = By.id("modal-content");
-	
 	private By lnkUserName = By.cssSelector("css=span.user_name");
-	private By lnkTrainingSystem = By.linkText("Training System");
 	private By txtSearchtextbox = By.id("searchtextbox");
 	private By btnSearch = By.id("searchbtn");
 	/***

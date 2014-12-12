@@ -8,7 +8,6 @@ import org.testng.annotations.Test;
 
 import com.projectname.functional.annotations.MapToTestLink;
 import com.projectname.testutils.baseclass.TestBaseClass;
-import com.projectname.testutils.pages.IntranetHomePage;
 import com.projectname.testutils.pages.LoginPage;
 import com.projectname.testutils.retryAnalyser.RetryRule;
 import com.projectname.testutils.testdatareader.ExcelReader;
@@ -16,7 +15,6 @@ import com.projectname.testutils.testdatareader.ExcelReader;
 @Listeners(com.projectname.testutils.baseclass.CustomizedReporter.class)
 
 public class LoginTest extends TestBaseClass {
-	private IntranetHomePage intranetHomePage=null;
 	
 	
 	/*************************************************************************************************** 

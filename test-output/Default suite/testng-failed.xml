@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.projectname.test.functional.modulename1.HomePageTest">
+      <class name="com.projectname.test.functional.modulename1.LoginTest">
         <methods>
           <include name="genericSetUp"/>
-          <include name="homePageTest"/>
+          <include name="loginTest"/>
           <include name="tearDown"/>
         </methods>
-      </class> <!-- com.projectname.test.functional.modulename1.HomePageTest -->
+      </class> <!-- com.projectname.test.functional.modulename1.LoginTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

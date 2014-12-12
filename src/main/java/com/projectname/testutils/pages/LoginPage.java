@@ -13,7 +13,6 @@ public class LoginPage extends SeleniumWebDriver{
 	private By txtUserName = By.id("edit-name");
 	private By txtPassword = By.id("edit-pass");
 
-	private By btnLogout = By.linkText("Logout");
 	private By btnSubmit = By.id("edit-submit--2");
 	private By btnLogin = By.linkText("Log In");
 	

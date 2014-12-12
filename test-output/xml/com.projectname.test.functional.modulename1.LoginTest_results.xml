@@ -1,16 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuite name="com.projectname.test.functional.modulename1.LoginTest"
            tests="1"
-           failures="0"
+           failures="1"
            errors="0"
            skipped="0"
-           time="24.079">
+           time="0.330">
   <properties />
+      <testcase name="loginTest" time="0.330">
+            <failure type="org.openqa.selenium.remote.SessionNotFoundException"
+                  message="Session ID is null
+Build info: version: &apos;2.33.0&apos;, revision: &apos;4ecaf82108b2a6cc6f006aae81961236eba93358&apos;, time: &apos;2013-05-22 12:00:17&apos;
+System info: os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_13&apos;
+Driver info: driver.version: SeleniumWebDriver"
+              >
+<![CDATA[org.openqa.selenium.remote.SessionNotFoundException: Session ID is null
+Build info: version: '2.33.0', revision: '4ecaf82108b2a6cc6f006aae81961236eba93358', time: '2013-05-22 12:00:17'
+System info: os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_13'
+Driver info: driver.version: SeleniumWebDriver
+  org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:273)
+  org.openqa.selenium.firefox.internal.NewProfileExtensionConnection.execute(NewProfileExtensionConnection.java:133)
+  org.openqa.selenium.firefox.FirefoxDriver$LazyCommandExecutor.execute(FirefoxDriver.java:355)
+  org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:527)
+  org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:569)
+  org.openqa.selenium.firefox.FirefoxDriver.getScreenshotAs(FirefoxDriver.java:316)
+  com.projectname.testutils.genericutility.ExceptionHandler.takeScreenshot(ExceptionHandler.java:56)
+  com.projectname.testutils.genericutility.ExceptionHandler.<init>(ExceptionHandler.java:50)
+  com.projectname.testutils.seleniumutils.SeleniumWebDriver.isElementPresent(SeleniumWebDriver.java:83)
+  com.projectname.testutils.pages.LoginPage.<init>(LoginPage.java:25)
+  com.projectname.test.functional.modulename1.LoginTest.loginTest(LoginTest.java:40)
+  sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+  sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+  sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+  java.lang.reflect.Method.invoke(Unknown Source)
+  org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+  org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+  org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+  org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+  org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+  org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+  java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+  java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+  java.lang.Thread.run(Unknown Source)
+]]>
+      </failure>
+
+          </testcase>
   
 
   
 
-      <testcase name="loginTest" time="24.079" />
   
 
 </testsuite>
