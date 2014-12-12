@@ -77,7 +77,9 @@ public class SeleniumWebDriver {
 			exists = driver.findElement(element).isDisplayed();
 			status = "Pass";
 		} catch (Exception e) {
+			
 			status = "Fail";
+			result = false;
 			new ExceptionHandler(e, driver, getCustomAttributeValue(getCurrentMethodName(), element.toString(), empty, status, empty, getCallingMethodAndLineNumber()) );
 		}
 		

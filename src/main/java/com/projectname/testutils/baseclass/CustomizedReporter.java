@@ -227,8 +227,9 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 	    out.println("<tbody>");
 	    
 	    if(RetryRule.retryCount>0){
+	    	out.println("<br><br>");
 	    	out.println("<tr class=\"title\" title=\"\" alt=\"\">");
-	    	out.println("<td colspan=\"6\"> Retry Attempt: "+ ((RetryRule.retryCount)-1) + "</td>");
+	    	out.println("<td colspan=\"6\"> Retry Attempt: "+ ((RetryRule.retryCount)) + "</td>");
 			out.println("</tr>");
 	    }
 	    
@@ -308,6 +309,11 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 	    		if(temp[3].toLowerCase().contains("fail")){
 	    			//If Fail create '<tr>' tag with 'status_failed' class(Which is used for create 'red' background color for failed cases)
 	    			fout.println("<tr class=\"status_failed\" title=\"\" alt=\"\">");
+	    			
+	    			//If failed in constructor, the function name will be like '<init>'.
+	    			//So, if it is like that, we can not use that name as a file name
+	    			//So, Replacing the value with empty space
+	    			temp[5] = temp[5].replace(".<init>", "");
 	    			
 	    			//create the screenshot path
 	    			String pathToScreenshot = "../Failure_Screenshot/"+temp[5]+".jpg";

@@ -57,6 +57,11 @@ public class ExceptionHandler extends Exception{
 		
 		String workingdirectory = System.getProperty("user.dir");
 		
+		//If failed in constructor, the function name will be like '<init>'.
+		//So, if it is like that, we can not use that name as a file name
+		//So, Replacing the value with empty space
+		message[5] = message[5].replace(".<init>", "");
+		
 		File scrFile1 = new File(workingdirectory +"/custom-test-report/Failure_Screenshot/"+message[5]+".jpg");
 		
 		try {
