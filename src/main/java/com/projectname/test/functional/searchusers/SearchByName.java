@@ -31,7 +31,7 @@ public class SearchByName extends TestBaseClass{
    	 * @since October 30, 2014
    	 ***************************************************************************************************/
 	
-	@Test(retryAnalyzer = RetryRule.class,groups = {"Regression"})
+	@Test(retryAnalyzer = RetryRule.class,groups = {"Regression","Search"})
 	@MapToTestLink(testCaseID = "TestCase_3")
 	public void searchbyname(){
 

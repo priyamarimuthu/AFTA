@@ -24,7 +24,7 @@ public class LoginTest extends TestBaseClass {
    	 * @since October 30, 2014
    	 ***************************************************************************************************/
 	
-	@Test(retryAnalyzer = RetryRule.class,groups = {"Regression"})
+	@Test(retryAnalyzer = RetryRule.class,groups = {"Regression","Login"})
 	@MapToTestLink(testCaseID = "TestCase_1")
 	public void loginTest(){
 		ArrayList<HashedMap> testData = ExcelReader.getTestDataByTestCaseId(

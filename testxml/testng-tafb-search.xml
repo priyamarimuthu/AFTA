@@ -1,0 +1,25 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Selenium Automation Framework">
+    
+    <listeners>
+      <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+      <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+  </listeners>       
+	
+    <test name="com.projectname.test.functional.searchusers">
+    
+     <groups>  
+		   <define name="Search Test">    
+		      <include name="Search"/>           
+		    </define>
+		    <run>
+		    	 <include name="Search Test"/>
+		    </run>
+	</groups>  
+  
+  
+    <packages>
+      <package name="com.projectname.test.functional.searchusers.*"/>
+    </packages>
+	</test>
+</suite> <!-- [EBS Selenium Automated QA Test]] -->

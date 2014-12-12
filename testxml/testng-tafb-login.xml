@@ -1,0 +1,25 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Selenium Automation Framework">
+    
+    <listeners>
+      <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+      <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+  </listeners>       
+	
+    <test name="com.projectname.test.functional.login">
+    
+     <groups>  
+		   <define name="Login Test">    
+		      <include name="Login"/>           
+		    </define>
+		    <run>
+		    	 <include name="Login Test"/>
+		    </run>
+	</groups>  
+  
+  
+    <packages>
+      <package name="com.projectname.test.functional.login.*"/>
+    </packages>
+	</test>
+</suite> <!-- [EBS Selenium Automated QA Test]] -->
