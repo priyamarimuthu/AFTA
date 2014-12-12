@@ -20,13 +20,12 @@ public class IDMPage extends SeleniumWebDriver{
 		PageFactory.initElements(driver, this);
 		isElementPresent(readyLocator);
 	}
-
-	/*************************************************************************************************** 
-	 * @purpose To verify IDM Page
- 	 * @action Verify the user details on IDM page
-   	 * @author AspireQA
-   	 * @since October 30, 2014
-   	 ***************************************************************************************************/
+	
+	/**
+	 * verify IDM Page
+	 * @param HashedMap
+	 * @return boolean
+	 */
 	public boolean verifyIDMPage(HashedMap IDMData){
 		boolean returnValue=true;
 		

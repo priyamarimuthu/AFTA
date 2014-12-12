@@ -27,12 +27,11 @@ public class IntranetHomePage extends SeleniumWebDriver {
 		isElementPresent(readyLocator);
 	}
 	
-	/*************************************************************************************************** 
-	 * @purpose To verify elements present on Intranet Home Page
- 	 * @action Verify the links present on the Intranet Home Page
-   	 * @author AspireQA
-   	 * @since October 30, 2014
-   	 ***************************************************************************************************/
+	/**
+	 * verify elements present on Intranet Home Page
+	 * @param 
+	 * @return boolean
+	 */
 	public boolean verifyelement() {
 		boolean returnValue = true;
 		if (!verifyElementIDM()) {
@@ -47,13 +46,12 @@ public class IntranetHomePage extends SeleniumWebDriver {
 		return returnValue;
 	}
 	
-	/*************************************************************************************************** 
-	 * @purpose To click Training Systems Link
- 	 * @action click Training Systems Link
-   	 * @author AspireQA
-   	 * @since October 30, 2014
-   	 ***************************************************************************************************/
-
+	
+	/**
+	 * click Training Systems Link
+	 * @param 
+	 * @return TrainingSystemPage
+	 */
 	public TrainingSystemPage clickTrainingSystemLink() {
 		String winHandleBefore = driver.getWindowHandle();
 		click(lnkTrainingSystem);
@@ -67,13 +65,11 @@ public class IntranetHomePage extends SeleniumWebDriver {
 		return new TrainingSystemPage();
 	}
 	
-	/*************************************************************************************************** 
-	 * @purpose To click IDM Link
- 	 * @action click IDM Link
-   	 * @author AspireQA
-   	 * @since October 30, 2014
-   	 ***************************************************************************************************/
-
+	/**
+	 * click IDM Link
+	 * @param 
+	 * @return IDMPage
+	 */
 	public IDMPage clickIDMLink() {
 		String winHandleBefore = driver.getWindowHandle();
 		click(readyLocator);
@@ -90,6 +86,7 @@ public class IntranetHomePage extends SeleniumWebDriver {
 	
 	/***
 	 * Verify if IDM Link is present
+	 * @return boolean
 	 */
 	public boolean verifyElementIDM() {
 		if (isElementPresent(lnkIDM)) {
@@ -100,6 +97,7 @@ public class IntranetHomePage extends SeleniumWebDriver {
 	}
 	/***
 	 * Verify if LMS Link is present
+	 * @return boolean
 	 */
 	public boolean verifyElementMS() {
 		if (isElementPresent(lnkLMS)) {
@@ -110,6 +108,7 @@ public class IntranetHomePage extends SeleniumWebDriver {
 	}
 	/***
 	 * Verify if Seventh Sense Link is present
+	 * @return boolean
 	 */
 	public boolean verifyElementSeventhSense() {
 		if (isElementPresent(lnkSeventhSense)) {

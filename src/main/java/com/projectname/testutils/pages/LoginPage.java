@@ -25,6 +25,11 @@ public class LoginPage extends SeleniumWebDriver{
 		isElementPresent(readyLocator);
 	}
 
+	/**
+	 * login to the application
+	 * @param String, String
+	 * @return IntranetHomePage
+	 */
 	public IntranetHomePage login(String UserName, String Password){
 		click(btnLogin);
 		waitForPageToLoad();

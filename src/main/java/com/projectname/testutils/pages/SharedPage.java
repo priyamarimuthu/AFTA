@@ -34,7 +34,11 @@ public class SharedPage extends SeleniumWebDriver{
 		isElementPresent(readyLocator);
 	}
 
-	
+	/**
+	 * Log out of the Application
+	 * @param 
+	 * @return void
+	 */
 	public void logOut(){
 		click(lnkUserName);
 		waitForPageToLoad();
@@ -43,13 +47,12 @@ public class SharedPage extends SeleniumWebDriver{
 			waitForPageToLoad();
 		}
 	}
+	
 	/***
 	 * Search by any name to the Home screen
-	 * @throws ExceptionHandler
-	 * @throws IOException 
-	 * @throws AWTException
-	 * @throws InterruptedException
+	 * @return SearchPage
 	 */
+	
 	public SearchPage searchbyanyname(String userName){
 		sendKeys(txtSearchtextbox,userName);
 		click(btnSearch);

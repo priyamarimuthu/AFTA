@@ -34,6 +34,11 @@ public class TrainingSystemPage extends SeleniumWebDriver{
 		isElementPresent(readyLocator);
 	}
 
+	/**
+	 * verify Training System Page
+	 * @param 
+	 * @return boolean
+	 */
 	public boolean verifyTrainingSystemPage(){
 		boolean returnValue=true;
 		
@@ -59,6 +64,10 @@ public class TrainingSystemPage extends SeleniumWebDriver{
 		
 	}
 	
+	/***
+	 * Verify if IDM Link is present
+	 * @return boolean
+	 */
 	public boolean verifyImpactProg() {
 		if (isElementPresent(lnkImpactProg)) {
 			return true;
@@ -66,6 +75,11 @@ public class TrainingSystemPage extends SeleniumWebDriver{
 			return false;
 
 	}
+	
+	/***
+	 * Verify if Wisdom Curve Link is present
+	 * @return boolean
+	 */
 	public boolean verifyWisdomCurve() {
 		if (isElementPresent(lnkWisdomCurve)) {
 			return true;
@@ -73,6 +87,11 @@ public class TrainingSystemPage extends SeleniumWebDriver{
 			return false;
 
 	}
+	
+	/***
+	 * Verify if Dev Teams Link is present
+	 * @return boolean
+	 */
 	public boolean verifyDevTeams() {
 		if (isElementPresent(lnkDevTeams)) {
 			return true;
@@ -80,6 +99,11 @@ public class TrainingSystemPage extends SeleniumWebDriver{
 			return false;
 
 	}
+	
+	/***
+	 * Verify if Testing Teams Link is present
+	 * @return boolean
+	 */
 	public boolean verifyTestingTeams() {
 		if (isElementPresent(lnkTestingTeams)) {
 			return true;
@@ -87,6 +111,11 @@ public class TrainingSystemPage extends SeleniumWebDriver{
 			return false;
 
 	}
+	
+	/***
+	 * Verify if ISMS Link is present
+	 * @return boolean
+	 */
 	public boolean verifyElementISMS() {
 		if (isElementPresent(lnkISMS)) {
 			return true;
@@ -94,6 +123,11 @@ public class TrainingSystemPage extends SeleniumWebDriver{
 			return false;
 
 	}
+	
+	/***
+	 * Verify if Orientation Program Link is present
+	 * @return boolean
+	 */
 	public boolean verifyElementOrientationProg() {
 		if (isElementPresent(lnkOrientationProg)) {
 			return true;
