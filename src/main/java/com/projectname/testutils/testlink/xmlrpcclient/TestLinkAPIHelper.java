@@ -269,7 +269,7 @@ public class TestLinkAPIHelper implements TestLinkAPIConst {
 			if(externalID != null && name != null) {
 				String currentPattern = name.toString();
 				if(useVisibleID) {
-					currentPattern = prefix.toString() + '-' + externalID.toString();
+					currentPattern = prefix + '-' + externalID.toString();
 				}
 				if(casePattern.equalsIgnoreCase(currentPattern)) {
 					id = results.getValueByName(i, API_RESULT_TC_INTERNAL_ID);

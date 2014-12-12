@@ -763,7 +763,7 @@ public class TestLinkAPIClient implements TestLinkAPIConst {
 		setParam(params, REQUIRED, API_PARAM_VERSION, version);
 		setParam(params, REQUIRED, API_PARAM_DETAILS, "simple");
 		TestLinkAPIResults result = execXmlRpcMethodWithCache(API_METHOD_TEST_CASE_CUSTOM_FIELD_DESIGN_VALUE, params, null);
-		for(int i = 0; i < result.size();/* i++ */) {
+		for(int i = 0; i < result.size();) {
 			resultMap = result.getData(i);
 			return resultMap.get("value").toString();
 		}
@@ -876,14 +876,10 @@ public class TestLinkAPIClient implements TestLinkAPIConst {
 	 * @return The results from the TestLink API as a list of Map entries
 	 */
 	public TestLinkAPIResults getCasesForTestSuite(Integer testProjectID, Integer testSuiteID) throws TestLinkAPIException {
-		// String key = testProjectID.toString() + "-" + testSuiteID.toString();
 		Hashtable<String, Object> params = new Hashtable<String, Object>();
 		setParam(params, REQUIRED, API_PARAM_DEV_KEY, DEV_KEY);
 		setParam(params, REQUIRED, API_PARAM_TEST_PROJECT_ID, testProjectID);
 		setParam(params, REQUIRED, API_PARAM_TEST_SUITE_ID, testSuiteID);
-		// setParam(params, REQUIRED, API_PARAM_DEPTH_FLAG, new Boolean(true));
-		// setParam(params, REQUIRED, API_PARAM_DETAILS, "full");
-
 		return execXmlRpcMethodWithCache(API_METHOD_GET_TEST_CASES_FOR_SUITE, params, null);
 	}
 

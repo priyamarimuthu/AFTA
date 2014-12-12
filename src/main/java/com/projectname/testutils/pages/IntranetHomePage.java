@@ -53,7 +53,6 @@ public class IntranetHomePage extends SeleniumWebDriver {
 		for(String winHandle : driver.getWindowHandles()){
 		    driver.switchTo().window(winHandle);
 		}
-		//driver.close();
 		String winHandleAfter = driver.getWindowHandle();
 		
 		return new TrainingSystemPage();
@@ -71,7 +70,6 @@ public class IntranetHomePage extends SeleniumWebDriver {
 		for(String winHandle : driver.getWindowHandles()){
 		    driver.switchTo().window(winHandle);
 		}
-		//driver.close();
 		String winHandleAfter = driver.getWindowHandle();
 		
 		return new IDMPage();
@@ -85,9 +83,9 @@ public class IntranetHomePage extends SeleniumWebDriver {
 	public boolean verifyElementIDM() {
 		if (isElementPresent(lnkIDM)) {
 			return true;
-		} else
+		} else{
 			return false;
-
+		}
 	}
 	/***
 	 * Verify if LMS Link is present
@@ -96,8 +94,9 @@ public class IntranetHomePage extends SeleniumWebDriver {
 	public boolean verifyElementMS() {
 		if (isElementPresent(lnkLMS)) {
 			return true;
-		} else
+		} else{
 			return false;
+		}
 
 	}
 	/***
@@ -107,8 +106,8 @@ public class IntranetHomePage extends SeleniumWebDriver {
 	public boolean verifyElementSeventhSense() {
 		if (isElementPresent(lnkSeventhSense)) {
 			return true;
-		} else
+		} else{
 			return false;
-
+		}
 	}
 }

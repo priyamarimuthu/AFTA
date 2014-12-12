@@ -29,11 +29,11 @@ public class LoginPage extends SeleniumWebDriver{
 	 * @param String, String
 	 * @return IntranetHomePage
 	 */
-	public IntranetHomePage login(String UserName, String Password){
+	public IntranetHomePage login(String userName, String password){
 		click(btnLogin);
 		waitForPageToLoad();
-		sendKeys(txtUserName,UserName);
-		sendKeys(txtPassword, Password);
+		sendKeys(txtUserName,userName);
+		sendKeys(txtPassword, password);
 	
 		click(btnSubmit);
 		waitForPageToLoad();

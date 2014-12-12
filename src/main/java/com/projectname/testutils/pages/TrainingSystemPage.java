@@ -86,9 +86,9 @@ public class TrainingSystemPage extends SeleniumWebDriver{
 	public boolean verifyDevTeams() {
 		if (isElementPresent(lnkDevTeams)) {
 			return true;
-		} else
+		} else{
 			return false;
-
+		}
 	}
 	
 	/***
@@ -98,9 +98,9 @@ public class TrainingSystemPage extends SeleniumWebDriver{
 	public boolean verifyTestingTeams() {
 		if (isElementPresent(lnkTestingTeams)) {
 			return true;
-		} else
+		} else{
 			return false;
-
+		}
 	}
 	
 	/***
@@ -122,9 +122,9 @@ public class TrainingSystemPage extends SeleniumWebDriver{
 	public boolean verifyElementOrientationProg() {
 		if (isElementPresent(lnkOrientationProg)) {
 			return true;
-		} else
+		} else{
 			return false;
-
+		}
 	}
 
 }

@@ -24,11 +24,11 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 	
 	private PrintWriter  fout;
 	private File screenshotDir; 
-	private final String OUT_FOLDER  = "custom-test-report";
+	private final String outFolder  = "custom-test-report";
 	private String className;
-	private static final String passed = "_Passed";
-	private static final String failed = "_Failed";
-	private static final String skipped = "_Skipped";
+	private static final String PASSED = "_Passed";
+	private static final String FAILED = "_Failed";
+	private static final String SKIPPED = "_Skipped";
 	private static Boolean flag = true;
 	
 	/**
@@ -71,7 +71,7 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 			//used to get the test class name
 			className = context.getCurrentXmlTest().getClasses().get(0).getName();
 			//used for creating required directories
-			createRequiredDirectory(OUT_FOLDER, className);
+			createRequiredDirectory(outFolder, className);
 		} catch (IOException e) {
 			e.getMessage();
 		}
@@ -83,7 +83,7 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 	public void onTestSuccess(ITestResult result) {
 		try {
 			//used to write result details in html
-			generateTestExecution(result, passed);
+			generateTestExecution(result, PASSED);
 		} catch (IOException e) {
 			e.getMessage();
 		}
@@ -96,7 +96,7 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 	public void onTestFailure(ITestResult result) {
 		try {
 			//used to write result details in html
-			generateTestExecution(result, failed);
+			generateTestExecution(result, FAILED);
 		} catch (IOException e) {
 			e.getMessage();
 		}
@@ -109,7 +109,7 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 	public void onTestSkipped(ITestResult result) {
 		try {
 			//used to write result details in html
-			generateTestExecution(result, skipped);
+			generateTestExecution(result, SKIPPED);
 		} catch (IOException e) {
 			e.getMessage();
 		}
@@ -469,13 +469,13 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 	    fout.println("<br>");
 	    
 	    //Passed cases
-	    generateIndexHtmlAreas(passed);
+	    generateIndexHtmlAreas(PASSED);
 	    
 		//Failed Cases
-	    generateIndexHtmlAreas(failed);
+	    generateIndexHtmlAreas(FAILED);
 	    
 	    //Skipped Cases
-	    generateIndexHtmlAreas(skipped);
+	    generateIndexHtmlAreas(SKIPPED);
 		
 		
 		//used for create end html tags
@@ -539,12 +539,12 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 							if(testName.endsWith(status+".html")){
 								
 								if(flag){
-									if(status.equalsIgnoreCase(passed)){
+									if(status.equalsIgnoreCase(PASSED)){
 										//Passed
 									    fout.println("<tr style='background-color: #ccffcc;'>");
 										fout.println("<td align=\"center\" colspan=\"3\"> Passed cases </td>");
 										fout.println("</tr>");
-									}else if(status.equalsIgnoreCase(failed)){
+									}else if(status.equalsIgnoreCase(FAILED)){
 										//Failed
 										fout.println("<tr style='background-color: #ffcccc;'>");
 										fout.println("<td align=\"center\" colspan=\"3\"> Failed cases </td>");
@@ -576,15 +576,15 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 								String temp = "<a href='"+ fullClassName +"/"+ testName +"'>" + splitClassName[length-1] +"."+ temptestName  +"</a>";
 				    			fout.println("<td>"+ temp + "</td>");
 				    			
-				    			if(status.equalsIgnoreCase(passed)){
+				    			if(status.equalsIgnoreCase(PASSED)){
 									//Passed
 				    				fout.println("<td align=\"center\" class='result'><img src='images/Tick_Mark.png' height=\"20\" width=\"20\">" + "</td>");
-								}else if(status.equalsIgnoreCase(failed)){
+								}else if(status.equalsIgnoreCase(FAILED)){
 									//Failed
 									fout.println("<td align=\"center\" class='result'><img src='images/Fail_Mark.jpg' height=\"20\" width=\"20\">" + "</td>");
 								}else{
 									//Skipped
-									fout.println("<td align=\"center\" class='result'>"+ skipped + "</td>");
+									fout.println("<td align=\"center\" class='result'>"+ SKIPPED + "</td>");
 								}
 				    			
 				    			

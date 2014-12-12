@@ -14,7 +14,7 @@ import com.projectname.testutils.testlink.xmlrpcclient.TestLinkAPIResults;
  * TestLink Helper class which is having the static useful methods
  */
 public class TestLinkHelper {
-	private static final String tProjectGlueChar = "-";
+	private static final String TPROJECTGLUECHAR = "-";
 
 	/**
 	 * Gets only the Automation testcases That is which are marked with Execution Type as 'Automated'
@@ -82,7 +82,7 @@ public class TestLinkHelper {
 					else {
 						testCaseIds = new ArrayList<String>();
 					}
-					testCaseIds.add(prefix + tProjectGlueChar + valueForMap.get(reqKey).toString());
+					testCaseIds.add(prefix + TPROJECTGLUECHAR + valueForMap.get(reqKey).toString());
 					resultTable.put(customValue, testCaseIds);
 				}
 			}

@@ -222,19 +222,19 @@ public class TestBaseClass{
 		case FIREFOX:
 			return new FirefoxDriver();
 		case IE:
-			DesiredCapabilities IECapabilities = DesiredCapabilities
+			DesiredCapabilities ieCapabilities = DesiredCapabilities
 					.internetExplorer();
-			IECapabilities.setCapability("nativeEvents", false);
-			IECapabilities.setCapability("requireWindowFocus", true);
-			IECapabilities
+			ieCapabilities.setCapability("nativeEvents", false);
+			ieCapabilities.setCapability("requireWindowFocus", true);
+			ieCapabilities
 					.setCapability(
 							InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,
 							true);
-			IECapabilities.setCapability("enableElementCacheCleanup", true);
+			ieCapabilities.setCapability("enableElementCacheCleanup", true);
 			File file = new File(new java.io.File(".").getCanonicalPath()
 					+ IE_FILE_PATH);
 			System.setProperty("webdriver.ie.driver", file.getAbsolutePath());
-			return new InternetExplorerDriver(IECapabilities);
+			return new InternetExplorerDriver(ieCapabilities);
 		case SAFARI:
 			DesiredCapabilities safariCapabilities = DesiredCapabilities
 					.safari();
@@ -297,12 +297,6 @@ public class TestBaseClass{
 			log.error("The following error has occured while capturing a screen shot : "
 					+ e.getMessage());
 		} finally {
-
-			//String fileName = logBasePath + File.separator + result.getName()
-				//	+ " " + dateTimeStamp + " " + status + ".log";
-
-			// Create log file with method name
-			//FileUtility.copyFile(new File(logFile), new File(fileName));
 
 			// Logging the test result
 			log.info("The test result for " + result.getName() + " is "

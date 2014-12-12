@@ -51,9 +51,9 @@ public class SearchPage extends SeleniumWebDriver{
 	public boolean verifyElementHome() {
 		if (isElementPresent(lnkHome)) {
 			return true;
-		} else
+		} else{
 			return false;
-
+		}
 	}
 	
 	/***
@@ -63,9 +63,9 @@ public class SearchPage extends SeleniumWebDriver{
 	public boolean verifyElementAnnouncement() {
 		if (isElementPresent(lnkAnnouncement)) {
 			return true;
-		} else
+		} else{
 			return false;
-
+		}
 	}
 	
 	/***
@@ -75,9 +75,9 @@ public class SearchPage extends SeleniumWebDriver{
 	public boolean verifyElementCelebrations() {
 		if (isElementPresent(lnkCelebrations)) {
 			return true;
-		} else
+		} else{
 			return false;
-
+		}
 	}
 	
 	/***
@@ -87,8 +87,8 @@ public class SearchPage extends SeleniumWebDriver{
 	public boolean verifyElementClassifields() {
 		if (isElementPresent(lnkClassifields)) {
 			return true;
-		} else
+		} else{
 			return false;
-
+		}
 	}
 }

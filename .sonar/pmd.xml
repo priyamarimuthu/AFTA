@@ -171,9 +171,6 @@
   <rule ref="rulesets/clone.xml/CloneThrowsCloneNotSupportedException">
     <priority>3</priority>
   </rule>
-  <rule ref="rulesets/migrating.xml/ReplaceHashtableWithMap">
-    <priority>3</priority>
-  </rule>
   <rule ref="rulesets/basic.xml/AvoidDecimalLiteralsInBigDecimalConstructor">
     <priority>3</priority>
   </rule>

@@ -120,7 +120,6 @@ public class ExcelReader {
 		String fileName = "";
 		HSSFRow row = null;
 		HSSFCell cell = null;
-		//HashedMap data = new HashedMap();
 		ArrayList<HashedMap> data = new ArrayList<HashedMap>();
 		Hashtable<String, Integer> excelHeaders = new Hashtable<String, Integer>();
 
