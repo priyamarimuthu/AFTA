@@ -1,7 +1,5 @@
 package com.projectname.testutils.pages;
 
-import java.util.Set;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
 
@@ -28,11 +26,17 @@ public class IntranetHomePage extends SeleniumWebDriver {
 		PageFactory.initElements(SeleniumWebDriver.driver, this);
 		isElementPresent(readyLocator);
 	}
-
+	
+	/*************************************************************************************************** 
+	 * @purpose To verify elements present on Intranet Home Page
+ 	 * @action Verify the links present on the Intranet Home Page
+   	 * @author AspireQA
+   	 * @since October 30, 2014
+   	 ***************************************************************************************************/
 	public boolean verifyelement() {
 		boolean returnValue = true;
 		if (!verifyElementIDM()) {
-			returnValue = true;
+			returnValue = false;
 		}
 		if (!verifyElementMS()) {
 			returnValue = false;
@@ -42,33 +46,73 @@ public class IntranetHomePage extends SeleniumWebDriver {
 		}
 		return returnValue;
 	}
+	
+	/*************************************************************************************************** 
+	 * @purpose To click Training Systems Link
+ 	 * @action click Training Systems Link
+   	 * @author AspireQA
+   	 * @since October 30, 2014
+   	 ***************************************************************************************************/
 
 	public TrainingSystemPage clickTrainingSystemLink() {
+		String winHandleBefore = driver.getWindowHandle();
 		click(lnkTrainingSystem);
-		Set<String> winHandle = driver.getWindowHandles();
-		driver.switchTo().window(winHandle.iterator().toString());
 		waitForPageToLoad();
+		for(String winHandle : driver.getWindowHandles()){
+		    driver.switchTo().window(winHandle);
+		}
+		//driver.close();
+		String winHandleAfter = driver.getWindowHandle();
+		
 		return new TrainingSystemPage();
 	}
+	
+	/*************************************************************************************************** 
+	 * @purpose To click IDM Link
+ 	 * @action click IDM Link
+   	 * @author AspireQA
+   	 * @since October 30, 2014
+   	 ***************************************************************************************************/
 
+	public IDMPage clickIDMLink() {
+		String winHandleBefore = driver.getWindowHandle();
+		click(readyLocator);
+		waitForPageToLoad();
+		for(String winHandle : driver.getWindowHandles()){
+		    driver.switchTo().window(winHandle);
+		}
+		//driver.close();
+		String winHandleAfter = driver.getWindowHandle();
+		
+		return new IDMPage();
+	}
+
+	
+	/***
+	 * Verify if IDM Link is present
+	 */
 	public boolean verifyElementIDM() {
-		if (!isElementPresent(lnkIDM)) {
+		if (isElementPresent(lnkIDM)) {
 			return true;
 		} else
 			return false;
 
 	}
-
+	/***
+	 * Verify if LMS Link is present
+	 */
 	public boolean verifyElementMS() {
-		if (!isElementPresent(lnkLMS)) {
+		if (isElementPresent(lnkLMS)) {
 			return true;
 		} else
 			return false;
 
 	}
-
+	/***
+	 * Verify if Seventh Sense Link is present
+	 */
 	public boolean verifyElementSeventhSense() {
-		if (!isElementPresent(lnkSeventhSense)) {
+		if (isElementPresent(lnkSeventhSense)) {
 			return true;
 		} else
 			return false;

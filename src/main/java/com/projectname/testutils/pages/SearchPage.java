@@ -40,28 +40,28 @@ public class SearchPage extends SeleniumWebDriver{
 	}
 	
 	public boolean verifyElementHome() {
-		if (!isElementPresent(lnkHome)) {
+		if (isElementPresent(lnkHome)) {
 			return true;
 		} else
 			return false;
 
 	}
 	public boolean verifyElementAnnouncement() {
-		if (!isElementPresent(lnkAnnouncement)) {
+		if (isElementPresent(lnkAnnouncement)) {
 			return true;
 		} else
 			return false;
 
 	}
 	public boolean verifyElementCelebrations() {
-		if (!isElementPresent(lnkCelebrations)) {
+		if (isElementPresent(lnkCelebrations)) {
 			return true;
 		} else
 			return false;
 
 	}
 	public boolean verifyElementClassifields() {
-		if (!isElementPresent(lnkClassifields)) {
+		if (isElementPresent(lnkClassifields)) {
 			return true;
 		} else
 			return false;

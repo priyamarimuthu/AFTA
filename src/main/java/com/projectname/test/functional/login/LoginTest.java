@@ -1,4 +1,4 @@
-package com.projectname.test.functional.modulename1;
+package com.projectname.test.functional.login;
 
 import java.util.ArrayList;
 
@@ -16,7 +16,7 @@ import com.projectname.testutils.testdatareader.ExcelReader;
 @Listeners(com.projectname.testutils.baseclass.CustomizedReporter.class)
 
 public class LoginTest extends TestBaseClass {
-	IntranetHomePage intranetHomePage;
+	IntranetHomePage intranetHomePage=null;
 	
 	
 	/*************************************************************************************************** 

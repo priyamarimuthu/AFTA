@@ -12,11 +12,7 @@ import com.projectname.testutils.seleniumutils.SeleniumWebDriver;
 
 public class TrainingSystemPage extends SeleniumWebDriver{
 	
-	protected By readyLocator = By.linkText("View Training Hours");
-	protected By lnktrainingHours = By.linkText("View Training Hours");
-	protected By lnktrainingHoursReport = By.linkText("Training Hours Report - Excel");
-	protected By lnkHome = By.linkText("My home");
-	protected By lnkProfileSettings = By.cssSelector("css=#usersettings > span");
+	protected By readyLocator = By.linkText("For Information Security Management System (ISMS)");
 	protected By lnkISMS = By.linkText("For Information Security Management System (ISMS)");
 	protected By lnkOrientationProg = By.linkText("Orientation Program");
 	protected By lnkImpactProg = By.linkText("Impact Training Program");
@@ -34,71 +30,72 @@ public class TrainingSystemPage extends SeleniumWebDriver{
 	 * Call to super constructor
 	 */
 	public TrainingSystemPage(){
-		PageFactory.initElements(SeleniumWebDriver.driver, this);
+		PageFactory.initElements(driver, this);
 		isElementPresent(readyLocator);
 	}
 
 	public boolean verifyTrainingSystemPage(){
 		boolean returnValue=true;
-		if(!verifyTrainingHours()){
-			returnValue=true;
-		}
-		if(!verifyTrainingHoursReport()){
-			returnValue=false;
-		}
-		if(!verifyElementHome()){
-			returnValue=false;
-		}
-		if(!verifyElementProfileSettings()){
-			returnValue=true;
-		}
+		
 		if(!verifyElementISMS()){
 			returnValue=false;
 		}
 		if(!verifyElementOrientationProg()){
 			returnValue=false;
 		}
+		if(!verifyImpactProg()){
+			returnValue=true;
+		}
+		if(!verifyWisdomCurve()){
+			returnValue=false;
+		}
+		if(!verifyDevTeams()){
+			returnValue=false;
+		}
+		if(!verifyTestingTeams()){
+			returnValue=true;
+		}
 		return returnValue;
 		
 	}
 	
-	public boolean verifyTrainingHours() {
-		if (!isElementPresent(lnktrainingHours)) {
+	public boolean verifyImpactProg() {
+		if (isElementPresent(lnkImpactProg)) {
 			return true;
 		} else
 			return false;
 
 	}
-	public boolean verifyTrainingHoursReport() {
-		if (!isElementPresent(lnktrainingHoursReport)) {
+	public boolean verifyWisdomCurve() {
+		if (isElementPresent(lnkWisdomCurve)) {
 			return true;
 		} else
 			return false;
 
 	}
-	public boolean verifyElementHome() {
-		if (!isElementPresent(lnkHome)) {
+	public boolean verifyDevTeams() {
+		if (isElementPresent(lnkDevTeams)) {
 			return true;
 		} else
 			return false;
 
 	}
-	public boolean verifyElementProfileSettings() {
-		if (!isElementPresent(lnkProfileSettings)) {
+	public boolean verifyTestingTeams() {
+		if (isElementPresent(lnkTestingTeams)) {
 			return true;
 		} else
 			return false;
 
 	}
 	public boolean verifyElementISMS() {
-		if (!isElementPresent(lnkISMS)) {
+		if (isElementPresent(lnkISMS)) {
 			return true;
 		} else
 			return false;
 
 	}
 	public boolean verifyElementOrientationProg() {
-		if (!isElementPresent(lnkOrientationProg)) {
+		if (isElementPresent(lnkOrientationProg)) {
 			return true;
 		} else
 			return false;

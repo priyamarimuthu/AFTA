@@ -1,4 +1,4 @@
-package com.projectname.test.functional.modulename2;
+package com.projectname.test.functional.login;
 
 import java.util.ArrayList;
 
@@ -15,30 +15,37 @@ import com.projectname.testutils.testdatareader.ExcelReader;
 
 @Listeners(com.projectname.testutils.baseclass.CustomizedReporter.class)
 
-public class LoginTest extends TestBaseClass {
-	IntranetHomePage intranetHomePage;
-	
-	
+public class HomePageTest  extends TestBaseClass{
+		
+	IntranetHomePage homePage;
 	/*************************************************************************************************** 
-	 * @purpose To verify login
- 	 * @action Enter the credentials and click on submit button
+	 * @purpose To verify home page elements
+ 	 * @action Verify the links present on the home page
    	 * @author AspireQA
    	 * @since October 30, 2014
    	 ***************************************************************************************************/
-	
+
 	@Test(retryAnalyzer = RetryRule.class,groups = {"Regression"})
-	@MapToTestLink(testCaseID = "TestCase_1")
-	public void loginTest(){
+	@MapToTestLink(testCaseID = "TestCase_2")
+	public void homePageTest(){
+	
 		ArrayList<HashedMap> testData = ExcelReader.getTestDataByTestCaseId(
 				"TC_EBS_001", LoginTest.class.getSimpleName());
 		log.info(testData.get(0).get("UserName").toString() + " - ");
 	
-	// ------------------------------------------------------------------//
-	// Step-1: Login to the application
-	// ------------------------------------------------------------------//
+		// ------------------------------------------------------------------//
+		// Step-1: Login to the application
+		// ------------------------------------------------------------------//
 		logTitleMessage("Login to application");
 		loginPage = new LoginPage();
-		loginPage.login(testData.get(0).get("UserName").toString(), testData.get(0).get("Password").toString());
+		homePage=loginPage.login(testData.get(0).get("UserName").toString(), testData.get(0).get("Password").toString());
 		logTitleMessage("Login Successful");
+						
+		// ------------------------------------------------------------------//
+		// Step-2:Verify Home page element //
+		// ------------------------------------------------------------------//
+		logTitleMessage("Verify presense of home page elements");
+		assertTrue(homePage.verifyelement(),"Verification failed",driver);
+		logTitleMessage("Verified home page elements");
 	}
 }

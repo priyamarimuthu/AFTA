@@ -1,4 +1,4 @@
-package com.projectname.test.functional.trainingsystem;
+package com.projectname.test.functional.idm;
 
 
 import java.util.ArrayList;
@@ -8,8 +8,9 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.projectname.functional.annotations.MapToTestLink;
-import com.projectname.test.functional.modulename1.LoginTest;
+import com.projectname.test.functional.login.LoginTest;
 import com.projectname.testutils.baseclass.TestBaseClass;
+import com.projectname.testutils.pages.IDMPage;
 import com.projectname.testutils.pages.IntranetHomePage;
 import com.projectname.testutils.pages.LoginPage;
 import com.projectname.testutils.pages.TrainingSystemPage;
@@ -18,22 +19,22 @@ import com.projectname.testutils.testdatareader.ExcelReader;
 
 @Listeners(com.projectname.testutils.baseclass.CustomizedReporter.class)
 
-public class verifyTrainingSystemPage extends TestBaseClass{
+public class VerifyIDMPage extends TestBaseClass{
 	IntranetHomePage homePage;
-	TrainingSystemPage trainingSystemPage;
+	IDMPage iDMPage;
 
 	
 
 	/*************************************************************************************************** 
-	 * @purpose To verify Training System Page
- 	 * @action Search an aspirian by name
+	 * @purpose To verify IDM Page
+ 	 * @action Go to IDM page and verify user details
    	 * @author AspireQA
    	 * @since October 30, 2014
    	 ***************************************************************************************************/
 	
 	@Test(retryAnalyzer = RetryRule.class,groups = {"Regression"})
-	@MapToTestLink(testCaseID = "TestCase_3")
-	public void verifyTrainingSystem(){
+	@MapToTestLink(testCaseID = "TestCase_5")
+	public void verifyIDMPage(){
 
 		// ------------------------------------------------------------------//
 		// Step-1: Load the application //
@@ -52,10 +53,15 @@ public class verifyTrainingSystemPage extends TestBaseClass{
 		logTitleMessage("Login Successful");	
 			
 		// ------------------------------------------------------------------//
-		// Step-2: Go to Training system Page //
+		// Step-2: Go to IDM system Page //
 		// ------------------------------------------------------------------//
-		trainingSystemPage=homePage.clickTrainingSystemLink();
-		assertTrue(trainingSystemPage.verifyTrainingSystemPage(),"Error in verifying training system page",driver);
+		iDMPage=homePage.clickIDMLink();
+		// ------------------------------------------------------------------//
+		// Step-2: Fetch Test Data for IDM Page //
+		// ------------------------------------------------------------------//
+		ArrayList<HashedMap> IDMData = ExcelReader.getTestDataByTestCaseId(
+				"TC_IDM_001", VerifyIDMPage.class.getSimpleName());
+		assertTrue(iDMPage.verifyIDMPage(IDMData.get(0)),"Error in verifying training system page",driver);
 		
 	}
 }

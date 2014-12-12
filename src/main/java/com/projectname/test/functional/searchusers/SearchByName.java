@@ -1,4 +1,4 @@
-package com.projectname.test.functional.modulename2;
+package com.projectname.test.functional.searchusers;
 
 
 import java.util.ArrayList;
@@ -9,6 +9,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.projectname.functional.annotations.MapToTestLink;
+import com.projectname.test.functional.login.LoginTest;
 import com.projectname.testutils.baseclass.TestBaseClass;
 import com.projectname.testutils.pages.LoginPage;
 import com.projectname.testutils.pages.SearchPage;
@@ -25,7 +26,7 @@ public class SearchByName extends TestBaseClass{
 
 	/*************************************************************************************************** 
 	 * @purpose To verify search function
- 	 * @action Search an aspirian by name
+ 	 * @action Search aspirians by name
    	 * @author AspireQA
    	 * @since October 30, 2014
    	 ***************************************************************************************************/
