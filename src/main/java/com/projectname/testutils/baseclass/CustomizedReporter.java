@@ -18,6 +18,7 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.testng.xml.XmlSuite;
 
+import com.projectname.testutils.genericutility.Config;
 import com.projectname.testutils.retryAnalyser.RetryRule;
 
 public class CustomizedReporter implements ITestListener, IReporter, ISuiteListener{
@@ -218,7 +219,7 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 	    out.println("</head>");
 	    out.println("<body>");
    
-	    if(RetryRule.retryCount==0){
+	    if(Config.retryCount==0){
 	    	out.println("<b><i><u><h1>Test results </h1></u></i></b>");
 	    	out.println("<b><i><h2><u>Test Name: "+className+"."+result.getName()+"</u></h2></i></b>");
 	    }
@@ -226,14 +227,14 @@ public class CustomizedReporter implements ITestListener, IReporter, ISuiteListe
 	    out.println("<table border=\"1\">");
 	    out.println("<tbody>");
 	    
-	    if(RetryRule.retryCount>0){
+	    if(Config.retryCount>0){
 	    	out.println("<br><br>");
 	    	out.println("<tr class=\"title\" title=\"\" alt=\"\">");
-	    	out.println("<td colspan=\"6\"> Retry Attempt: "+ ((RetryRule.retryCount)) + "</td>");
+	    	out.println("<td colspan=\"6\"> Retry Attempt: "+ ((Config.retryCount)) + "</td>");
 			out.println("</tr>");
 	    }
 	    
-	    if(RetryRule.retryCount==0){
+	    if(Config.retryCount==0){
 		    out.println("<tr style='background-color: #B2ACAC;'>");
 		    out.println("<td><b><i>Selenium-Command</i></b></td>");
 		    out.println("<td><b><i>Parameter-1</i></b></td>");

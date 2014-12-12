@@ -9,6 +9,7 @@ public class Config {
 	
 	//Retry Analyzer Initialization
 	public static final int retryCounter = 1; 
+	public static int retryCount=0;
 	
 	//Browser
 	public static String browser="FIREFOX";
