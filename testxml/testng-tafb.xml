@@ -6,7 +6,7 @@
       <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
   </listeners>       
 	
-    <test name="com.projectname.test.functional.modulename">
+    <test name="com.projectname.test.functional.login" parallel="methods" thread-count="3">
     
      <groups>  
 		   <define name="Regression Tests">    
@@ -19,19 +19,24 @@
   
   
     <packages>
-      <package name="com.projectname.test.functional.modulename1.*"/>
+      <package name="com.projectname.test.functional.login.*"/>
     </packages>
 	</test>
 	
-	 <test name="com.projectname.test.functional.modulename1">
+	 <test name="com.projectname.test.functional.idm" parallel="methods" thread-count="3">
     <packages>
-      <package name="com.projectname.test.functional.modulename2.*"/>
+      <package name="com.projectname.test.functional.idm.*"/>
     </packages>
 	</test>
 	
-	 <test name="com.projectname.test.functional.trainingsystem.*">
+	 <test name="com.projectname.test.functional.trainingsystem" parallel="methods" thread-count="3">
     <packages>
       <package name="com.projectname.test.functional.trainingsystem.*"/>
+    </packages>
+	</test>
+	<test name="com.projectname.test.functional.searchusers" parallel="methods" thread-count="3">
+    <packages>
+      <package name="com.projectname.test.functional.searchusers.*"/>
     </packages>
 	</test>
 	
