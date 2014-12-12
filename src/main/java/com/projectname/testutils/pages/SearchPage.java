@@ -7,11 +7,11 @@ import com.projectname.testutils.seleniumutils.SeleniumWebDriver;
 
 public class SearchPage extends SeleniumWebDriver{
 
-	protected By lnkHome = By.linkText("Home");
-	protected By readyLocator= By.linkText("Home");
-	protected By lnkAnnouncement = By.linkText("Announcements");
-	protected By lnkCelebrations = By.linkText("Celebrations");
-	protected By lnkClassifields = By.linkText("Classifieds");
+	private By lnkHome = By.linkText("Home");
+	private By readyLocator= By.linkText("Home");
+	private By lnkAnnouncement = By.linkText("Announcements");
+	private By lnkCelebrations = By.linkText("Celebrations");
+	private By lnkClassifields = By.linkText("Classifieds");
 	
 	
 	

@@ -12,19 +12,13 @@ import com.projectname.testutils.seleniumutils.SeleniumWebDriver;
 
 public class TrainingSystemPage extends SeleniumWebDriver{
 	
-	protected By readyLocator = By.linkText("For Information Security Management System (ISMS)");
-	protected By lnkISMS = By.linkText("For Information Security Management System (ISMS)");
-	protected By lnkOrientationProg = By.linkText("Orientation Program");
-	protected By lnkImpactProg = By.linkText("Impact Training Program");
-	protected By lnkWisdomCurve = By.linkText("Wisdom Curve");
-	protected By lnkDevTeams = By.linkText("For Development Teams");
-	protected By lnkTestingTeams = By.linkText("For Testing Teams");
-	protected By lnkSupportTeams = By.linkText("For Support Teams");
-	protected By lnkShortTraining = By.linkText("Short Training");
-	protected By lnkSoftSkills = By.linkText("Soft Skills");
-	protected By lnkGK = By.linkText("GK");
-	
-	
+	private By readyLocator = By.linkText("For Information Security Management System (ISMS)");
+	private By lnkISMS = By.linkText("For Information Security Management System (ISMS)");
+	private By lnkOrientationProg = By.linkText("Orientation Program");
+	private By lnkImpactProg = By.linkText("Impact Training Program");
+	private By lnkWisdomCurve = By.linkText("Wisdom Curve");
+	private By lnkDevTeams = By.linkText("For Development Teams");
+	private By lnkTestingTeams = By.linkText("For Testing Teams");
 	
 	/***
 	 * Call to super constructor

@@ -16,7 +16,7 @@ import com.projectname.testutils.testdatareader.ExcelReader;
 @Listeners(com.projectname.testutils.baseclass.CustomizedReporter.class)
 
 public class LoginTest extends TestBaseClass {
-	IntranetHomePage intranetHomePage=null;
+	private IntranetHomePage intranetHomePage=null;
 	
 	
 	/*************************************************************************************************** 

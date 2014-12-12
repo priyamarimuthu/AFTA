@@ -17,7 +17,7 @@ import com.projectname.testutils.testdatareader.ExcelReader;
 
 public class HomePageTest  extends TestBaseClass{
 		
-	IntranetHomePage homePage;
+	private IntranetHomePage homePage;
 	/*************************************************************************************************** 
 	 * @purpose To verify home page elements
  	 * @action Verify the links present on the home page

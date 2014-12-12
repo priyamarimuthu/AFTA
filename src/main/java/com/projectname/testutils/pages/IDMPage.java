@@ -7,8 +7,8 @@ import com.projectname.testutils.seleniumutils.SeleniumWebDriver;
 
 public class IDMPage extends SeleniumWebDriver{
 	
-	protected By readyLocator = By.id("imgSearch");
-	protected By btnSearch = By.id("imgSearch");
+	private By readyLocator = By.id("imgSearch");
+	private By btnSearch = By.id("imgSearch");
 	
 	
 	

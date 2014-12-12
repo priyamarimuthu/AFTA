@@ -19,8 +19,8 @@ import com.projectname.testutils.testdatareader.ExcelReader;
 @Listeners(com.projectname.testutils.baseclass.CustomizedReporter.class)
 
 public class VerifyTrainingSystemPage extends TestBaseClass{
-	IntranetHomePage homePage;
-	TrainingSystemPage trainingSystemPage;
+	private IntranetHomePage homePage;
+	private TrainingSystemPage trainingSystemPage;
 
 	
 

@@ -13,19 +13,19 @@ import com.projectname.testutils.seleniumutils.SeleniumWebDriver;
 public class SharedPage extends SeleniumWebDriver{
 
 	
-	protected By readyLocator = By.id("searchtextbox");
+	private By readyLocator = By.id("searchtextbox");
 
 
-	protected By btnLogout = By.linkText("Logout");
+	private By btnLogout = By.linkText("Logout");
 
-	protected By btnLogin = By.linkText("Log In");
-	protected By lnkChangePwd = By.linkText("change password");
-	protected By imgLoginPopup = By.id("modal-content");
+	private By btnLogin = By.linkText("Log In");
+	private By lnkChangePwd = By.linkText("change password");
+	private By imgLoginPopup = By.id("modal-content");
 	
-	protected By lnkUserName = By.cssSelector("css=span.user_name");
-	protected By lnkTrainingSystem = By.linkText("Training System");
-	protected By txtSearchtextbox = By.id("searchtextbox");
-	protected By btnSearch = By.id("searchbtn");
+	private By lnkUserName = By.cssSelector("css=span.user_name");
+	private By lnkTrainingSystem = By.linkText("Training System");
+	private By txtSearchtextbox = By.id("searchtextbox");
+	private By btnSearch = By.id("searchbtn");
 	/***
 	 * Call to super constructor
 	 */

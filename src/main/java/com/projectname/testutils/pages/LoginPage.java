@@ -9,13 +9,13 @@ import com.projectname.testutils.seleniumutils.SeleniumWebDriver;
 
 public class LoginPage extends SeleniumWebDriver{
 	
-	protected By readyLocator = By.linkText("Log In");
-	protected By txtUserName = By.id("edit-name");
-	protected By txtPassword = By.id("edit-pass");
+	private By readyLocator = By.linkText("Log In");
+	private By txtUserName = By.id("edit-name");
+	private By txtPassword = By.id("edit-pass");
 
-	protected By btnLogout = By.linkText("Logout");
-	protected By btnSubmit = By.id("edit-submit--2");
-	protected By btnLogin = By.linkText("Log In");
+	private By btnLogout = By.linkText("Logout");
+	private By btnSubmit = By.id("edit-submit--2");
+	private By btnLogin = By.linkText("Log In");
 	
 	/***
 	 * Call to super constructor

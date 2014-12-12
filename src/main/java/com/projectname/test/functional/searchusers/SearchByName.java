@@ -20,7 +20,7 @@ import com.projectname.testutils.testdatareader.ExcelReader;
 @Listeners(com.projectname.testutils.baseclass.CustomizedReporter.class)
 
 public class SearchByName extends TestBaseClass{
-	SearchPage searchPage;
+	private SearchPage searchPage;
 
 	
 

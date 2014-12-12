@@ -20,8 +20,8 @@ import com.projectname.testutils.testdatareader.ExcelReader;
 @Listeners(com.projectname.testutils.baseclass.CustomizedReporter.class)
 
 public class VerifyIDMPage extends TestBaseClass{
-	IntranetHomePage homePage;
-	IDMPage iDMPage;
+	private IntranetHomePage homePage;
+	private IDMPage iDMPage;
 
 	
 
