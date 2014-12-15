@@ -3,7 +3,6 @@ package com.projectname.testutils.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
-
 import com.projectname.testutils.seleniumutils.SeleniumWebDriver;
 
 
@@ -21,7 +20,9 @@ public class LoginPage extends SeleniumWebDriver{
 	 */
 	public LoginPage(){
 		PageFactory.initElements(SeleniumWebDriver.driver, this);	
+		logTitleMessage("Verifying Ready Locator for Login Page: "+readyLocator);
 		isElementPresent(readyLocator);
+		logTitleMessage("Ready Locator got Successful");
 	}
 
 	/**

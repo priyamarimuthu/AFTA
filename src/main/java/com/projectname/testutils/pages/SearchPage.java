@@ -20,7 +20,9 @@ public class SearchPage extends SeleniumWebDriver{
 	 */
 	public SearchPage() {
 		PageFactory.initElements(SeleniumWebDriver.driver, this);
+		logTitleMessage("Verifying Ready Locator for Search Page: "+readyLocator);
 		isElementPresent(readyLocator);
+		logTitleMessage("Ready Locator got Successful");
 	}
 	
 	/**

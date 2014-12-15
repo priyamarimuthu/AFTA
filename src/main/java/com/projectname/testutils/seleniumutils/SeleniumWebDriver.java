@@ -13,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.bcel.verifier.exc.LoadingException;
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
@@ -39,6 +40,7 @@ public class SeleniumWebDriver {
 	static WebDriverWait wait;
 	private static String returnString="";
 	private static Boolean result = true;
+	protected final Logger log = Logger.getLogger(getClass().getSimpleName());
 		
 	//Time to wait for page to load
 	private static int secondsToWait = 20;
@@ -190,13 +192,19 @@ public class SeleniumWebDriver {
 		} catch (Exception e) {
 			status = "Fail";
 			result = false;
-			new ExceptionHandler(e, driver, getCustomAttributeValue(getCurrentMethodName(), elementLocator.toString(), EMPTY, status, EMPTY, getCallingMethodAndLineNumber()) );
+			new ExceptionHandler(e, driver, getCustomAttributeValue(getCurrentMethodName(), elementLocator.toString(), value, status, EMPTY, getCallingMethodAndLineNumber()) );
 		}
 		
 		if(Config.requireToWrite){
-			logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue(getCurrentMethodName(), elementLocator.toString(), EMPTY, status, EMPTY, getCallingMethodAndLineNumber()));
+			logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue(getCurrentMethodName(), elementLocator.toString(), value, status, EMPTY, getCallingMethodAndLineNumber()));
 		}
 		return result;
+	}
+	protected boolean logTitleMessage(String message1){
+		
+		logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue(message1,"", "", "title", "", getCallingMethodAndLineNumber()));
+		log.info(message1);
+		return true;
 	}
 
 	/**

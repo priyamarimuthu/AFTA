@@ -11,7 +11,9 @@ public class LmsPage extends SeleniumWebDriver{
 	
 	public LmsPage() {
 		PageFactory.initElements(SeleniumWebDriver.driver, this);
+		logTitleMessage("Verifying Ready Locator for LMS Page: "+readyLocator);
 		isElementPresent(readyLocator);
+		logTitleMessage("Ready Locator got Successful");
 		
 	}
 

@@ -18,7 +18,9 @@ public class IntranetHomePage extends SeleniumWebDriver {
 	 */
 	public IntranetHomePage() {
 		PageFactory.initElements(SeleniumWebDriver.driver, this);
+		logTitleMessage("Verifying Ready Locator for Intranet Home Page: "+readyLocator);
 		isElementPresent(readyLocator);
+		logTitleMessage("Ready Locator got Successful");
 	}
 	
 	/**

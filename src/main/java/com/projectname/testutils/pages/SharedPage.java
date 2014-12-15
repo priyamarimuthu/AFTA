@@ -22,7 +22,9 @@ public class SharedPage extends SeleniumWebDriver{
 	 */
 	public SharedPage(){
 		PageFactory.initElements(SeleniumWebDriver.driver, this);
+		logTitleMessage("Verifying Ready Locator for Shared Page: "+readyLocator);
 		isElementPresent(readyLocator);
+		logTitleMessage("Ready Locator got Successful");
 	}
 
 	/**
