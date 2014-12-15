@@ -196,7 +196,7 @@
             <version>2.8.1</version>
             <configuration>
               <suiteXmlFiles>
-                <suiteXmlFile>testng-tafb-search.xml</suiteXmlFile>
+                <suiteXmlFile>testxml/testng-tafb-search.xml</suiteXmlFile>
               </suiteXmlFiles>
             </configuration>
           </plugin>
