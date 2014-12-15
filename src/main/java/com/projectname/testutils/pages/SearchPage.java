@@ -28,7 +28,7 @@ public class SearchPage extends SeleniumWebDriver{
 	/**
 	 * verify Search Page
 	 * @param 
-	 * @return boolean
+	 * @return boolean- returns true if all elements for Search Page are present, else false
 	 */
 	public boolean verifySearchPage(){
 		if(!verifyElementHome()){
@@ -48,7 +48,7 @@ public class SearchPage extends SeleniumWebDriver{
 	
 	/***
 	 * Verify if Home Link is present
-	 * @return boolean
+	 * @return boolean- returns true if Home link is present, else false
 	 */
 	public boolean verifyElementHome() {
 		if (isElementPresent(lnkHome)) {
@@ -60,7 +60,7 @@ public class SearchPage extends SeleniumWebDriver{
 	
 	/***
 	 * Verify if Announcement Link is present
-	 * @return boolean
+	 * @return boolean- returns true if Announcement link is present, else false
 	 */
 	public boolean verifyElementAnnouncement() {
 		if (isElementPresent(lnkAnnouncement)) {
@@ -72,7 +72,7 @@ public class SearchPage extends SeleniumWebDriver{
 	
 	/***
 	 * Verify if Celebrations Link is present
-	 * @return boolean
+	 * @return boolean- returns true if Celebrations link is present, else false
 	 */
 	public boolean verifyElementCelebrations() {
 		if (isElementPresent(lnkCelebrations)) {
@@ -84,7 +84,7 @@ public class SearchPage extends SeleniumWebDriver{
 	
 	/***
 	 * Verify if Classifieds Link is present
-	 * @return boolean
+	 * @return boolean- returns true if Classifieds link is present, else false
 	 */
 	public boolean verifyElementClassifields() {
 		if (isElementPresent(lnkClassifields)) {

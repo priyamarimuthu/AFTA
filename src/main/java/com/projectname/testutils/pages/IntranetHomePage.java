@@ -27,7 +27,7 @@ public class IntranetHomePage extends SeleniumWebDriver {
 	/**
 	 * verify elements present on Intranet Home Page
 	 * @param 
-	 * @return boolean
+	 * @return boolean- returns true if all required elements for Intranet home page are present, else false 
 	 */
 	public boolean verifyelement() {
 		boolean returnValue = true;
@@ -47,7 +47,7 @@ public class IntranetHomePage extends SeleniumWebDriver {
 	/**
 	 * click Training Systems Link
 	 * @param 
-	 * @return TrainingSystemPage
+	 * @return TrainingSystemPage- returns new Training System Page
 	 */
 	public TrainingSystemPage clickTrainingSystemLink() {
 		String winHandleBefore = driver.getWindowHandle();
@@ -64,7 +64,7 @@ public class IntranetHomePage extends SeleniumWebDriver {
 	/**
 	 * click IDM Link
 	 * @param 
-	 * @return IDMPage
+	 * @return IDMPage- returns new IDM Page
 	 */
 	public IDMPage clickIDMLink() {
 		String winHandleBefore = driver.getWindowHandle();
@@ -81,7 +81,7 @@ public class IntranetHomePage extends SeleniumWebDriver {
 	
 	/***
 	 * Verify if IDM Link is present
-	 * @return boolean
+	 * @return boolean- returns true if IDM link is present, else false
 	 */
 	public boolean verifyElementIDM() {
 		if (isElementPresent(lnkIDM)) {
@@ -92,7 +92,7 @@ public class IntranetHomePage extends SeleniumWebDriver {
 	}
 	/***
 	 * Verify if LMS Link is present
-	 * @return boolean
+	 * @return boolean- returns true if LMS link is present, else false
 	 */
 	public boolean verifyElementMS() {
 		if (isElementPresent(lnkLMS)) {
@@ -104,7 +104,7 @@ public class IntranetHomePage extends SeleniumWebDriver {
 	}
 	/***
 	 * Verify if Seventh Sense Link is present
-	 * @return boolean
+	 * @return boolean- returns true if Seventh Sense link is present, else false
 	 */
 	public boolean verifyElementSeventhSense() {
 		if (isElementPresent(lnkSeventhSense)) {

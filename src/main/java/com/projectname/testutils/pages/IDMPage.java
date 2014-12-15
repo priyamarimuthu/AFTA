@@ -23,8 +23,8 @@ public class IDMPage extends SeleniumWebDriver{
 	
 	/**
 	 * verify IDM Page
-	 * @param HashedMap
-	 * @return boolean
+	 * @param HashedMap- Test data to verify the IDM page
+	 * @return boolean- returns true if all required data is present, else false
 	 */
 	public boolean verifyIDMPage(HashedMap IDMData){
 		boolean returnValue=true;
@@ -36,7 +36,7 @@ public class IDMPage extends SeleniumWebDriver{
 			returnValue=false;
 		}
 		if(!isTextPresent(IDMData.get("EmployeeType").toString())){
-			returnValue=true;
+			returnValue=false;
 		}
 		if(!isTextPresent(IDMData.get("PrimaryManager").toString())){
 			returnValue=false;

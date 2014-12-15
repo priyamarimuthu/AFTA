@@ -30,7 +30,7 @@ public class TrainingSystemPage extends SeleniumWebDriver{
 	/**
 	 * verify Training System Page
 	 * @param 
-	 * @return boolean
+	 * @return boolean- returns true if all required elements for Training System Page is present, else false
 	 */
 	public boolean verifyTrainingSystemPage(){
 		boolean returnValue=true;
@@ -58,8 +58,8 @@ public class TrainingSystemPage extends SeleniumWebDriver{
 	}
 	
 	/***
-	 * Verify if IDM Link is present
-	 * @return boolean
+	 * Verify if Impact Program Link is present
+	 * @return boolean- returns true if Impact Program link is present, else false
 	 */
 	public boolean verifyImpactProg() {
 		if (isElementPresent(lnkImpactProg)) {
@@ -71,7 +71,7 @@ public class TrainingSystemPage extends SeleniumWebDriver{
 	
 	/***
 	 * Verify if Wisdom Curve Link is present
-	 * @return boolean
+	 * @return boolean- returns true if Wisdom Curve link is present, else false
 	 */
 	public boolean verifyWisdomCurve() {
 		if (isElementPresent(lnkWisdomCurve)) {
@@ -83,7 +83,7 @@ public class TrainingSystemPage extends SeleniumWebDriver{
 	
 	/***
 	 * Verify if Dev Teams Link is present
-	 * @return boolean
+	 * @return boolean- returns true if Dev Teams link is present, else false
 	 */
 	public boolean verifyDevTeams() {
 		if (isElementPresent(lnkDevTeams)) {
@@ -95,7 +95,7 @@ public class TrainingSystemPage extends SeleniumWebDriver{
 	
 	/***
 	 * Verify if Testing Teams Link is present
-	 * @return boolean
+	 * @return boolean- returns true if Testing Teams link is present, else false
 	 */
 	public boolean verifyTestingTeams() {
 		if (isElementPresent(lnkTestingTeams)) {
@@ -107,7 +107,7 @@ public class TrainingSystemPage extends SeleniumWebDriver{
 	
 	/***
 	 * Verify if ISMS Link is present
-	 * @return boolean
+	 * @return boolean- returns true if ISMS link is present, else false
 	 */
 	public boolean verifyElementISMS() {
 		if (isElementPresent(lnkISMS)) {
@@ -119,7 +119,7 @@ public class TrainingSystemPage extends SeleniumWebDriver{
 	
 	/***
 	 * Verify if Orientation Program Link is present
-	 * @return boolean
+	 * @return boolean- returns true if Orientation Program link is present, else false
 	 */
 	public boolean verifyElementOrientationProg() {
 		if (isElementPresent(lnkOrientationProg)) {

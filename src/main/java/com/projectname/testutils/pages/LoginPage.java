@@ -28,7 +28,7 @@ public class LoginPage extends SeleniumWebDriver{
 
 	/**
 	 * login to the application
-	 * @param String, String
+	 * @param String- User Name, String- Password
 	 * @return IntranetHomePage
 	 */
 	public IntranetHomePage login(String userName, String password){
