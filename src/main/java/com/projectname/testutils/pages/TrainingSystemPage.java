@@ -22,9 +22,9 @@ public class TrainingSystemPage extends SeleniumWebDriver{
 	 */
 	public TrainingSystemPage(){
 		PageFactory.initElements(driver, this);
-		logTitleMessage("Verifying Ready Locator for Training System Page: "+readyLocator);
-		isElementPresent(readyLocator);
-		logTitleMessage("Ready Locator got Successful");
+		logTitleMessage("Instantiating page, waiting for element: "+readyLocator+ " to be present");
+		waitForElement(readyLocator, READYLOCATORWAITTIME);
+		logTitleMessage("Instantiated "+readyLocator +" , ready for use");
 	}
 
 	/**

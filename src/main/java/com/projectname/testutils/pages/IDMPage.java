@@ -15,9 +15,10 @@ public class IDMPage extends SeleniumWebDriver{
 	 */
 	public IDMPage(){
 		PageFactory.initElements(driver, this);
-		logTitleMessage("Verifying Ready Locator for IDM Page: "+readyLocator);
-		isElementPresent(readyLocator);
-		logTitleMessage("Ready Locator got Successful");
+		logTitleMessage("Instantiating page, waiting for element: "+readyLocator+ " to be present");
+		waitForElement(readyLocator, READYLOCATORWAITTIME);
+		logTitleMessage("Instantiated "+readyLocator +" , ready for use");
+
 	}
 	
 	/**

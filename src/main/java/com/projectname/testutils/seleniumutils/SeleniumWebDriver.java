@@ -40,6 +40,7 @@ public class SeleniumWebDriver {
 	static WebDriverWait wait;
 	private static String returnString="";
 	private static Boolean result = true;
+	public static int READYLOCATORWAITTIME=20;
 	protected final Logger log = Logger.getLogger(getClass().getSimpleName());
 		
 	//Time to wait for page to load
