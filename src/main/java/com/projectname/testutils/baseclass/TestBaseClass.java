@@ -83,8 +83,8 @@ public class TestBaseClass{
 	/**
 	 * Instantiating the driver path
 	 */
-	private final String IE_FILE_PATH = "/src/test/resources/extensions/IEDriverServer.exe";
-	private final String CHROME_FILE_PATH = "/src/test/resources/extensions/chromedriver.exe";
+	private final String IE_FILE_PATH = "/src/main/resources/extensions/IEDriverServer.exe";
+	private final String CHROME_FILE_PATH = "/src/main/resources/extensions/chromedriver.exe";
 	
 	/**
 	 * For DB connection
@@ -269,6 +269,7 @@ public class TestBaseClass{
 				.getCurrentDateAndTimeInLoggerFormat();
 		String status = "PASS";
 		MapToTestLink mapToTestLink=result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(MapToTestLink.class);
+		/*if(mapToTestLink!=null){
 		String testCase=mapToTestLink.testCaseID();
 		if (result.isSuccess()) {
 			testLinkResult= TestLinkAPIResults.TEST_PASSED;
@@ -283,6 +284,7 @@ public class TestBaseClass{
 			api=new TestLinkAPIClient(environmentPropertiesReader.getTestLinkDevKey(), environmentPropertiesReader.getTestlinkURL());
 			api.reportTestCaseResult(environmentPropertiesReader.getTestProject(), environmentPropertiesReader.getTestPlan(), environmentPropertiesReader.getTestSuiteID(), testCase, notes, testLinkResult,environmentPropertiesReader.getTestBuildId());
 		}
+		}*/
 		// Capture screen shot in case test has failed.
 		try {
 			if (!result.isSuccess()) {

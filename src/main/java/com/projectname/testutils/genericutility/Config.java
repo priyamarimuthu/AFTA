@@ -8,11 +8,13 @@ public class Config {
 	public static Boolean requireToWrite = true; 
 	
 	//Retry Analyzer Initialization
-	public static final int RETRYCOUNTER = 1; 
+	//Change here to specify the number of attempts
+	public static final int RETRYCOUNTER = 2; 
+	
 	public static int retryCount=0;
 	
 	//Browser
-	public static String browser="FIREFOX";
+	public static String browser="CHROME";
 
 	//Credentials
 	public static String URL="http://systems.aspiresys.com/";
