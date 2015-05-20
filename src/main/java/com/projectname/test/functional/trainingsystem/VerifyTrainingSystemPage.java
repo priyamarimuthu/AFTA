@@ -44,7 +44,7 @@ public class VerifyTrainingSystemPage extends TestBaseClass{
 		log.info(loginTestData.get(0).get("UserName").toString() + " - ");
 	
 		// ------------------------------------------------------------------//
-		// Step-1: Login to the application
+		// Step-2: Login to the application
 		// ------------------------------------------------------------------//
 		logTitleMessage("Login to application");
 		loginPage = new LoginPage();
@@ -52,7 +52,7 @@ public class VerifyTrainingSystemPage extends TestBaseClass{
 		logTitleMessage("Login Successful");	
 			
 		// ------------------------------------------------------------------//
-		// Step-2: Go to Training system Page //
+		// Step-3: Go to Training system Page //
 		// ------------------------------------------------------------------//
 		trainingSystemPage=homePage.clickTrainingSystemLink();
 		assertTrue(trainingSystemPage.verifyTrainingSystemPage(),"Error in verifying training system page",driver);

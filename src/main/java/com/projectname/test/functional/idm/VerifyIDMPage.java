@@ -56,7 +56,7 @@ public class VerifyIDMPage extends TestBaseClass{
 		// ------------------------------------------------------------------//
 		iDMPage=homePage.clickIDMLink();
 		// ------------------------------------------------------------------//
-		// Step-2: Fetch Test Data for IDM Page //
+		// Step-3: Fetch Test Data for IDM Page //
 		// ------------------------------------------------------------------//
 		ArrayList<HashedMap> IDMData = ExcelReader.getTestDataByTestCaseId(
 				"TC_IDM_001", VerifyIDMPage.class.getSimpleName());

@@ -50,14 +50,11 @@ public class IntranetHomePage extends SeleniumWebDriver {
 	 * @return TrainingSystemPage- returns new Training System Page
 	 */
 	public TrainingSystemPage clickTrainingSystemLink() {
-		String winHandleBefore = driver.getWindowHandle();
 		click(lnkTrainingSystem);
 		waitForPageToLoad();
 		for(String winHandle : driver.getWindowHandles()){
 		    driver.switchTo().window(winHandle);
 		}
-		String winHandleAfter = driver.getWindowHandle();
-		
 		return new TrainingSystemPage();
 	}
 	
@@ -67,14 +64,11 @@ public class IntranetHomePage extends SeleniumWebDriver {
 	 * @return IDMPage- returns new IDM Page
 	 */
 	public IDMPage clickIDMLink() {
-		String winHandleBefore = driver.getWindowHandle();
 		click(readyLocator);
 		waitForPageToLoad();
 		for(String winHandle : driver.getWindowHandles()){
 		    driver.switchTo().window(winHandle);
 		}
-		String winHandleAfter = driver.getWindowHandle();
-		
 		return new IDMPage();
 	}
 

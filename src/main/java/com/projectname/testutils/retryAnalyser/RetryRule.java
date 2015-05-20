@@ -8,7 +8,6 @@ import com.projectname.testutils.genericutility.Config;
 /**
  * Retry rule for testclasses which are failed because of wait timed out No of retries can be specified in the TestBaseClass @Rule
  * annotated place
- * 
  * @author AspireQA
  * 
  */

@@ -1,6 +1,5 @@
 package com.projectname.testutils.baseclass;
 
-
 import static org.testng.internal.EclipseInterface.ASSERT_LEFT;
 import static org.testng.internal.EclipseInterface.ASSERT_MIDDLE;
 import static org.testng.internal.EclipseInterface.ASSERT_RIGHT;
@@ -44,7 +43,7 @@ import com.projectname.testutils.testlink.xmlrpcclient.TestLinkAPIClient;
 import com.projectname.testutils.testlink.xmlrpcclient.TestLinkAPIException;
 import com.projectname.testutils.testlink.xmlrpcclient.TestLinkAPIResults;
 
-public class TestBaseClass{
+public class TestBaseClass {
 
 	/**
 	 * This page object is initialized before the start of every test.
@@ -67,10 +66,9 @@ public class TestBaseClass{
 	 * To Read the environment details
 	 */
 	EnvironmentPropertiesReader environmentPropertiesReader;
-	String notes=null;
-	String testLinkResult=null;
-	TestLinkAPIClient api=null;
-
+	String notes = null;
+	String testLinkResult = null;
+	TestLinkAPIClient api = null;
 
 	/**
 	 * Getting the base path of screen shot
@@ -85,7 +83,7 @@ public class TestBaseClass{
 	 */
 	private final String IE_FILE_PATH = "/src/main/resources/extensions/IEDriverServer.exe";
 	private final String CHROME_FILE_PATH = "/src/main/resources/extensions/chromedriver.exe";
-	
+
 	/**
 	 * For DB connection
 	 */
@@ -106,9 +104,10 @@ public class TestBaseClass{
 
 	/**
 	 * Displaying the environment details
+	 * 
 	 * @throws IOException
 	 */
-	
+
 	public TestBaseClass() {
 		// Getting the properties
 		try {
@@ -129,7 +128,6 @@ public class TestBaseClass{
 			// Instantiating logger
 			logFile = new File(".").getCanonicalPath() + File.separator
 					+ "test-output" + File.separator + "temp.log";
-			
 
 		} catch (IOException e) {
 			e.getMessage();
@@ -155,16 +153,17 @@ public class TestBaseClass{
 
 	/**
 	 * Set up logger info
-	 * @throws IOException 
+	 * 
+	 * @throws IOException
 	 * 
 	 * @throws Exception
 	 */
 	@BeforeMethod(alwaysRun = true)
 	public final void genericSetUp() throws ExceptionHandler, IOException {
 		// Instantiating Logger
-		
+
 		driver = loadURL();
-		SeleniumWebDriver.driver=driver;
+		SeleniumWebDriver.driver = driver;
 		Layout layout = new PatternLayout(
 				"%d{dd-MMM-yyyy HH:mm:ss:SSS} %-5p %c{1}:%L - %m%n");
 		log.removeAllAppenders();
@@ -187,8 +186,6 @@ public class TestBaseClass{
 		log.info("=====================================================================================================");
 	}
 
-	
-
 	/**
 	 * Returning the driver based on the browser
 	 * 
@@ -197,7 +194,7 @@ public class TestBaseClass{
 	 * @throws IOException
 	 */
 	public WebDriver loadURL() throws IOException {
-	
+
 		// Instantiating the browser
 		driver = getWebDriver(Config.browser);
 		wait = new WebDriverWait(driver, 30);
@@ -260,31 +257,46 @@ public class TestBaseClass{
 	 * 
 	 * @param result
 	 * @throws IOException
-	 * @throws TestLinkAPIException 
+	 * @throws TestLinkAPIException
 	 */
 	@AfterMethod(alwaysRun = true)
-	public final void tearDown(ITestResult result) throws IOException, TestLinkAPIException {
+	public final void tearDown(ITestResult result) throws IOException,
+			TestLinkAPIException {
 
 		String dateTimeStamp = DateTimeUtility
 				.getCurrentDateAndTimeInLoggerFormat();
 		String status = "PASS";
-		MapToTestLink mapToTestLink=result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(MapToTestLink.class);
-		/*if(mapToTestLink!=null){
-		String testCase=mapToTestLink.testCaseID();
-		if (result.isSuccess()) {
-			testLinkResult= TestLinkAPIResults.TEST_PASSED;
-			notes="Executed successfully";
-			api=new TestLinkAPIClient(environmentPropertiesReader.getTestLinkDevKey(), environmentPropertiesReader.getTestlinkURL());
-			api.reportTestCaseResult(environmentPropertiesReader.getTestProject(), environmentPropertiesReader.getTestPlan(), environmentPropertiesReader.getTestSuiteID(), testCase, notes, testLinkResult,environmentPropertiesReader.getTestBuildId());
+		MapToTestLink mapToTestLink = result.getMethod()
+				.getConstructorOrMethod().getMethod()
+				.getAnnotation(MapToTestLink.class);
+		if (mapToTestLink != null) {
+			String testCase = mapToTestLink.testCaseID();
+			if (result.isSuccess()) {
+				testLinkResult = TestLinkAPIResults.TEST_PASSED;
+				notes = "Executed successfully";
+				api = new TestLinkAPIClient(
+						environmentPropertiesReader.getTestLinkDevKey(),
+						environmentPropertiesReader.getTestlinkURL());
+				api.reportTestCaseResult(
+						environmentPropertiesReader.getTestProject(),
+						environmentPropertiesReader.getTestPlan(),
+						environmentPropertiesReader.getTestSuiteID(), testCase,
+						notes, testLinkResult,
+						environmentPropertiesReader.getTestBuildId());
+			} else {
+				testLinkResult = TestLinkAPIResults.TEST_FAILED;
+				notes = "Execution Failed";
+				api = new TestLinkAPIClient(
+						environmentPropertiesReader.getTestLinkDevKey(),
+						environmentPropertiesReader.getTestlinkURL());
+				api.reportTestCaseResult(
+						environmentPropertiesReader.getTestProject(),
+						environmentPropertiesReader.getTestPlan(),
+						environmentPropertiesReader.getTestSuiteID(), testCase,
+						notes, testLinkResult,
+						environmentPropertiesReader.getTestBuildId());
+			}
 		}
-		else
-		{
-			testLinkResult= TestLinkAPIResults.TEST_FAILED;
-			notes="Execution Failed";
-			api=new TestLinkAPIClient(environmentPropertiesReader.getTestLinkDevKey(), environmentPropertiesReader.getTestlinkURL());
-			api.reportTestCaseResult(environmentPropertiesReader.getTestProject(), environmentPropertiesReader.getTestPlan(), environmentPropertiesReader.getTestSuiteID(), testCase, notes, testLinkResult,environmentPropertiesReader.getTestBuildId());
-		}
-		}*/
 		// Capture screen shot in case test has failed.
 		try {
 			if (!result.isSuccess()) {
@@ -308,143 +320,166 @@ public class TestBaseClass{
 			driver.quit();
 		}
 	}
-	
-	//Report Part
-		protected final String empty = "";
-		
-		protected final String dot = ".";	
-		
-		protected String status = null;
-		
 
-		protected ITestResult logCustomMessage() {
-			return Reporter.getCurrentTestResult();
+	// Report Part
+	protected final String empty = "";
+
+	protected final String dot = ".";
+
+	protected String status = null;
+
+	protected ITestResult logCustomMessage() {
+		return Reporter.getCurrentTestResult();
+	}
+
+	/**
+	 * used for get the calling method name with line number
+	 * 
+	 * @return
+	 */
+	protected String getCallingMethodAndLineNumber() {
+		StackTraceElement[] stackTraceElements = Thread.currentThread()
+				.getStackTrace();
+
+		String callingMethodWithLineNumber = stackTraceElements[3]
+				.getClassName()
+				+ dot
+				+ stackTraceElements[3].getMethodName()
+				+ dot + stackTraceElements[3].getLineNumber();
+
+		return callingMethodWithLineNumber;
+	}
+
+	/**
+	 * This method returns the current date and time in format HH-mm-ss.SSS
+	 * 
+	 * @return time - in the above mentioned format
+	 */
+	protected static String getCurrentDateAndTime() {
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss.SSS");
+		Date date = new Date();
+		String time = sdf.format(date);
+		return time;
+	}
+
+	/**
+	 * used to get the custom attribute value
+	 * 
+	 * @param operation
+	 * @param elementLocator1
+	 * @param optional
+	 * @param status
+	 * @param screenShot
+	 * @param callingMethodAndLineNumber
+	 * @return
+	 */
+	protected String getCustomAttributeValue(String operation,
+			String elementLocator1, String optional, String status,
+			String screenShot, String callingMethodAndLineNumber) {
+
+		return operation + deliminator + elementLocator1 + deliminator
+				+ optional + deliminator + status + deliminator + screenShot
+				+ deliminator + callingMethodAndLineNumber;
+
+	}
+
+	protected boolean logTitleMessage(String message1) {
+
+		logCustomMessage().setAttribute(
+				getCurrentDateAndTime(),
+				getCustomAttributeValue(message1, empty, empty, "title", empty,
+						getCallingMethodAndLineNumber()));
+		log.info(message1);
+		return true;
+	}
+
+	// End of code for reporting
+
+	// Customized Assert block starts
+
+	/**
+	 * Asserts that a condition is true. If it isn't, an AssertionError, with
+	 * the given message, is thrown.
+	 * 
+	 * @param condition
+	 *            the condition to evaluate
+	 * @param message
+	 *            the assertion error message
+	 */
+	public void assertTrue(boolean condition, String message, WebDriver driver) {
+		if (!condition) {
+
+			File scrFile = ((TakesScreenshot) driver)
+					.getScreenshotAs(OutputType.FILE);
+
+			String workingdirectory = System.getProperty("user.dir");
+
+			File scrFile1 = new File(
+					workingdirectory
+							+ "/custom-test-report/Failure_Screenshot/AssertFailure.jpg");
+
+			try {
+				FileUtils.copyFile(scrFile, scrFile1);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+
+			log.info("Customized Assert true block executed...Temprory function, Need to enhance if You wish scrrenshot in report. Failure screenshot in 'custom-test-report/Failure_Screenshot/AssertFailure.jpg");
+
+			failNotEquals(Boolean.valueOf(condition), Boolean.TRUE, message);
 		}
-		
-		/**
-		 * used for get the calling method name with line number
-		 * @return
-		 */
-		protected String getCallingMethodAndLineNumber(){
-			StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
-			
-			String callingMethodWithLineNumber = stackTraceElements[3].getClassName() + dot + stackTraceElements[3].getMethodName() + dot + stackTraceElements[3].getLineNumber() ;
-			
-			return callingMethodWithLineNumber;
-		}
-		
-		
-		/**
-		 * This method returns the current date and time in format HH-mm-ss.SSS
-		 * 
-		 * @return time - in the above mentioned format
-		 */
-		protected static String getCurrentDateAndTime() {
-			SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss.SSS");
-			Date date = new Date();
-			String time = sdf.format(date);
-			return time;
-		}
-		
-		/**
-		 * used to get the custom attribute value
-		 * @param operation
-		 * @param elementLocator1
-		 * @param optional
-		 * @param status
-		 * @param screenShot
-		 * @param callingMethodAndLineNumber
-		 * @return
-		 */
-		protected String getCustomAttributeValue(String operation,String elementLocator1, String optional,String status, String screenShot, String callingMethodAndLineNumber){
-			
-			return operation + deliminator + elementLocator1 + deliminator + optional + deliminator + status + deliminator + screenShot + deliminator + callingMethodAndLineNumber;
-			
-		}
-		
-		protected boolean logTitleMessage(String message1){
-			
-			logCustomMessage().setAttribute(getCurrentDateAndTime(), getCustomAttributeValue(message1,empty, empty, "title", empty, getCallingMethodAndLineNumber()));
-			log.info(message1);
-			return true;
+	}
+
+	static private void failNotEquals(Object actual, Object expected,
+			String message) {
+		Assert.fail(format(actual, expected, message));
+	}
+
+	static String format(Object actual, Object expected, String message) {
+		String formatted = "";
+		if (null != message) {
+			formatted = message + " ";
 		}
 
-		//End of code for reporting
-			
-		
-		// Customized Assert block starts
-		
-		 /**
-		   * Asserts that a condition is true. If it isn't,
-		   * an AssertionError, with the given message, is thrown.
-		   * @param condition the condition to evaluate
-		   * @param message the assertion error message
-		   */
-		  public void assertTrue(boolean condition, String message, WebDriver driver) {
-		    if(!condition) {
-		    	
-		    	File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-				
-				String workingdirectory = System.getProperty("user.dir");
-				
-				File scrFile1 = new File(workingdirectory +"/custom-test-report/Failure_Screenshot/AssertFailure.jpg");
-				
-				try {
-					FileUtils.copyFile(scrFile, scrFile1);
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-				
-				log.info("Customized Assert true block executed...Temprory function, Need to enhance if You wish scrrenshot in report. Failure screenshot in 'custom-test-report/Failure_Screenshot/AssertFailure.jpg");
-				
-				failNotEquals( Boolean.valueOf(condition), Boolean.TRUE, message);
-		    }
-		  }
-		  
-		  
-		  static private void failNotEquals(Object actual , Object expected, String message ) {
-			  Assert.fail(format(actual, expected, message));
-		  }
+		return formatted + ASSERT_LEFT + expected + ASSERT_MIDDLE + actual
+				+ ASSERT_RIGHT;
+	}
 
-		  static String format(Object actual, Object expected, String message) {
-			    String formatted = "";
-			    if (null != message) {
-			      formatted = message + " ";
-			    }
+	// Customized Assert block Ends
 
-			    return formatted + ASSERT_LEFT + expected + ASSERT_MIDDLE + actual + ASSERT_RIGHT;
-		  }
-		  
-		  // Customized Assert block Ends
-		  
-		  
-		  // Customized Verify block starts
-		
-		  /**
-		   * Asserts that a condition is true. If it isn't,
-		   * an AssertionError, with the given message, is thrown.
-		   * @param condition the condition to evaluate
-		   * @param message the assertion error message
-		   */
-		  public void verifyTrue(boolean condition, String message, WebDriver driver) {
-		    if(!condition) {
-		    	
-		    	File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-				
-				String workingdirectory = System.getProperty("user.dir");
-				
-				File scrFile1 = new File(workingdirectory +"/custom-test-report/Failure_Screenshot/AssertFailure.jpg");
-				
-				try {
-					FileUtils.copyFile(scrFile, scrFile1);
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-				
-				log.info("Customized Verify True block executed...Temprory function, Need to enhance if You wish scrrenshot in report. Failure screenshot in 'custom-test-report/Failure_Screenshot/AssertFailure.jpg");
-				
-		    }
-		 }
-		  
-		  // Customized Verify block Ends
+	// Customized Verify block starts
+
+	/**
+	 * Asserts that a condition is true. If it isn't, an AssertionError, with
+	 * the given message, is thrown.
+	 * 
+	 * @param condition
+	 *            the condition to evaluate
+	 * @param message
+	 *            the assertion error message
+	 */
+	public void verifyTrue(boolean condition, String message, WebDriver driver) {
+		if (!condition) {
+
+			File scrFile = ((TakesScreenshot) driver)
+					.getScreenshotAs(OutputType.FILE);
+
+			String workingdirectory = System.getProperty("user.dir");
+
+			File scrFile1 = new File(
+					workingdirectory
+							+ "/custom-test-report/Failure_Screenshot/AssertFailure.jpg");
+
+			try {
+				FileUtils.copyFile(scrFile, scrFile1);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+
+			log.info("Customized Verify True block executed...Temprory function, Need to enhance if You wish scrrenshot in report. Failure screenshot in 'custom-test-report/Failure_Screenshot/AssertFailure.jpg");
+
+		}
+	}
+
+	// Customized Verify block Ends
 }

@@ -43,29 +43,29 @@ public class SearchByName extends TestBaseClass{
 				"TC_EBS_001", LoginTest.class.getSimpleName());
 		log.info(loginTestData.get(0).get("UserName").toString() + " - ");
 	
-	// ------------------------------------------------------------------//
-	// Step-1: Login to the application
-	// ------------------------------------------------------------------//
+		// ------------------------------------------------------------------//
+		// Step-2: Login to the application
+		// ------------------------------------------------------------------//
 		logTitleMessage("Login to application");
 		loginPage = new LoginPage();
 		loginPage.login(loginTestData.get(0).get("UserName").toString(), loginTestData.get(0).get("Password").toString());
 		logTitleMessage("Login Successful");
 		
 		// ------------------------------------------------------------------//
-		// Step-2: Get the test data to search//
+		// Step-3: Get the test data to search//
 		// ------------------------------------------------------------------//
 		ArrayList<HashedMap> testData = ExcelReader.getTestDataByTestCaseId(
 				"TC_CT_001", SearchByName.class.getSimpleName());
 		log.info(testData.get(0).get("TC_ID").toString() + " - ");
 		
 		// ------------------------------------------------------------------//
-		// Step-2: Load Home page elements //
+		// Step-4: Load Home page elements //
 		// ------------------------------------------------------------------//
 		SharedPage sharedPage = new SharedPage();
 		log.info("Successfully loaded Home Page elements");
 		
 		// ------------------------------------------------------------------//
-		// Step-3:Search by name //
+		// Step-5:Search by name //
 		// ------------------------------------------------------------------//
 		for(int i=0;i<testData.size();i++){
 			log.info("Searching for: - "+testData.get(i).get("UserName"));

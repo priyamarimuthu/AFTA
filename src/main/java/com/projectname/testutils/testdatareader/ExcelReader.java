@@ -17,7 +17,8 @@ import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 public class ExcelReader {
 
 	/**
-	 * findRowColumnCount function to establish an initial connection with a work sheet
+	 * findRowColumnCount function to establish an initial connection with a
+	 * work sheet
 	 * 
 	 * @param sheet
 	 * @param rowColumnCount
@@ -26,8 +27,8 @@ public class ExcelReader {
 	 * @since April 04, 2010
 	 */
 
-	public static Hashtable<String, Integer> findRowColumnCount(HSSFSheet sheet,
-			Hashtable<String, Integer> rowColumnCount) {
+	public static Hashtable<String, Integer> findRowColumnCount(
+			HSSFSheet sheet, Hashtable<String, Integer> rowColumnCount) {
 
 		HSSFRow row = null;
 		int rows;
@@ -36,7 +37,7 @@ public class ExcelReader {
 		int tmp = 0;
 		int counter = 0;
 		String temp = null;
-		
+
 		for (int i = 0; i < 10 || i < rows; i++) {
 			row = sheet.getRow(i);
 			if (row != null) {
@@ -45,7 +46,7 @@ public class ExcelReader {
 					counter++;
 				}
 				tmp = sheet.getRow(i).getPhysicalNumberOfCells();
-				if (tmp > cols){
+				if (tmp > cols) {
 					cols = tmp;
 				}
 			}
@@ -58,7 +59,8 @@ public class ExcelReader {
 	}
 
 	/**
-	 * readExcelHeaders function to establish an initial connection with a work sheet
+	 * readExcelHeaders function to establish an initial connection with a work
+	 * sheet
 	 * 
 	 * @param sheet
 	 * @param excelHeaders
@@ -68,7 +70,8 @@ public class ExcelReader {
 	 * @return Hashtable (Having Header column values)
 	 * @since April 04, 2010
 	 */
-	public static Hashtable<String, Integer> readExcelHeaders(HSSFSheet sheet, Hashtable<String, Integer> excelHeaders,
+	public static Hashtable<String, Integer> readExcelHeaders(HSSFSheet sheet,
+			Hashtable<String, Integer> excelHeaders,
 			Hashtable<String, Integer> rowColumnCount) {
 
 		HSSFRow row = null;
@@ -90,7 +93,8 @@ public class ExcelReader {
 	}
 
 	/**
-	 * convertHSSFCellToString function will convert the HSSFCell type value to its equivalent string value
+	 * convertHSSFCellToString function will convert the HSSFCell type value to
+	 * its equivalent string value
 	 * 
 	 * @param cell
 	 * @return String
@@ -114,7 +118,8 @@ public class ExcelReader {
 	 * @param testClassName
 	 * @return
 	 */
-	public static ArrayList<HashedMap> getTestDataByTestCaseId(String testCaseId, String testClassName) {
+	public static ArrayList<HashedMap> getTestDataByTestCaseId(
+			String testCaseId, String testClassName) {
 		String filePath = "";
 		String sheetName = "";
 		String fileName = "";
@@ -124,35 +129,42 @@ public class ExcelReader {
 		Hashtable<String, Integer> excelHeaders = new Hashtable<String, Integer>();
 
 		try {
-			
-			String basePath = new File(".").getCanonicalPath() + File.separator + "src" + File.separator + "main"
-					+ File.separator + "resources" + File.separator + "testdata" + File.separator;
+
+			String basePath = new File(".").getCanonicalPath() + File.separator
+					+ "src" + File.separator + "main" + File.separator
+					+ "resources" + File.separator + "testdata"
+					+ File.separator;
 			String configFilePath = basePath + "Config-TD.xls";
-			POIFSFileSystem fs = new POIFSFileSystem(new FileInputStream(configFilePath));
+			POIFSFileSystem fs = new POIFSFileSystem(new FileInputStream(
+					configFilePath));
 			HSSFWorkbook wb = new HSSFWorkbook(fs);
 			HSSFSheet sheet = wb.getSheet("Config");
 
 			// Function call to find excel header fields
 			Hashtable<String, Integer> excelrRowColumnCount = new Hashtable<String, Integer>();
-			excelrRowColumnCount = findRowColumnCount(sheet, excelrRowColumnCount);
-			excelHeaders = readExcelHeaders(sheet, excelHeaders, excelrRowColumnCount);
+			excelrRowColumnCount = findRowColumnCount(sheet,
+					excelrRowColumnCount);
+			excelHeaders = readExcelHeaders(sheet, excelHeaders,
+					excelrRowColumnCount);
 
-			
 			// Get test data set
 			for (int r = 1; r < excelrRowColumnCount.get("RowCount"); r++) {
 				row = sheet.getRow(r);
 				if (row != null) {
 					HSSFCell tempCell = sheet.getRow(r).getCell(0);
 					if (tempCell != null) {
-						String testClass = convertHSSFCellToString(row.getCell(0));
-						
+						String testClass = convertHSSFCellToString(row
+								.getCell(0));
+
 						if (testClass.equalsIgnoreCase(testClassName)) {
 							cell = sheet.getRow(r).getCell(1);
 							if (cell != null)
-								fileName = convertHSSFCellToString(row.getCell(1));
+								fileName = convertHSSFCellToString(row
+										.getCell(1));
 							cell = sheet.getRow(r).getCell(2);
 							if (cell != null)
-								sheetName = convertHSSFCellToString(row.getCell(2));
+								sheetName = convertHSSFCellToString(row
+										.getCell(2));
 							break;
 						}
 					}
@@ -179,66 +191,68 @@ public class ExcelReader {
 	 * @throws IOException
 	 * @throws FileNotFoundException
 	 */
-	public static ArrayList<HashedMap> getTestData(String filePath, String workBook, String sheetName, String testCaseId)
-	throws FileNotFoundException, IOException {
-HSSFRow row = null;
-HSSFCell cell = null;
+	public static ArrayList<HashedMap> getTestData(String filePath,
+			String workBook, String sheetName, String testCaseId)
+			throws FileNotFoundException, IOException {
+		HSSFRow row = null;
+		HSSFCell cell = null;
 
-// Establish connection to work sheet
-POIFSFileSystem fs = new POIFSFileSystem(new FileInputStream(filePath));
-HSSFWorkbook wb = new HSSFWorkbook(fs);
-HSSFSheet sheet = wb.getSheet(sheetName);
-Hashtable<String, Integer> excelrRowColumnCount = new Hashtable<String, Integer>();
-excelrRowColumnCount = findRowColumnCount(sheet, excelrRowColumnCount);
+		// Establish connection to work sheet
+		POIFSFileSystem fs = new POIFSFileSystem(new FileInputStream(filePath));
+		HSSFWorkbook wb = new HSSFWorkbook(fs);
+		HSSFSheet sheet = wb.getSheet(sheetName);
+		Hashtable<String, Integer> excelrRowColumnCount = new Hashtable<String, Integer>();
+		excelrRowColumnCount = findRowColumnCount(sheet, excelrRowColumnCount);
 
-// function call to find excel header fields
-Hashtable<String, Integer> excelHeaders = new Hashtable<String, Integer>();
-excelHeaders = readExcelHeaders(sheet, excelHeaders, excelrRowColumnCount);
-HashedMap data=null;
-ArrayList<String> header = new ArrayList<String>();
-ArrayList<String> matcher = null;
-ArrayList<HashedMap> matcherList = new ArrayList<HashedMap>();
+		// function call to find excel header fields
+		Hashtable<String, Integer> excelHeaders = new Hashtable<String, Integer>();
+		excelHeaders = readExcelHeaders(sheet, excelHeaders,
+				excelrRowColumnCount);
+		HashedMap data = null;
+		ArrayList<String> header = new ArrayList<String>();
+		ArrayList<String> matcher = null;
+		ArrayList<HashedMap> matcherList = new ArrayList<HashedMap>();
 
-// Get all header
-row = sheet.getRow(0);
-if (row != null) {
-	for (int c = 0; c < excelrRowColumnCount.get("ColumnCount"); c++) {
-		cell = sheet.getRow(0).getCell(c);
-		if (cell != null) {
-			String temp = convertHSSFCellToString(row.getCell(c));
-			header.add(temp);
-		}
-	}
-}
-
-// Get test data set
-for (int r = 1; r < excelrRowColumnCount.get("RowCount"); r++) {
-	row = sheet.getRow(r);
-	if (row != null) {
-		HSSFCell tempCell = sheet.getRow(r).getCell(0);
-		if (tempCell != null) {
-			String tcID = convertHSSFCellToString(row.getCell(0));
-			if (tcID.equalsIgnoreCase(testCaseId)) {
-				data = new HashedMap();
-				matcher = new ArrayList<String>();
-				matcher.add(tcID);
-				for (int c = 1; c < excelrRowColumnCount.get("ColumnCount"); c++) {
-					cell = sheet.getRow(r).getCell(c);
+		// Get all header
+		row = sheet.getRow(0);
+		if (row != null) {
+			for (int c = 0; c < excelrRowColumnCount.get("ColumnCount"); c++) {
+				cell = sheet.getRow(0).getCell(c);
+				if (cell != null) {
 					String temp = convertHSSFCellToString(row.getCell(c));
-					matcher.add(temp);
+					header.add(temp);
 				}
-				// Add all the test data to a Map
-				for (int i = 0; i < matcher.size(); i++) {
-					data.put(header.get(i), matcher.get(i));
-				}
-				matcherList.add(data);
 			}
 		}
+
+		// Get test data set
+		for (int r = 1; r < excelrRowColumnCount.get("RowCount"); r++) {
+			row = sheet.getRow(r);
+			if (row != null) {
+				HSSFCell tempCell = sheet.getRow(r).getCell(0);
+				if (tempCell != null) {
+					String tcID = convertHSSFCellToString(row.getCell(0));
+					if (tcID.equalsIgnoreCase(testCaseId)) {
+						data = new HashedMap();
+						matcher = new ArrayList<String>();
+						matcher.add(tcID);
+						for (int c = 1; c < excelrRowColumnCount
+								.get("ColumnCount"); c++) {
+							cell = sheet.getRow(r).getCell(c);
+							String temp = convertHSSFCellToString(row
+									.getCell(c));
+							matcher.add(temp);
+						}
+						// Add all the test data to a Map
+						for (int i = 0; i < matcher.size(); i++) {
+							data.put(header.get(i), matcher.get(i));
+						}
+						matcherList.add(data);
+					}
+				}
+			}
+		}
+
+		return matcherList;
 	}
-}
-
-
-
-return matcherList;
-}
 }
