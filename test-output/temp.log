@@ -1,15 +1,9 @@
-12-Dec-2014 15:59:25:555 INFO  VerifyIDMPage:176 - =====================================================================================================
-12-Dec-2014 15:59:25:559 INFO  VerifyIDMPage:185 - App URL    : http://systems.aspiresys.com/
-12-Dec-2014 15:59:25:560 INFO  VerifyIDMPage:186 - Browser    : FIREFOX
-12-Dec-2014 15:59:25:560 INFO  VerifyIDMPage:187 - =====================================================================================================
-12-Dec-2014 15:59:25:803 INFO  VerifyIDMPage:44 - priya.marimuthu - 
-12-Dec-2014 15:59:25:804 INFO  VerifyIDMPage:372 - Login to application
-12-Dec-2014 15:59:41:969 INFO  VerifyIDMPage:291 - Captured Screenshot : C:\Users\priya.marimuthu\git\Demo\test-output\screenshots\verifyIDMPage 12-Dec-2014 15-59-35.png
-12-Dec-2014 15:59:42:465 ERROR VerifyIDMPage:297 - The following error has occured while capturing a screen shot : C:\Users\priya.marimuthu\git\Demo\test-output\screenshots\verifyIDMPage 12-Dec-2014 15-59-35.png (The system cannot find the path specified)
-12-Dec-2014 15:59:42:465 INFO  VerifyIDMPage:308 - The test result for verifyIDMPage is FAIL
-12-Dec-2014 15:59:54:521 INFO  VerifyIDMPage:291 - Captured Screenshot : C:\Users\priya.marimuthu\git\Demo\test-output\screenshots\verifyIDMPage 12-Dec-2014 15-59-51.png
-12-Dec-2014 15:59:55:523 ERROR VerifyIDMPage:297 - The following error has occured while capturing a screen shot : Error communicating with the remote browser. It may have died.
-Build info: version: '2.33.0', revision: '4ecaf82108b2a6cc6f006aae81961236eba93358', time: '2013-05-22 12:00:17'
-System info: os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_13'
-Driver info: driver.version: SeleniumWebDriver
-12-Dec-2014 15:59:55:524 INFO  VerifyIDMPage:308 - The test result for verifyIDMPage is FAIL
+07-May-2015 15:27:24:957 INFO  LoginTest:176 - =====================================================================================================
+07-May-2015 15:27:24:958 INFO  LoginTest:185 - App URL    : http://systems.aspiresys.com/
+07-May-2015 15:27:24:959 INFO  LoginTest:186 - Browser    : FIREFOX
+07-May-2015 15:27:24:960 INFO  LoginTest:187 - =====================================================================================================
+07-May-2015 15:27:24:969 INFO  LoginTest:32 - priya.marimuthu - 
+07-May-2015 15:27:24:970 INFO  LoginTest:368 - Login to application
+07-May-2015 15:27:51:334 INFO  LoginTest:293 - Captured Screenshot : C:\Users\priya.marimuthu\git\Selenium_Framework\test-output\screenshots\loginTest 07-May-2015 15-27-51.png
+07-May-2015 15:27:51:556 ERROR LoginTest:299 - The following error has occured while capturing a screen shot : C:\Users\priya.marimuthu\git\Selenium_Framework\test-output\screenshots\loginTest 07-May-2015 15-27-51.png (The system cannot find the path specified)
+07-May-2015 15:27:51:556 INFO  LoginTest:304 - The test result for loginTest is FAIL
